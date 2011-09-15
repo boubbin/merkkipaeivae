@@ -1,7 +1,5 @@
 
 public class helloworld {
 
-	public helloworld() {
-		
-	}
+	private String heihei;
 }
