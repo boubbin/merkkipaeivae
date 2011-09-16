@@ -12,7 +12,7 @@
 
    <servlet-mapping>
       <servlet-name>IndexController</servlet-name>
-      <url-pattern>/</url-pattern>
+      <url-pattern>/merkkipaivat</url-pattern>
    </servlet-mapping>
 
 </web-app>
