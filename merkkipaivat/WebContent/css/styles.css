@@ -23,7 +23,7 @@ html, .main {
 .logo {
 	padding:20px 0 50px 20px;
 	margin:0 auto;
-	width:950px;
+	//width:950px;
 }
 .logo img {
 	float:left;
@@ -91,7 +91,7 @@ a.rm, a.com {
 .header_resize {
 	margin:0 auto;
 	padding:0;
-	width:970px;
+	//width:970px;
 }
 .menu_nav {
 	margin:5px auto;
@@ -168,7 +168,7 @@ a.rm, a.com {
 .content_resize {
 	margin:0 auto;
 	padding:0;
-	width:970px;
+	//width:970px;
 }
 .content .mainbar {
 	margin:0;
