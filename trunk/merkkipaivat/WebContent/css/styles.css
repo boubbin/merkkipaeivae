@@ -10,7 +10,7 @@ body {
 html, .main {
 	padding:0;
 	margin:0;
-	background:#e4e4e4 url(images/main_bg.gif) top repeat-x;
+	background:#e4e4e4 url(../images/main_bg.gif) top repeat-x;
 }
 .clr {
 	clear:both;
@@ -120,7 +120,7 @@ a.rm, a.com {
 }
 .menu_nav ul li.active a, .menu_nav ul li a:hover {
 	color:#fdfdfd;
-	background:url(images/hover.gif) top repeat-x;
+	background:url(../images/hover.gif) top repeat-x;
 	text-decoration:underline;
 }
 .search {
@@ -238,12 +238,12 @@ ul.sb_menu li a, ul.ex_menu li a {
 	text-decoration:none;
 	margin-left:-12px;
 	padding-left:15px;
-	background:url(images/li_a_hover.gif) left no-repeat;
+	background:url(../images/li_a_hover.gif) left no-repeat;
 }
 ul.sb_menu li a:hover, ul.ex_menu li a:hover {
 	color:#2cadff;
 	text-decoration:underline;
-	background:url(images/li_a.gif) left no-repeat;
+	background:url(../images/li_a.gif) left no-repeat;
 }
 ul.sb_menu li a:hover {
 	text-decoration:underline;
@@ -263,7 +263,7 @@ ul.ex_menu li a:hover {
 }
 .fbg {
 	padding:10px 0 0 0;
-	background:#828282 url(images/fbg_bg.gif) top repeat-x;
+	background:#828282 url(../images/fbg_bg.gif) top repeat-x;
 }
 .fbg_resize {
 	margin:0 auto;
