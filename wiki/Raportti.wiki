@@ -1,22 +1,16 @@
 #summary Sisältää kuvaukset databasesta ja näkymistä/luokista
 
 =Näkymät=
-#login
-
-#mainpage (actionit, lisätyt merkkipäivät, muokkaa aiempaa)
-
-#lisää merkkipäivä (henkilön nimi, päivämäärä)
-
-#muokkaa merkkipäivää
+  * login
+  * mainpage (actionit, lisätyt merkkipäivät, muokkaa aiempaa)
+  * lisää merkkipäivä (henkilön nimi, päivämäärä)
+  * muokkaa merkkipäivää
 
 =Database=
-* MySQL
-
-* Taulut:
-
-** Userbase (id, userid, salasana, nimi, maili, syntaika, ?) (userid yksilöi)
-
-** Merkkipäivät (id, userid, merkkipäivän-nimi, pvm, julkinen(?)) (userid yksilöinti merkkipäivän kanssa)
+  * MySQL
+  * Taulut:
+    # Userbase (id, userid, salasana, nimi, maili, syntaika, ?) (userid yksilöi)
+    # Merkkipäivät (id, userid, merkkipäivän-nimi, pvm, julkinen(?)) (userid yksilöinti merkkipäivän kanssa)
 
 =Versionhallinta=
 URL:  http://code.google.com/p/merkkipaeivae/
