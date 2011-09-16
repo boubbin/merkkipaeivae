@@ -1,13 +1,13 @@
 #summary Sisältää kuvaukset databasesta ja näkymistä/luokista
 
 =Näkymät=
-*login
+#login
 
-*mainpage (actionit, lisätyt merkkipäivät, muokkaa aiempaa)
+#mainpage (actionit, lisätyt merkkipäivät, muokkaa aiempaa)
 
-*lisää merkkipäivä (henkilön nimi, päivämäärä)
+#lisää merkkipäivä (henkilön nimi, päivämäärä)
 
-*muokkaa merkkipäivää
+#muokkaa merkkipäivää
 
 =Database=
 * MySQL
