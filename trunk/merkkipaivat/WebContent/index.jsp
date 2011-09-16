@@ -88,14 +88,10 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendi
     </div>
     <div class="footer">
       <p class="lf">&copy; Copyright boubbini</p>
-      <p class="rf">Okeee footer</a></p>
+      <p class="rf">Okeee footer</p>
       <div class="clr"></div>
     </div>
   </div>
-</body>
-</html>
-
-
 
 
 </body>
