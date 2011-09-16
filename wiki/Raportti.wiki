@@ -2,15 +2,22 @@
 
 =Näkymät=
 *login
+
 *mainpage (actionit, lisätyt merkkipäivät, muokkaa aiempaa)
+
 *lisää merkkipäivä (henkilön nimi, päivämäärä)
+
 *muokkaa merkkipäivää
 
 =Database=
-*MySQL
-*Taulut:
-**Userbase (id, userid, salasana, nimi, maili, syntaika, ?) (userid yksilöi)
-**Merkkipäivät (id, userid, merkkipäivän-nimi, pvm, julkinen(?)) (userid **yksilöinti merkkipäivän kanssa)
+* MySQL
+
+* Taulut:
+
+** Userbase (id, userid, salasana, nimi, maili, syntaika, ?) (userid yksilöi)
+
+** Merkkipäivät (id, userid, merkkipäivän-nimi, pvm, julkinen(?)) (userid yksilöinti merkkipäivän kanssa)
+
 =Versionhallinta=
 URL:  http://code.google.com/p/merkkipaeivae/
 svn checkout https://merkkipaeivae.googlecode.com/svn/trunk/ merkkipaeivae --username boubbin@gmail.com
