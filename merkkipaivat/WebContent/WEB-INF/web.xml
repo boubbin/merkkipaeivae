@@ -15,6 +15,15 @@
       <url-pattern>/mainpage</url-pattern>
 </servlet-mapping>
 
+<servlet>
+      <servlet-name>AccountController</servlet-name>
+      <servlet-class>ui.AccountController</servlet-class>
+</servlet>
+
+<servlet-mapping>
+      <servlet-name>AccountController</servlet-name>
+      <url-pattern>/account</url-pattern>
+</servlet-mapping>
 
 </web-app>
 
