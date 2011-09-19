@@ -19,7 +19,7 @@ public class IndexController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
         HttpSession session = req.getSession(true);
-        session.setAttribute("authed", "boubbin");
+        if (session.getAttribute("user") == null) { session.setAttribute("authed", 0); }
         
 	    ServletContext context = getServletContext();
 	    RequestDispatcher dispatcher = context.getRequestDispatcher("/mainpage.jsp");
