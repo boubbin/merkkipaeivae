@@ -26,18 +26,18 @@ public class AccountController extends HttpServlet {
 		{
 			if(req.getParameter("action") == "create")
 			{
-			    RequestDispatcher dispatcher = context.getRequestDispatcher("jsp/account/create.jsp");
+			    RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/account/create.jsp");
 			    dispatcher.forward(req, resp);
 			}
 			else if(req.getParameter("action") == "edit")
 			{
-			    RequestDispatcher dispatcher = context.getRequestDispatcher("jsp/account/edit.jsp");
+			    RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/account/edit.jsp");
 			    dispatcher.forward(req, resp);
 			}
 		}
 		else
 		{
-		    RequestDispatcher dispatcher = context.getRequestDispatcher("jsp/account/create.jsp");
+		    RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/account/create.jsp");
 		    dispatcher.forward(req, resp);
 		}
 		
