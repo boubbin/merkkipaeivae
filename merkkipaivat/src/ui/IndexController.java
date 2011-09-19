@@ -18,9 +18,12 @@ public class IndexController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	    //ServletContext context = getServletContext();
-	    //RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/index.jsp");
-	    //dispatcher.forward(req, resp);
+        HttpSession session = req.getSession(true);
+        session.setAttribute("authed", "boubbin");
+        
+	    ServletContext context = getServletContext();
+	    RequestDispatcher dispatcher = context.getRequestDispatcher("/mainpage.jsp");
+	    dispatcher.forward(req, resp);
 	}
 
 	@Override
