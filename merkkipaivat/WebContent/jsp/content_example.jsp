@@ -7,7 +7,7 @@
 	  <div class="header">
 	    <div class="header_resize">
 	      <div class="logo">
-	        <h1><a href="#">Merkki <span>paeivaet</span></a><small><i>"Muista mitä vittuu millonki tapahtuu"</i></small></h1>
+	        <h1><a href="#">Merkki<span>paeivaet</span></a><small><i>"Muista mitä vittuu millonki tapahtuu"</i></small></h1>
 	      </div>
 	      <div class="clr"></div>
 	      <div class="menu_nav">
@@ -22,15 +22,6 @@
 		          <li><a href="#"></a></li>
 			  </c:if>	
 	        </ul>
-	        <div class="search">
-	          <form id="form" name="form" method="post" action="#">
-	            <span>
-	            <input name="q" type="text" class="keywords" id="textfield" maxlength="50" value="Search..." />
-	            <input name="b" type="image" src="images/search.gif" class="button" />
-	            </span>
-	          </form>
-	        </div>
-	        <!--/search -->
 	      </div>
 	      <div class="clr"></div>
 	    </div>
