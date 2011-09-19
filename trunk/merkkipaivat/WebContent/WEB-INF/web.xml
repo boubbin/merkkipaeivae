@@ -4,6 +4,7 @@
                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
 
 <display-name>FUCK YOU!</display-name>
+
 <servlet>
       <servlet-name>IndexController</servlet-name>
       <servlet-class>ui.IndexController</servlet-class>
@@ -11,7 +12,9 @@
 
 <servlet-mapping>
       <servlet-name>IndexController</servlet-name>
-      <url-pattern>/merkkipaivat</url-pattern>
+      <url-pattern>/mainpage</url-pattern>
 </servlet-mapping>
 
+
 </web-app>
+
