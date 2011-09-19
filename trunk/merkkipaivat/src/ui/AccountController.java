@@ -16,18 +16,28 @@ public class AccountController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(true);
 		ServletContext context = getServletContext();
+		if(session.getAttribute("authed") == null)
+		{
+			session.setAttribute("authed", 0);
+		}
+		
 		
 		if((Integer)session.getAttribute("authed") == 1)
 		{
 			if(req.getParameter("action") == "create")
-			{			    
-			    RequestDispatcher dispatcher = context.getRequestDispatcher("/createAccount.jsp");
+			{
+			    RequestDispatcher dispatcher = context.getRequestDispatcher("account/create.jsp");
+			    dispatcher.forward(req, resp);
+			}
+			else if(req.getParameter("action") == "edit")
+			{
+			    RequestDispatcher dispatcher = context.getRequestDispatcher("account/edit.jsp");
 			    dispatcher.forward(req, resp);
 			}
 		}
 		else
 		{
-		    RequestDispatcher dispatcher = context.getRequestDispatcher("/createAccount.jsp");
+		    RequestDispatcher dispatcher = context.getRequestDispatcher("account/create.jsp");
 		    dispatcher.forward(req, resp);
 		}
 		
