@@ -4,7 +4,7 @@
 	    <div class="content_resize">
 	      <div class="mainbar">
 	        <div class="article">
-	          <h2><span>Merkkipaeivaet alotti toimintansa!</span></h2>
+	          <h2><span>Merkkipaeivaet aloitti toimintansa!</span></h2>
 	          <div class="clr"></div>
 	          <p>-boubbin 15.9.2011<a href="#"> Kommentit (18)</a></p>
 	          <img src="images/img_1.jpg" width="613" height="193" alt="" />
