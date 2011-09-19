@@ -9,10 +9,9 @@
       <servlet-class>ui.IndexController</servlet-class>
 </servlet>
 
-
-   <servlet-mapping>
+<servlet-mapping>
       <servlet-name>IndexController</servlet-name>
       <url-pattern>/merkkipaivat</url-pattern>
-   </servlet-mapping>
+</servlet-mapping>
 
 </web-app>
