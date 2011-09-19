@@ -13,13 +13,13 @@
 	      <div class="menu_nav">
 	        <ul>
 	          <c:if test="${empty auth}">
-	          		<li><a href="login/?action=login">Login</a></li>
-	          		<li><a href="account/?action=create">Create Account</a></li>
+	          		<li><a href="login?action=login">Login</a></li>
+	          		<li><a href="account?action=create">Create Account</a></li>
           	  </c:if>
           	  <c:if test="${not empty auth}">
-		          <li><a href="?action=">Anniversary</a></li>
-		          <li><a href="#">Edit profile</a></li>
-		          <li><a href="#"></a></li>
+		          <li><a href="anniversary?action=view">Anniversary</a></li>
+		          <li><a href="profile?action=edit">Edit profile</a></li>
+		          <li><a href="lol?action=gayness"></a></li>
 			  </c:if>	
 	        </ul>
 	      </div>
