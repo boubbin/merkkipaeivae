@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <body>
 	<div class="main">
 	  <div class="header">
@@ -10,12 +12,15 @@
 	      <div class="clr"></div>
 	      <div class="menu_nav">
 	        <ul>
-	          <li class="active"><a href="#">Home</a></li>
-	          <li><a href="#">Support</a></li>
-	          <li><a href="#">About Us</a></li>
-	          <li><a href="#">Blog</a></li>
-	          <li><a href="#">Contact Us</a></li>
-	          <li><a href="#"><c:out value="${authed}" /></a></li>
+	          <c:if test="${empty auth}">
+	          		<li><a href="#">Login</a></li>
+	          		<li><a href="#">Create Account</a></li>
+          	  </c:if>
+          	  <c:if test="${not empty auth}">
+		          <li><a href="#">Anniversary</a></li>
+		          <li><a href="#">Edit profile</a></li>
+		          <li><a href="#"></a></li>
+			  </c:if>	
 	        </ul>
 	        <div class="search">
 	          <form id="form" name="form" method="post" action="#">
