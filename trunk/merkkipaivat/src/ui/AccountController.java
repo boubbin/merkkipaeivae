@@ -24,12 +24,7 @@ public class AccountController extends HttpServlet {
 		
 		if((Integer)session.getAttribute("authed") == 1)
 		{
-			if(req.getParameter("action") == "create")
-			{
-			    RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/account/create.jsp");
-			    dispatcher.forward(req, resp);
-			}
-			else if(req.getParameter("action") == "edit")
+			if(req.getParameter("action") == "edit")
 			{
 			    RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/account/edit.jsp");
 			    dispatcher.forward(req, resp);
