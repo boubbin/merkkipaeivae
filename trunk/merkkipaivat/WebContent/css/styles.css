@@ -4,8 +4,10 @@ body {
 	margin:0;
 	padding:0;
 	width:100%;
-	color:#9a9a9a;
-	font:normal 12px/1.8em Arial, Helvetica, sans-serif;
+	//color:#9a9a9a;
+	//font-size: 12px/1.8em;
+	//font-family: Verdana, Helvetica, sans-serif;
+	
 }
 html, .main {
 	padding:0;
@@ -362,4 +364,38 @@ ol li textarea {
 }
 ol li .send {
 	margin:16px 0 0 0;
+}
+#info, #success, #warning, #error, #validation {
+	margin: 15px;
+    border: 1px solid;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px;
+
+
+}
+#info {
+	width: 600px;
+    color: #00529B;
+    background-color: #BDE5F8;
+    background-image: url('../images/info.png');
+}
+#info * {
+		font-family: Verdana;
+		font-size: 11px;
+
+}
+.success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+.warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+    background-image: url('../images/warning.jpg');
+}
+.error {
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('../images/error.jpg');
 }
