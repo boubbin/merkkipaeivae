@@ -42,6 +42,15 @@ public class UserBean implements java.io.Serializable {
 	public void setDateofbirth(int dateofbirth) {
 		this.dateofbirth = dateofbirth;
 	}
+
+	public boolean checkLogin(String password, String username) {
+		//TODO pass ja user vertaus mysliin
+		if(password.equals("pass") && username.equals("user"))
+		{
+			return true;
+		}
+		return false;
+	}
 	
 	
 	
