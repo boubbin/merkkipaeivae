@@ -16,13 +16,13 @@
 	  <div class="header">
 	    <div class="header_resize">
 	      <div class="logo">
-	        <h1><a href="#">Merkki<span>paeivaet</span></a><small><i>"Muista mitä vittuu millonki tapahtuu"</i></small></h1>
+	        <h1><a href="mainpage">Merkki<span>paeivaet</span></a><small><i>"Muista mitä vittuu millonki tapahtuu"</i></small></h1>
 	      </div>
 	      <div class="clr"></div>
 	      <div class="menu_nav">
 	        <ul>
 	          <c:if test="${empty auth}">
-	          		<li><a href="login?action=login">Login</a></li>
+	          		<li><a href="account?action=login">Login</a></li>
 	          		<li><a href="account?action=create">Create Account</a></li>
           	  </c:if>
           	  <c:if test="${not empty auth}">

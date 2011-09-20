@@ -12,12 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.DBConnection;
+
 @SuppressWarnings({ "serial", "unused" })
 public class IndexController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//TEST
+		DBConnection connection = new DBConnection();
+		connection.disconnect();
+		
         HttpSession session = req.getSession(true);
         if (session.getAttribute("user") == null) { session.setAttribute("authed", 0); }
         
@@ -28,10 +34,6 @@ public class IndexController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	    //ServletContext context = getServletContext();
-	    //RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/index.jsp");
-	    //dispatcher.forward(req, resp);
-
+		
 	}
 }
