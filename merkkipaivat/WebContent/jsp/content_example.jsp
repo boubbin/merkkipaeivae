@@ -2,30 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<body>
-	<div class="main">
-	  <div class="header">
-	    <div class="header_resize">
-	      <div class="logo">
-	        <h1><a href="#">Merkki<span>paeivaet</span></a><small><i>"Muista mitä vittuu millonki tapahtuu"</i></small></h1>
-	      </div>
-	      <div class="clr"></div>
-	      <div class="menu_nav">
-	        <ul>
-	          <c:if test="${empty auth}">
-	          		<li><a href="login?action=login">Login</a></li>
-	          		<li><a href="account?action=create">Create Account</a></li>
-          	  </c:if>
-          	  <c:if test="${not empty auth}">
-		          <li><a href="anniversary?action=view">Anniversary</a></li>
-		          <li><a href="profile?action=edit">Edit profile</a></li>
-		          <li><a href="lol?action=gayness"></a></li>
-			  </c:if>	
-	        </ul>
-	      </div>
-	      <div class="clr"></div>
-	    </div>
-	  </div>
+
 	  <div class="clr"></div>
 	  <div class="content">
 	    <div class="content_resize">
