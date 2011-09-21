@@ -1,4 +1,3 @@
-<%@page import = "java.util.*" session="true"%>
 		<%
 		if (session.getAttribute("account_created_ok") != null) {
 			session.setAttribute("account_created_ok", null);
@@ -16,6 +15,7 @@
 						<td>Choose an username:</td>
 						<td><input type="text" name="username" /></td>
 						<td><div id="form_warning"><%=session.getAttribute("usernameMessage")%></div></td>
+						
 					</tr>
 					<tr>
 						<td>Password:</td>
@@ -41,4 +41,9 @@
 				<input type="submit" value="Create account" />
 			</form>
 		</div>
-		<% %>
+		<% 		
+			session.setAttribute("usernameMessage", " ");
+			session.setAttribute("passwordMessage", " ");
+			session.setAttribute("emailMessage", " ");
+			session.setAttribute("dobMessage", " ");
+		%>

@@ -59,7 +59,7 @@ public class CreateAccountFormValidator {
 		this.pushMessageUsername();
 		if (username == null) { return false; }
 		if (username.length() < 4 || username.length() > 15) { return false; }
-		session.setAttribute("usernameMessage", "");
+		session.setAttribute("usernameMessage", " ");
 		return true;
 	}
 	private boolean validateEmail(String email) {
@@ -71,7 +71,7 @@ public class CreateAccountFormValidator {
 	    } catch (ArrayIndexOutOfBoundsException e) {
 	    	return false;
 	    }
-	    session.setAttribute("emailMessage", "");
+	    session.setAttribute("emailMessage", " ");
 	    return true;
 	}
 	private boolean validatePasswords(String password1, String password2) {
@@ -79,7 +79,7 @@ public class CreateAccountFormValidator {
 		if (password1 == null || password2 == null) { return false; }
 		if (!password1.equals(password2))			{ return false; }
 		if (password1.length() < 5)					{ return false; }
-		session.setAttribute("passwordMessage", "");
+		session.setAttribute("passwordMessage", " ");
 		return true;
 	}
 	private boolean validateDOB(String dob) {
@@ -93,7 +93,7 @@ public class CreateAccountFormValidator {
 		} catch (ArrayIndexOutOfBoundsException e) {
 			return false;
 		}
-		session.setAttribute("dobMessage", "");
+		session.setAttribute("dobMessage", " ");
 		return true;
 	}
 }
