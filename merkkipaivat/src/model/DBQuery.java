@@ -8,7 +8,6 @@ import java.sql.Statement;
 public class DBQuery {
 
 	private Connection connection;
-	private ResultSet rs;
 	
 	public DBQuery(Connection conn)
 	{
@@ -19,7 +18,7 @@ public class DBQuery {
 	{
 		Statement s = this.connection.createStatement();
 		s.executeQuery("SELECT * FROM anniversaries WHERE userid='" + userid + "'");
-		rs = s.getResultSet();
+		ResultSet rs = s.getResultSet();
 		return rs;
 	}
 }

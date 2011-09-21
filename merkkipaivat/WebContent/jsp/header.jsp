@@ -26,8 +26,8 @@
 	          		<li><a href="account?action=create">Create Account</a></li>
           	  </c:if>
           	  <c:if test="${not empty authed}">
-		          <li><a href="anniversary?action=view">Anniversary</a></li>
-		          <li><a href="profile?action=edit">Edit profile</a></li>
+		          <li><a href="anniversary?action=all">Anniversary</a></li>
+		          <li><a href="account?action=edit">Edit profile</a></li>
 		          <li><a href="lol?action=gayness"></a></li>
 			  </c:if>	
 	        </ul>
