@@ -2,6 +2,8 @@ package model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DBQuery {
 
@@ -13,4 +15,11 @@ public class DBQuery {
 		this.connection = conn;
 	}
 	
+	public ResultSet getAnniversariesByUserId(int userid) throws SQLException
+	{
+		Statement s = this.connection.createStatement();
+		s.executeQuery("SELECT * FROM anniversaries WHERE userid='" + userid + "'");
+		rs = s.getResultSet();
+		return rs;
+	}
 }
