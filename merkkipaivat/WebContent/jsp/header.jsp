@@ -21,7 +21,7 @@
 	      <div class="clr"></div>
 	      <div class="menu_nav">
 	        <ul>
-	          <c:if test="${empty authed}">
+	          <c:if test="${not empty authed}">
 	          		<li><a href="account?action=login">Login</a></li>
 	          		<li><a href="account?action=create">Create Account</a></li>
           	  </c:if>
