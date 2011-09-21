@@ -44,23 +44,23 @@ public class AccountController extends HttpServlet {
 			if (req.getParameterMap().size() == 6) {
 				// if request contains 6 items it means that the form has been submitted
 				// it doesnt mean that all 6 fields are set tho.. they might be null!
-				// VALIDATE it!
 				CreateAccountFormValidator validator = new CreateAccountFormValidator(req);
 				if (validator.validateRequest(req)) {
 					// the data is valid, but is not converted or sanitized!
 					// so save it to mysql and make sure to use prepared statements
-					System.out.println("Request was valid");
+					session.setAttribute("account_created_ok", "1");
 				} else {
 					// the data wasn't valid, it was submitted tho!
-					System.out.println("Request was not valid! cry?");
-					RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/account/create.jsp");
-				    dispatcher.forward(req, resp);
 				}
 			} else {
-				// First time here
-				RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/account/create.jsp");
-			    dispatcher.forward(req, resp);
+				// First time here, do we ened to do anything special? no?
 			}
+			session.setAttribute("usernameMessage", " ");
+			session.setAttribute("passwordMessage", " ");
+			session.setAttribute("emailMessage", " ");
+			session.setAttribute("dobMessage", " ");
+			RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/account/create.jsp");
+		    dispatcher.forward(req, resp);
 		}
 		else
 		{
