@@ -21,11 +21,11 @@
 	      <div class="clr"></div>
 	      <div class="menu_nav">
 	        <ul>
-	          <c:if test="${empty auth}">
+	          <c:if test="${empty authed}">
 	          		<li><a href="account?action=login">Login</a></li>
 	          		<li><a href="account?action=create">Create Account</a></li>
           	  </c:if>
-          	  <c:if test="${not empty auth}">
+          	  <c:if test="${not empty authed}">
 		          <li><a href="anniversary?action=view">Anniversary</a></li>
 		          <li><a href="profile?action=edit">Edit profile</a></li>
 		          <li><a href="lol?action=gayness"></a></li>
