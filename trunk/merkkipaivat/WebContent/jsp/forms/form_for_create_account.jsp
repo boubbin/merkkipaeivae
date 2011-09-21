@@ -1,12 +1,20 @@
 		<%
-		if (session.getAttribute("account_created_ok") != null) {
-			session.setAttribute("account_created_ok", null);
+		if (session.getAttribute("account_created_ok") == "1") {
 		%>
 			<div id="success">
 			Account created, please login
 			</div>
 		<%
 		}
+		if (session.getAttribute("account_created_ok") == "0") {
+			%>
+			<div id="error">
+			Error happened while creating your account!<br>
+			Username might be already in use, we are too lazy to check that for you.. fuck<br>
+			</div>	
+			<%		
+		}
+		session.setAttribute("account_created_ok", null);
 		%>
 		<div id="info">
 			<form method="POST">
