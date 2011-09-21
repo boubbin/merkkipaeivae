@@ -21,10 +21,10 @@ public class DBQuery {
 		ResultSet rs = s.getResultSet();
 		return rs;
 	}
-	public boolean createNewUserAccount(String username, String password, String email) throws SQLException 
+	public boolean createNewUserAccount(String username, String password, String email, String dob) throws SQLException 
 	{
 		Statement s = this.connection.createStatement();
-		String query = "INSERT INTO userbase VALUES (NULL, '" + username + "', UNIX_TIMESTAMP(), '" + email +"', MD5('" + password + "'))";
+		String query = "INSERT INTO userbase VALUES (NULL, '" + username + "', UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), '" + email +"', MD5('" + password + "'))";
 		int rs = s.executeUpdate(query);
 		System.out.println("RS: " + rs);
 		if (rs == 1) { return true; }
