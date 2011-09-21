@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.FormValidator;
 import model.UserBean;
 
+@SuppressWarnings("serial")
 public class AccountController extends HttpServlet {
 
 	@Override
@@ -39,8 +41,24 @@ public class AccountController extends HttpServlet {
 		}
 		else if(req.getParameter("action").equals("create"))
 		{
-			RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/account/create.jsp");
-		    dispatcher.forward(req, resp);
+			if (req.getParameterMap().size() == 6) {
+				// if request contains 6 items it means that the form has been submitted
+				// it doesnt mean that all 6 fields are set tho.. they might be null!
+				// VALIDATE it!
+				FormValidator validator = new FormValidator();
+				if (validator.validateRequest(req)) {
+					// the data is valid, but is not converted or sanitized!
+					// so save it to mysql and make sure to use prepared statements
+				} else {
+					// the data wasn't valid, it was submitted tho!
+					RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/account/create.jsp");
+				    dispatcher.forward(req, resp);
+				}
+			} else {
+				// First time here
+				RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/account/create.jsp");
+			    dispatcher.forward(req, resp);
+			}
 		}
 		else
 		{
@@ -66,7 +84,7 @@ public class AccountController extends HttpServlet {
 			}
 			else
 			{
-				//TODO kerro että login fail
+				//TODO kerro ettï¿½ login fail
 			    this.doGet(req, resp);				
 			}
 		}

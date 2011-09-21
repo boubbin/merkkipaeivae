@@ -1,5 +1,6 @@
 package model;
 
+@SuppressWarnings("serial")
 public class UserBean implements java.io.Serializable {
 
 	private int userid;
