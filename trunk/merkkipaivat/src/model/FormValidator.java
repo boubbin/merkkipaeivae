@@ -8,7 +8,6 @@ public class FormValidator {
 		if (this.validateEmail(request.getParameter("email")) == false)       { return false; }
 		if (this.validateDOB(request.getParameter("dob")) == false)           { return false; }
 		if (this.validatePasswords(request.getParameter("password1"), request.getParameter("password2")) == false) { return false; }	
-		System.out.print("ITS GNNA BE TRU");
 		return true;
 	}
 	
@@ -38,7 +37,7 @@ public class FormValidator {
 	}
 	private boolean validatePasswords(String password1, String password2) {
 		if (password1 == null || password2 == null) { return false; }
-		if (password1 != password2)					{ return false; }
+		if (!password1.equals(password2))			{ return false; }
 		if (password1.length() < 5)					{ return false; }
 		if (password2.length() < 5)					{ return false; }
 		return true;

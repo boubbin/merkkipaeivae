@@ -49,8 +49,10 @@ public class AccountController extends HttpServlet {
 				if (validator.validateRequest(req)) {
 					// the data is valid, but is not converted or sanitized!
 					// so save it to mysql and make sure to use prepared statements
+					System.out.println("Request was valid");
 				} else {
 					// the data wasn't valid, it was submitted tho!
+					System.out.println("Request was not valid! cry?");
 					RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/account/create.jsp");
 				    dispatcher.forward(req, resp);
 				}
