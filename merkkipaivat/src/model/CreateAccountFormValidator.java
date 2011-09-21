@@ -1,8 +1,50 @@
 package model;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-public class FormValidator {
+public class CreateAccountFormValidator {
+	HttpServletRequest request;
+	private String messageUsername = "Username length between 5-14 characters (for example: vagina)";
+	private String messagePassword = "Password length longer than 5 characters (example: cocksucker)";
+	private String messageEmail = "Not valid email address (example: javaeemaster@jogging.com)";
+	private String messageDOB = "Format: yyyy-mm-dd (example 2001-09-11)";
+	private HttpSession session;
+
+	public CreateAccountFormValidator() {
+	}
+	
+	public CreateAccountFormValidator(HttpServletRequest request) {
+		super();
+		HttpSession session = request.getSession(true);
+		this.session = session;
+	}
+	public void popMessageUsername() {
+		this.session.setAttribute("usernameMessage", "");
+	}
+	public String popMessagePassword() {
+		return messagePassword;  
+	}
+	public String popMessageEmail() {
+		return messageEmail;
+	}
+	public String popMessageDOB() {
+		return messageDOB;
+	}
+	
+	public void pushMessageUsername() {
+		this.session.setAttribute("usernameMessage", "trololololol");
+	}
+	public String pushMessagePassword() {
+		return messagePassword;  
+	}
+	public String pushMessageEmail() {
+		return messageEmail;
+	}
+	public String pushMessageDOB() {
+		return messageDOB;
+	}
+
 	public boolean validateRequest(HttpServletRequest request) {
 		if (this.validateUsername(request.getParameter("username")) == false) { return false; }
 		if (this.validateEmail(request.getParameter("email")) == false)       { return false; }
@@ -21,8 +63,10 @@ public class FormValidator {
 		}
 	}
 	private boolean validateUsername(String username) {
+		this.pushMessageUsername();
 		if (username == null) { return false; }
 		if (username.length() < 4 || username.length() > 15) { return false; }
+		this.popMessageUsername();
 		return true;
 	}
 	private boolean validateEmail(String email) {
@@ -43,6 +87,7 @@ public class FormValidator {
 		return true;
 	}
 	private boolean validateDOB(String dob) {
+
 		String[] tokens = dob.split("-");
 		if (tokens[0] == null || tokens[1] == null || tokens[2] == null) 	{ return false; }
 		if (!this.validateInt(tokens[0])) 									{ return false; }

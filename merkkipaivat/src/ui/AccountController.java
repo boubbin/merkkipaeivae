@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.FormValidator;
+import model.CreateAccountFormValidator;
 import model.UserBean;
 
 @SuppressWarnings("serial")
@@ -45,7 +45,7 @@ public class AccountController extends HttpServlet {
 				// if request contains 6 items it means that the form has been submitted
 				// it doesnt mean that all 6 fields are set tho.. they might be null!
 				// VALIDATE it!
-				FormValidator validator = new FormValidator();
+				CreateAccountFormValidator validator = new CreateAccountFormValidator(req);
 				if (validator.validateRequest(req)) {
 					// the data is valid, but is not converted or sanitized!
 					// so save it to mysql and make sure to use prepared statements
