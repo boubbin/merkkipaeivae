@@ -1,3 +1,14 @@
+		<%
+		if (session.getAttribute("bad_login") != null) {
+			session.setAttribute("bad_login", null);
+		%>
+			<div id="warninng">
+			Wrong credentials, please try again
+			</div>
+		<%
+		}
+		%>
+
 		<div id="success"><font color=black>You may test the service using these credentials:<br>
 						user: <i>user</i><br/>
 						pass: <i>pass</i></font>
