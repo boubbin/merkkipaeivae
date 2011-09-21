@@ -18,7 +18,7 @@
 	Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo. Donec mattis, purus nec placerat bibendum, dui pede condimentum odio, ac blandit ante orci ut diam.</p>
 	        </div>
 	        <div class="article">
-	          <h2><span>Vitun java, vitun Juslin...</span></h2>
+	          <h2><span>Vitun java, vitun Juhlamoka...</span></h2>
 	          <div class="clr"></div>
 	          <p>-boubbin 15.9.2011 <a href="#">Kommentit -1</a></p>
 	          <img src="images/img_2.jpg" width="613" height="193" alt="" />
