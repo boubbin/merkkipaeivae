@@ -11,10 +11,18 @@ email VARCHAR(50),
 password VARCHAR(32)
 ) ENGINE=InnoDB;
 
-INSERT INTO userbase VALUES (NULL, 'mocca', 1316575176, 'boubbin@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
-INSERT INTO userbase VALUES (NULL, 'boubbin', 1316875176, 'boubbin@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
-INSERT INTO userbase VALUES (NULL, 'marma', 1316575176, 'boubbin@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
-INSERT INTO userbase VALUES (NULL, 'user', 1316575776, 'boubbin@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
-INSERT INTO userbase VALUES (NULL, 'username', 1386575176, 'boubbin@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
-INSERT INTO userbase VALUES (NULL, 'anssi', 1316578176, 'boubbin@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
-INSERT INTO userbase VALUES (NULL, 'kaljaasi', 1316575176, 'boubbin@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
+CREATE TABLE anniversaries (
+id INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
+userid INT UNSIGNED NOT NULL,
+date INT(11) UNSIGNED,
+name VARCHAR(255)
+) ENGINE=InnoDB;
+
+INSERT INTO anniversaries VALUES (NULL, '1', 1316575176, 'penis enlargement for mocca');
+INSERT INTO anniversaries VALUES (NULL, '2', 1216375176, 'penis for boubbin..');
+INSERT INTO anniversaries VALUES (NULL, '3', 1216375176, 'marma gets 4th testicle');
+INSERT INTO anniversaries VALUES (NULL, '2', 1216375176, 'boubbin aunt turns 1-year');
+
+INSERT INTO userbase VALUES (NULL, 'mocca', 1316575176, 'email@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
+INSERT INTO userbase VALUES (NULL, 'boubbin', 1316875176, 'email@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
+INSERT INTO userbase VALUES (NULL, 'marma', 1316575176, 'email@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
