@@ -21,7 +21,7 @@ public class DBConnection {
 		try {
         	Context initCtx = new InitialContext();
         	Context envCtx = (Context) initCtx.lookup("java:comp/env");
-        	DataSource ds = (DataSource) envCtx.lookup("jdbc/mysliDB");
+        	DataSource ds = (DataSource) envCtx.lookup("jdbc/tuomasva");
         	this.connection = ds.getConnection();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -40,7 +40,7 @@ public class DBConnection {
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
-		}
+		} 
 	}
 	
 	public Connection getConnection()
