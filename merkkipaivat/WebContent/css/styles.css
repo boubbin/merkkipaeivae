@@ -63,7 +63,7 @@ h2 {
 	color:#595959;
 }
 p {
-	margin:8px 0;
+	margin:8px 0;656px
 	padding:0 0 8px 0;
 	font:normal 12px/1.8em Arial, Helvetica, sans-serif;
 }
@@ -103,7 +103,7 @@ a.rm, a.com {
 }
 .menu_nav ul {
 	list-style:none;
-	width:500px;
+	width:auto;
 	float:left;
 	padding:1px 0 0 0;
 }
@@ -371,6 +371,7 @@ ol li .send {
     padding:15px 10px 15px 50px;
     background-repeat: no-repeat;
     background-position: 10px;
+    width: 600px;
 
 
 }
@@ -385,16 +386,16 @@ ol li .send {
 		font-size: 11px;
 
 }
-.success {
+#success {
     color: #4F8A10;
     background-color: #DFF2BF;
 }
-.warning {
+#warning {
     color: #9F6000;
     background-color: #FEEFB3;
     background-image: url('../images/warning.jpg');
 }
-.error {
+#error {
     color: #D8000C;
     background-color: #FFBABA;
     background-image: url('../images/error.jpg');
