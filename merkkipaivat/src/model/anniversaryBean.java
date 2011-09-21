@@ -1,5 +1,6 @@
 package model;
 
+@SuppressWarnings("serial")
 public class anniversaryBean implements java.io.Serializable {
 
 	private String name;

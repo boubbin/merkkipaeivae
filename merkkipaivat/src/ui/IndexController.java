@@ -21,8 +21,6 @@ public class IndexController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//TEST
-		DBConnection connection = new DBConnection();
-		connection.disconnect();
 		
         HttpSession session = req.getSession(true);
         if (session.getAttribute("user") == null) { session.setAttribute("authed", 0); }
