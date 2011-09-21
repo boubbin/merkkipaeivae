@@ -1,0 +1,20 @@
+CREATE DATABASE anniversary;
+CREATE user anniversary@localhost IDENTIFIED BY 'anniversary';
+GRANT ALL ON *.* TO anniversary@localhost;
+USE anniversary;
+
+CREATE TABLE userbase (
+id INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
+username VARCHAR(32) NOT NULL,
+lastlog INT(11) UNSIGNED,
+email VARCHAR(50),
+password VARCHAR(32)
+) ENGINE=InnoDB;
+
+INSERT INTO userbase VALUES (NULL, 'mocca', 1316575176, 'boubbin@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
+INSERT INTO userbase VALUES (NULL, 'boubbin', 1316875176, 'boubbin@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
+INSERT INTO userbase VALUES (NULL, 'marma', 1316575176, 'boubbin@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
+INSERT INTO userbase VALUES (NULL, 'user', 1316575776, 'boubbin@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
+INSERT INTO userbase VALUES (NULL, 'username', 1386575176, 'boubbin@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
+INSERT INTO userbase VALUES (NULL, 'anssi', 1316578176, 'boubbin@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
+INSERT INTO userbase VALUES (NULL, 'kaljaasi', 1316575176, 'boubbin@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
