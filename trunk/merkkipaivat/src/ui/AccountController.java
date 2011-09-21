@@ -54,11 +54,12 @@ public class AccountController extends HttpServlet {
 				}
 			} else {
 				// First time here, do we ened to do anything special? no?
+				// well reset some MESSAGES so they dont appear as null
+				session.setAttribute("usernameMessage", " ");
+				session.setAttribute("passwordMessage", " ");
+				session.setAttribute("emailMessage", " ");
+				session.setAttribute("dobMessage", " ");
 			}
-			session.setAttribute("usernameMessage", " ");
-			session.setAttribute("passwordMessage", " ");
-			session.setAttribute("emailMessage", " ");
-			session.setAttribute("dobMessage", " ");
 			RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/account/create.jsp");
 		    dispatcher.forward(req, resp);
 		}
