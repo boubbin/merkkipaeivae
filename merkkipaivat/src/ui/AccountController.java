@@ -24,11 +24,12 @@ public class AccountController extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password1");
 		String email    = request.getParameter("email");
+		String dob      = request.getParameter("dob");
 		boolean success;
 		DBConnection conn = new DBConnection();
 		DBQuery query = new DBQuery(conn.getConnection());
 		try {
-			success = query.createNewUserAccount(username, password, email);
+			success = query.createNewUserAccount(username, password, email, dob);
 		} catch (SQLException e) {
 			return false;
 		}
