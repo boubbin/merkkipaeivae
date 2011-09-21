@@ -1,3 +1,4 @@
+		<%@ page import='ui.AccountController' %>
 		<div id="info">
 			<form method="POST">
 				<table>
@@ -19,9 +20,8 @@
 					</tr>
 					<tr>
 						<td>Date of Birth:</td>
-						<td><input type="date" name="dob_day" />
-							<input type="date" name="dob_month" />
-							<input type="date" name="dob_year" /></td>
+						<td><input type="date" name="dob" /></td>
+						</td>
 					</tr>
 				</table>
 				<input type="submit" />
