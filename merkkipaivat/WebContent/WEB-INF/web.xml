@@ -17,5 +17,13 @@
     <servlet-name>AccountController</servlet-name>
     <url-pattern>/account</url-pattern>
   </servlet-mapping>
+  <servlet>
+      <servlet-name>AnniversaryController</servlet-name>
+    <servlet-class>ui.AnniversaryController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AnniversaryController</servlet-name>
+    <url-pattern>/anniversary</url-pattern>
+  </servlet-mapping>
   
 </web-app>
