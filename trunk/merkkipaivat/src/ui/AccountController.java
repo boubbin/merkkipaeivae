@@ -82,6 +82,8 @@ public class AccountController extends HttpServlet {
 			if(user.checkLogin(req.getParameter("password"), req.getParameter("username")) == true)
 			{
 				session.setAttribute("authed", 1);
+				user.setUserid(1);
+				session.setAttribute("user", user);
 			    RequestDispatcher dispatcher = context.getRequestDispatcher("/mainpage.jsp");
 			    dispatcher.forward(req, resp);
 			}
