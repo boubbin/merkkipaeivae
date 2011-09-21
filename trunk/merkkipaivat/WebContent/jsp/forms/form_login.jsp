@@ -1,3 +1,7 @@
+		<div id="success"><font color=black>You may test the service using these credentials:<br>
+						user: <i>user</i><br/>
+						pass: <i>pass</i></font>
+		</div>
 		<div id=info>
 			<form method=POST>
 				<table>
