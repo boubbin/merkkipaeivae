@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import db.DBConnection;
+import db.DBQuery;
+
 import model.CreateAccountFormValidator;
-import model.DBConnection;
-import model.DBQuery;
 import model.UserBean;
 
 @SuppressWarnings("serial")

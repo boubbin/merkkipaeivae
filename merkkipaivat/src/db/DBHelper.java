@@ -1,8 +1,10 @@
-package model;
+package db;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import model.anniversaryBean;
 
 public class DBHelper {
 
