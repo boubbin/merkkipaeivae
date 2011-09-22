@@ -92,7 +92,7 @@ public class AccountController extends HttpServlet {
 			DBHelper helper = new DBHelper();
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
-			int userid = helper.validateLoginForUsernameAgainstPassword(username, password);
+			int userid = helper.validateLoginForUsernameAgainstPasswordAndReturnUseridForValidRequest(username, password);
 			if(userid > 0) {
 				user = helper.getUserinfoForUserid(userid);
 				session.setAttribute("authed", 1);
@@ -102,7 +102,7 @@ public class AccountController extends HttpServlet {
 			}
 			else 
 			{
-				//TODO kerro että login fail
+				//TODO kerro ettï¿½ login fail
 			    this.doGet(req, resp);		
 			}
 		}
