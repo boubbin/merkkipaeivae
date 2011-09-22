@@ -1,5 +1,6 @@
 package db;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,8 +20,9 @@ public class DBHelper {
 			while(rs.next())
 			{
 				anniversaryBean anniversary = new anniversaryBean();
+				Date date = new Date(rs.getLong("date")*1000);
 				anniversary.setName(rs.getString("name"));
-				anniversary.setPvm(rs.getInt("date"));
+				anniversary.setPvm(date.toLocaleString());
 				anniversaries.add(anniversary);
 			}			
 		} catch (SQLException e) {
