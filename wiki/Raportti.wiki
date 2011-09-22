@@ -18,4 +18,4 @@ JavaEE-sivusto johon rekisteröityneet käyttäjät lisäävät haluamansa merkk
 ==Versionhallinta==
   * URL:  http://code.google.com/p/merkkipaeivae/
   * Linux CLI checkout:
-    *svn checkout https://merkkipaeivae.googlecode.com/svn/trunk/ merkkipaeivae --username your@email.com
+    * svn checkout https://merkkipaeivae.googlecode.com/svn/trunk/ merkkipaeivae --username your@email.com
