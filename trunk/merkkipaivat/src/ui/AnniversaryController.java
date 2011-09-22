@@ -12,9 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.DBConnection;
-import model.DBHelper;
-import model.DBQuery;
+import db.DBConnection;
+import db.DBHelper;
+import db.DBQuery;
+
 import model.UserBean;
 import model.anniversaryBean;
 
