@@ -30,4 +30,21 @@ public class DBQuery {
 		if (rs == 1) { return true; }
 		else { return false; }
 	}
+	public ResultSet getUserinfoForPassword(int userid) throws SQLException {
+		Statement s = this.connection.createStatement();
+		String query = "SELECT * FROM userbase WHERE id = "+ userid;
+		System.out.println("Query :" + query);
+		ResultSet rs = s.executeQuery(query);
+		return rs;
+		
+	}
+
+	public ResultSet getUseridForPasswordAndUsernameCombination(String username, String password) throws SQLException {
+		// TODO Auto-generated method stub
+		Statement s = this.connection.createStatement();
+		String query = "SELECT id FROM userbase WHERE username ='" + username + "' AND password = MD5('" + password + "')";
+		System.out.println("Query :" + query);
+		ResultSet rs = s.executeQuery(query);
+		return rs;
+	}
 }
