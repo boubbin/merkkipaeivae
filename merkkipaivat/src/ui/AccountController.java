@@ -89,18 +89,20 @@ public class AccountController extends HttpServlet {
 		{
 			//check login
 			UserBean user = new UserBean();
-			if(user.checkLogin(req.getParameter("password"), req.getParameter("username")) == true)
-			{
+			String username = req.getParameter("username");
+			String password = req.getParameter("password");
+			int userid = user.getUseridForCorrectCredetialCombination(username, password);
+			if(userid > 0) {
+				user.getUserInfoForUserid(userid);
 				session.setAttribute("authed", 1);
-				user.setUserid(1);
 				session.setAttribute("user", user);
 			    RequestDispatcher dispatcher = context.getRequestDispatcher("/mainpage.jsp");
 			    dispatcher.forward(req, resp);
 			}
-			else
+			else 
 			{
-				//TODO kerro ettï¿½ login fail
-			    this.doGet(req, resp);				
+				//TODO kerro että login fail
+			    this.doGet(req, resp);		
 			}
 		}
 		else
