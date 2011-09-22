@@ -25,6 +25,8 @@ public class DBHelper {
 				Date date = new Date(rs.getLong("date")*1000);
 				anniversary.setName(rs.getString("name"));
 				anniversary.setPvm(date.toLocaleString());
+				anniversary.setId(rs.getInt("id"));
+				anniversary.setUserid(rs.getInt("userid"));
 				anniversaries.add(anniversary);
 			}			
 		} catch (SQLException e) {
@@ -50,6 +52,30 @@ public class DBHelper {
 		if (success) { return true; }
 		return false;
 	}
+
+	public anniversaryBean getAnniversary(int id) {
+		DBConnection conn = new DBConnection();
+		DBQuery query = new DBQuery(conn.getConnection());	
+		anniversaryBean anniversary = new anniversaryBean();
+		ResultSet rs;
+		try {
+			rs = query.getAnniversaryById(id);
+		
+			while(rs.next())
+			{
+				Date date = new Date(rs.getLong("date")*1000);
+				anniversary.setName(rs.getString("name"));
+				anniversary.setPvm(date.toLocaleString());
+				anniversary.setId(rs.getInt("id"));
+				anniversary.setUserid(rs.getInt("userid"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return anniversary;
+	}
+	
 	public UserBean getUserinfoForUserid(int userid) {
 		ResultSet result;
 		UserBean userinfo = new UserBean();

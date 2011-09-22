@@ -40,8 +40,11 @@ public class AnniversaryController extends HttpServlet {
 	    	   else if(req.getParameter("action").equals("edit"))
 	    	   {
 	    		   //editoidaan yhtä
-					RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/anniversary/edit.jsp");
-				    dispatcher.forward(req, resp);
+	    		   DBHelper helper = new DBHelper();
+	    		   anniversaryBean anniversary = helper.getAnniversary((Integer.parseInt(req.getParameter("id"))));
+	    		   session.setAttribute("anniversary", anniversary);
+	    		   RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/anniversary/edit.jsp");
+				   dispatcher.forward(req, resp);
 	    	   }
 	    	   else if(req.getParameter("action").equals("create"))
 	    	   {
@@ -59,10 +62,20 @@ public class AnniversaryController extends HttpServlet {
 
 	@SuppressWarnings("unused")
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	       HttpSession session = req.getSession(true);
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException { 
+		HttpSession session = req.getSession(true);
 		
-	       
+		if((Integer)session.getAttribute("authed") == 1)	      
+		{
+			if(req.getParameter("action").equals("edit"))
+			{
+				AnniversaryFormValidator validator = new AnniversaryFormValidator();
+				if(validator.validateAnniversary(req))
+				{
+					
+				}
+			}
+		}
 	}
 
 	
