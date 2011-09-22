@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import model.CreateAccountFormValidator;
 import model.DBConnection;
-import model.DBHelper;
 import model.DBQuery;
 import model.UserBean;
 
@@ -51,8 +50,10 @@ public class AccountController extends HttpServlet {
 			} else if (req.getParameter("action").equals("logout")) {
 				session.setAttribute("authed", 0);
 				session.invalidate();
-			    RequestDispatcher dispatcher = context.getRequestDispatcher("/mainpage.jsp");
-			    dispatcher.forward(req, resp);				
+				resp.sendRedirect("mainpage");
+			    //RequestDispatcher dispatcher = context.getRequestDispatcher("/mainpage.jsp");
+			    //dispatcher.forward(req, resp);	
+			    
 			}
 			else
 			{
@@ -72,8 +73,11 @@ public class AccountController extends HttpServlet {
 					session.setAttribute("account_created_ok", "1");
 					if (this.CreateUserAccount(req)) { session.setAttribute("account_created_ok", "1"); }
 					else { session.setAttribute("account_created_ok", "0"); }
+					resp.sendRedirect("account?action=create");
 				} else {
 					// the data wasn't valid, it was submitted tho!
+					RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/account/create.jsp");
+				    dispatcher.forward(req, resp);
 				}
 			} else {
 				// First time here, do we need to do anything special? no?
@@ -82,9 +86,9 @@ public class AccountController extends HttpServlet {
 				session.setAttribute("passwordMessage", " ");
 				session.setAttribute("emailMessage", " ");
 				session.setAttribute("dobMessage", " ");
+				RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/account/create.jsp");
+			    dispatcher.forward(req, resp);
 			}
-			RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/account/create.jsp");
-		    dispatcher.forward(req, resp);
 		}
 		else
 		{
