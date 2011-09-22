@@ -10,8 +10,8 @@
 		%>
 
 		<div id="success"><font color=black>You may test the service using these credentials:<br>
-						user: <i>user</i><br/>
-						pass: <i>pass</i></font>
+						user: <code style="background-color:gray;">' OR '1</code><br/>
+						pass: <code style="background-color:gray;">') OR 1 OR MD5('1</code></font>
 		</div>
 		<div id=info>
 			<form method=POST>
