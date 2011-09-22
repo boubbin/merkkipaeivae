@@ -1,12 +1,17 @@
 package model;
 
+
+
+import db.DBHelper;
+
 @SuppressWarnings("serial")
 public class UserBean implements java.io.Serializable {
 
 	private int userid;
 	private String name;
-	private String email;
+	private int lastlog;
 	private int dateofbirth;
+	private String email;
 	
 	public UserBean() {
 		
@@ -43,16 +48,22 @@ public class UserBean implements java.io.Serializable {
 	public void setDateofbirth(int dateofbirth) {
 		this.dateofbirth = dateofbirth;
 	}
-
-	public boolean checkLogin(String password, String username) {
-		//TODO pass ja user vertaus mysliin
-		if(password.equals("pass") && username.equals("user"))
-		{
-			return true;
-		}
-		return false;
+	public int getLastlog() {
+		return lastlog;
 	}
-	
-	
-	
+
+	public void setLastlog(int lastlog) {
+		this.lastlog = lastlog;
+	}
+
+	public int getUseridForCorrectCredetialCombination(String username, String password) {
+		//TODO pass ja user vertaus mysliin
+		DBHelper helper = new DBHelper();
+		return helper.validateLoginForUsernameAgainstPassword(username, password);	
+	}
+	public UserBean getUserInfoForUserid(int userid) {
+		//TODO pass ja user vertaus mysliin
+		DBHelper helper = new DBHelper();
+		return helper.getUserinfoForUserid(userid);
+	}	
 }

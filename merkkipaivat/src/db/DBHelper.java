@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
+
+import model.UserBean;
 import model.anniversaryBean;
 
 public class DBHelper {
@@ -47,5 +49,41 @@ public class DBHelper {
 		}
 		if (success) { return true; }
 		return false;
+	}
+	public UserBean getUserinfoForUserid(int userid) {
+		ResultSet result;
+		UserBean userinfo = new UserBean();
+		DBConnection conn = new DBConnection();
+		DBQuery query = new DBQuery(conn.getConnection());
+		try {
+			result = query.getUserinfoForPassword(userid);
+			while(result.next()) {
+				int id          = result.getInt(1);
+				String name     = result.getString(2);
+				int lastlogin   = result.getInt(3);
+				int dob         = result.getInt(4);
+				String email    = result.getString(5);
+				userinfo.setUserid(id);
+				userinfo.setName(name);
+				userinfo.setLastlog(lastlogin);
+				userinfo.setDateofbirth(dob);
+				userinfo.setEmail(email);
+				return userinfo;
+			}
+		} catch (SQLException e) {}
+		return userinfo;
+	}
+	public int validateLoginForUsernameAgainstPassword(String username, String password) {
+		ResultSet result;
+		DBConnection conn = new DBConnection();
+		DBQuery query = new DBQuery(conn.getConnection());
+		try {
+			result = query.getUseridForPasswordAndUsernameCombination(username, password);
+			while (result.next()) {
+				int userid = result.getInt(1);
+				return userid;
+			}
+		} catch (SQLException e) {}
+		return 0;	
 	}
 }
