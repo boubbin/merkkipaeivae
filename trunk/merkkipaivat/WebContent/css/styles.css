@@ -365,7 +365,7 @@ ol li textarea {
 ol li .send {
 	margin:16px 0 0 0;
 }
-#info, #success, #warning, #error, #validation {
+#info, #success, #warning, #error, #validation, #anniversary {
 	margin: 15px;
     border: 1px solid;
     padding:15px 10px 15px 50px;
@@ -401,3 +401,8 @@ ol li .send {
     background-image: url('../images/error.jpg');
 }
 
+#anniversary {
+	width: 500px;
+    color: #00529B;
+    background-color: #BDE5F8;
+}
