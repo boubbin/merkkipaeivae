@@ -89,11 +89,12 @@ public class AccountController extends HttpServlet {
 		{
 			//check login
 			UserBean user = new UserBean();
+			DBHelper helper = new DBHelper();
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
-			int userid = user.getUseridForCorrectCredetialCombination(username, password);
+			int userid = helper.validateLoginForUsernameAgainstPassword(username, password);
 			if(userid > 0) {
-				user.getUserInfoForUserid(userid);
+				user = helper.getUserinfoForUserid(userid);
 				session.setAttribute("authed", 1);
 				session.setAttribute("user", user);
 			    RequestDispatcher dispatcher = context.getRequestDispatcher("/mainpage.jsp");
