@@ -402,7 +402,7 @@ ol li .send {
 }
 
 #anniversary {
-	width: 500px;
+	width: auto;
     color: #00529B;
     background-color: #BDE5F8;
 }
