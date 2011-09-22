@@ -19,6 +19,7 @@ import db.DBQuery;
 import model.UserBean;
 import model.anniversaryBean;
 
+@SuppressWarnings("serial")
 public class AnniversaryController extends HttpServlet {
 
 	@Override
@@ -60,6 +61,7 @@ public class AnniversaryController extends HttpServlet {
 	       }
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	       HttpSession session = req.getSession(true);
