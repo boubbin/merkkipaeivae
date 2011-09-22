@@ -4,7 +4,7 @@ package model;
 public class anniversaryBean implements java.io.Serializable {
 
 	private String name;
-	private int pvm;	
+	private String pvm;	
 	
 	public anniversaryBean() 
 	{
@@ -19,11 +19,11 @@ public class anniversaryBean implements java.io.Serializable {
 		this.name = name;
 	}
 
-	public int getPvm() {
+	public String getPvm() {
 		return pvm;
 	}
 
-	public void setPvm(int pvm) {
+	public void setPvm(String pvm) {
 		this.pvm = pvm;
 	}
 	
