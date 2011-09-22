@@ -16,12 +16,21 @@ public class DBConnection {
 		this.connect();
 	}
 	
-	public void connect()
+	public int connect()
 	{
+		DataSource ds;
+		int i = 0; //palautetaan käytetty tietokanta; 1=oma kone, 0=metroSQL
+		
 		try {
         	Context initCtx = new InitialContext();
         	Context envCtx = (Context) initCtx.lookup("java:comp/env");
-        	DataSource ds = (DataSource) envCtx.lookup("jdbc/mysliDB");
+        	try {
+        		ds = (DataSource) envCtx.lookup("jdbc/mysliDB");
+        		i=1;
+        	}catch(NamingException ex) {
+	        	ds = (DataSource) envCtx.lookup("jdbc/metroSQL");
+	        	i=0;
+	        }
         	this.connection = ds.getConnection();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -31,6 +40,7 @@ public class DBConnection {
 	        	System.out.println(ex.getMessage());
 	        	ex.printStackTrace();
 	        }
+		return i;
 	}
 	
 	public void disconnect()
