@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS userbase;
 
 CREATE TABLE userbase (
 id INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
-username VARCHAR(32) NOT NULL,
+username VARCHAR(32) NOT NULL UNIQUE,
 lastlog INT(11) UNSIGNED,
 dob INT(11) UNSIGNED,
 email VARCHAR(50),
@@ -17,10 +17,10 @@ password VARCHAR(32)
 
 CREATE TABLE anniversaries (
 id INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
-userid INT UNSIGNED NOT NULL UNIQUE,
+userid INT UNSIGNED NOT NULL,
 date INT(11) UNSIGNED,
 name VARCHAR(255),
-FOREIGN KEY (userid) REFERENCES userbase(id) ON UPDATE CASCADE ON DELETE RESTRICT
+FOREIGN KEY (userid) REFERENCES userbase(id) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 INSERT INTO userbase VALUES (NULL, 'mocca', 1316575176, 1316575176, 'email@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
@@ -30,6 +30,6 @@ INSERT INTO userbase VALUES (NULL, 'marma', 1316575176, 1316575176, 'email@gmail
 INSERT INTO anniversaries VALUES (NULL, '1', 1316575176, 'penis enlargement for mocca');
 INSERT INTO anniversaries VALUES (NULL, '2', 1216375176, 'penis for boubbin..');
 INSERT INTO anniversaries VALUES (NULL, '3', 1216375176, 'marma gets 4th testicle');
-INSERT INTO anniversaries VALUES (NULL, '4', 1216375176, 'foreign key test, this should fail always');
+INSERT INTO anniversaries VALUES (NULL, '4', 1216375176, 'foreign key test, this should fail always'); -- THIS LINE SHOULD ALWAYS FAIL!
 
 
