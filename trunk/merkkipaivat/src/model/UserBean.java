@@ -1,9 +1,5 @@
 package model;
 
-
-
-import db.DBHelper;
-
 @SuppressWarnings("serial")
 public class UserBean implements java.io.Serializable {
 
@@ -55,15 +51,5 @@ public class UserBean implements java.io.Serializable {
 	public void setLastlog(int lastlog) {
 		this.lastlog = lastlog;
 	}
-
-	public int getUseridForCorrectCredetialCombination(String username, String password) {
-		//TODO pass ja user vertaus mysliin
-		DBHelper helper = new DBHelper();
-		return helper.validateLoginForUsernameAgainstPassword(username, password);	
-	}
-	public UserBean getUserInfoForUserid(int userid) {
-		//TODO pass ja user vertaus mysliin
-		DBHelper helper = new DBHelper();
-		return helper.getUserinfoForUserid(userid);
-	}	
+	
 }
