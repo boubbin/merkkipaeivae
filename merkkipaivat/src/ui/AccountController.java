@@ -20,22 +20,6 @@ import model.UserBean;
 @SuppressWarnings("serial")
 public class AccountController extends HttpServlet {
 
-	private boolean CreateUserAccount(HttpServletRequest request) {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password1");
-		String email    = request.getParameter("email");
-		String dob      = request.getParameter("dob");
-		boolean success;
-		DBConnection conn = new DBConnection();
-		DBQuery query = new DBQuery(conn.getConnection());
-		try {
-			success = query.createNewUserAccount(username, password, email, dob);
-		} catch (SQLException e) {
-			return false;
-		}
-		if (success) { return true; }
-		return false;
-	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(true);
@@ -72,7 +56,8 @@ public class AccountController extends HttpServlet {
 					// the data is valid, but is not converted or sanitized!
 					// so save it to mysql and make sure to use prepared statements
 					session.setAttribute("account_created_ok", "1");
-					if (this.CreateUserAccount(req)) { session.setAttribute("account_created_ok", "1"); }
+					DBHelper helper = new DBHelper();
+					if (helper.CreateUserAccount(req)) { session.setAttribute("account_created_ok", "1"); }
 					else { session.setAttribute("account_created_ok", "0"); }
 					resp.sendRedirect("account?action=create");
 				} else {

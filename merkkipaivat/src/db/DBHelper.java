@@ -4,6 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import model.DBConnection;
+import model.DBQuery;
+import model.HttpServletRequest;
+import model.String;
 import model.anniversaryBean;
 
 public class DBHelper {
@@ -29,5 +33,21 @@ public class DBHelper {
 
 		return anniversaries;
 	}
-
+	
+	public boolean CreateUserAccount(HttpServletRequest request) {
+		String username = request.getParameter("username");
+		String password = request.getParameter("password1");
+		String email    = request.getParameter("email");
+		String dob      = request.getParameter("dob");
+		boolean success;
+		DBConnection conn = new DBConnection();
+		DBQuery query = new DBQuery(conn.getConnection());
+		try {
+			success = query.createNewUserAccount(username, password, email, dob);
+		} catch (SQLException e) {
+			return false;
+		}
+		if (success) { return true; }
+		return false;
+	}
 }
