@@ -3,11 +3,7 @@ package db;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import model.DBConnection;
-import model.DBQuery;
-import model.HttpServletRequest;
-import model.String;
+import javax.servlet.http.HttpServletRequest;
 import model.anniversaryBean;
 
 public class DBHelper {
