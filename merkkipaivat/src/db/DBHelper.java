@@ -99,7 +99,7 @@ public class DBHelper {
 		} catch (SQLException e) {}
 		return userinfo;
 	}
-	public int validateLoginForUsernameAgainstPassword(String username, String password) {
+	public int validateLoginForUsernameAgainstPasswordAndReturnUseridForValidRequest(String username, String password) {
 		ResultSet result;
 		DBConnection conn = new DBConnection();
 		DBQuery query = new DBQuery(conn.getConnection());
