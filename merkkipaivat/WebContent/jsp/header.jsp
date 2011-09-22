@@ -36,3 +36,7 @@
 	      <div class="clr"></div>
 	    </div>
 	  </div>
+	  	  <div class="clr"></div>
+	  <div class="content">
+	    <div class="content_resize">
+	      <div class="mainbar">
