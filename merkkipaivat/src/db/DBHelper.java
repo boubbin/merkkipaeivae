@@ -82,7 +82,7 @@ public class DBHelper {
 		DBConnection conn = new DBConnection();
 		DBQuery query = new DBQuery(conn.getConnection());
 		try {
-			result = query.getUserinfoForPassword(userid);
+			result = query.getUserinfoForUserid(userid);
 			while(result.next()) {
 				int id          = result.getInt(1);
 				String name     = result.getString(2);
