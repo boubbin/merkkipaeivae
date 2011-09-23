@@ -22,13 +22,13 @@
 					<tr>
 						<td>Choose an username:</td>
 						<td><input type="text" name="username" /></td>
-						<td><div id="form_warning"><%=session.getAttribute("usernameMessage")%></div></td>
+						<td><div id="form_warning"><c:out value="${usernameMessage}"/></div></td>
 						
 					</tr>
 					<tr>
 						<td>Password:</td>
 						<td><input type="password" name="password1" /></td>
-						<td><div id="form_warning"><%=session.getAttribute("passwordMessage")%></div></td>
+						<td><div id="form_warning"><c:out value="${passwordMessage}"/></div></td>
 					</tr>
 					<tr>
 						<td>Password again:</td>
@@ -38,12 +38,12 @@
 					<tr>
 						<td>Email address:</td>
 						<td><input type="text" name="email" /></td>
-						<td><div id="form_warning"><%=session.getAttribute("emailMessage")%></div></td>
+						<td><div id="form_warning"><c:out value="${emailMessage}"/></div></td>
 					</tr>
 					<tr>
 						<td>Date of Birth:</td>
 						<td><input type="date" name="dob" /></td>
-						<td><div id="form_warning"><%=session.getAttribute("dobMessage")%></div></td>
+						<td><div id="form_warning"><c:out value="${dobMessage}"/></div></td>
 					</tr>
 				</table>
 				<input type="submit" value="Create account" />
