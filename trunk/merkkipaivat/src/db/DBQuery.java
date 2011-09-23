@@ -62,7 +62,7 @@ public class DBQuery {
 	}
 
 	public boolean updateAnniversaryById(anniversaryBean anniversary) throws SQLException {
-		String query = "UPDATE userbase SET date = ?, name = ? WHERE id = ?;";
+		String query = "UPDATE anniversaries SET date = ?, name = ? WHERE id = ?;";
 		PreparedStatement prepared = this.connection.prepareStatement(query);
 		prepared.setString(1, anniversary.getPvm());
 		prepared.setString(2, anniversary.getName());
