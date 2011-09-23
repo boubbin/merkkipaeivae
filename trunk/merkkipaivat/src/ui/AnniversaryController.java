@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import db.DBHelper;
 
+import model.AnniversaryFormValidator;
 import model.UserBean;
 import model.anniversaryBean;
 
@@ -68,11 +69,25 @@ public class AnniversaryController extends HttpServlet {
 		{
 			if(req.getParameter("action").equals("edit"))
 			{
-				AnniversaryFormValidator validator = new AnniversaryFormValidator();
+				session.setAttribute("anniversaryEditMessage", " ");
+				AnniversaryFormValidator validator = new AnniversaryFormValidator(req);
 				if(validator.validateAnniversary(req))
 				{
-					
+					DBHelper helper = new DBHelper();
+					anniversaryBean anniversary = (anniversaryBean)session.getAttribute("anniversary");
+					if(helper.updateAnniversaryById(anniversary.getId()))
+					{
+						session.setAttribute("anniversaryEditMessage", "Anniversary successfully edited");
+					}
+					else
+					{
+						this.doGet(req, resp);
+					}
 				}
+			}
+			else if(req.getParameter("action").equals("create"))
+			{
+				
 			}
 		}
 	}

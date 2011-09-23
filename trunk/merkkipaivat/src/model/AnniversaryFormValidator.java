@@ -1,14 +1,19 @@
-package ui;
+package model;
 
 import java.sql.Date;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class AnniversaryFormValidator {
 
-	public AnniversaryFormValidator()
+	private HttpSession session;
+	
+	public AnniversaryFormValidator(HttpServletRequest req)
 	{
-		
+		HttpSession session = req.getSession(true);
+		this.session = session;
 	}
 
 	public boolean validateAnniversary(HttpServletRequest req) {
@@ -25,14 +30,20 @@ public class AnniversaryFormValidator {
 			if (!this.validateInt(tokens[1])) 									{ return false; }
 			if (!this.validateInt(tokens[2])) 									{ return false; }
 		} catch (ArrayIndexOutOfBoundsException e) {
+			this.session.setAttribute("dateMessage", "date was INVALID");
 			return false;
 		}
+		this.session.setAttribute("dateMessage", " ");
 		return true;
 	}
 
 	private boolean validateName(String name) {
 		if(name.length() < 2 || name.length() > 30)
-		{ return false; }
+		{ 
+			this.session.setAttribute("nameMessage", "Anniversary name length must be between 2 and 30 characters");
+			return false; 
+		}
+		this.session.setAttribute("nameMessage", " ");
 		return true;
 	}
 	

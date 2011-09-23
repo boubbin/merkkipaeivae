@@ -1,4 +1,8 @@
 <%@include file='../header.jsp'%>
+
+<div id="anniversary">
+	<a href="anniversary?action=create">Create new anniversary</a>
+</div>
 <div id="anniversary">
 	<table>
 		<c:forEach items="${anniversaries}" var="anniversary">

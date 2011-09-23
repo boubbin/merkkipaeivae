@@ -10,6 +10,6 @@
 						<td><input type="text" name="date" /></td>
 					</tr>
 				</table>
-				<input type="submit" />
+				<input type="submit" value="Create anniversary" />
 			</form>
 		</div>
