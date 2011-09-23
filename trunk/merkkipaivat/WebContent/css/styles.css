@@ -365,6 +365,10 @@ ol li textarea {
 ol li .send {
 	margin:16px 0 0 0;
 }
+#form_warning {
+	font-style: italic;
+	color: red;
+}
 #info, #success, #warning, #error, #validation, #anniversary {
 	margin: 15px;
     border: 1px solid;
