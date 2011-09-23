@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import model.anniversaryBean;
+
 public class DBQuery {
 
 	private Connection connection;
@@ -59,7 +61,8 @@ public class DBQuery {
 		return result;
 	}
 
-	public boolean updateAnniversaryById(int id) throws SQLException {
+	public boolean updateAnniversaryById(anniversaryBean anniversary) throws SQLException {
+		
 		return true;
 		
 	}

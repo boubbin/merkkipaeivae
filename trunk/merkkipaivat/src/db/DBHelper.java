@@ -115,12 +115,13 @@ public class DBHelper {
 		return 0;	
 	}
 
-	public boolean updateAnniversaryById(int id) {
+	public boolean updateAnniversaryById(anniversaryBean anniversary) {
 		DBConnection conn = new DBConnection();
 		DBQuery query = new DBQuery(conn.getConnection());	
+		System.out.println("kulli");
 		try 
 		{
-			if(query.updateAnniversaryById(id))
+			if(query.updateAnniversaryById(anniversary))
 			{ return true; }
 			else 
 			{ return false; }

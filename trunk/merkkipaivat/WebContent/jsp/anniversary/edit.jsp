@@ -6,11 +6,11 @@
 		<h2>Anniversary:</h2>
 		<tr>
 			<td>name:<input type="text" name="name" size="60" value="<c:out value="${anniversary.name}"/>"/></td>
-			<td><div id="form_warning"><c:out value="nameMessage"/></div></td>
+			<td><div id="form_warning"><c:out value="${nameMessage}"/></div></td>
 		</tr>
 		<tr>
-			<td>date:<input type="text" name="name" value="<c:out value="${anniversary.pvm}"/>"/></td>
-			<td><div id="form_warning"><c:out value="dateMessage"/></div></td>
+			<td>date:<input type="text" name="date" value="<c:out value="${anniversary.pvm}"/>"/></td>
+			<td><div id="form_warning"><c:out value="${dateMessage}"/></div></td>
 		</tr>
 	</table>
 	<input type="submit" value="Edit"/>
