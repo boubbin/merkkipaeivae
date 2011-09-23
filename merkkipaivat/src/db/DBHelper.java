@@ -96,7 +96,9 @@ public class DBHelper {
 				userinfo.setEmail(email);
 				return userinfo;
 			}
-		} catch (SQLException e) {}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			}
 		return userinfo;
 	}
 	public int validateLoginForUsernameAgainstPasswordAndReturnUseridForValidRequest(String username, String password) {
@@ -111,5 +113,22 @@ public class DBHelper {
 			}
 		} catch (SQLException e) {}
 		return 0;	
+	}
+
+	public boolean updateAnniversaryById(int id) {
+		DBConnection conn = new DBConnection();
+		DBQuery query = new DBQuery(conn.getConnection());	
+		try 
+		{
+			if(query.updateAnniversaryById(id))
+			{ return true; }
+			else 
+			{ return false; }
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

@@ -58,4 +58,9 @@ public class DBQuery {
 		ResultSet result = prepared.executeQuery();
 		return result;
 	}
+
+	public boolean updateAnniversaryById(int id) throws SQLException {
+		return true;
+		
+	}
 }
