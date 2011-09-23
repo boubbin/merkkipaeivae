@@ -117,8 +117,10 @@ public class DBHelper {
 
 	public boolean updateAnniversaryById(anniversaryBean anniversary) {
 		DBConnection conn = new DBConnection();
-		DBQuery query = new DBQuery(conn.getConnection());	
-		System.out.println("kulli");
+		DBQuery query = new DBQuery(conn.getConnection());
+		//TODO TÄHÄN TULEE DATE TO UNIXTIME CONVERSIO
+		
+		//
 		try 
 		{
 			if(query.updateAnniversaryById(anniversary))
