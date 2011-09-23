@@ -23,12 +23,17 @@ public class AnniversaryController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	       HttpSession session = req.getSession(true);
 	       ServletContext context = getServletContext();
-	       System.out.println(session.getAttribute("user"));
+	       System.out.println("sunmutsis");
 	       if (session.getAttribute("user") == null) { session.setAttribute("authed", 0); }
 	       
 	       if((Integer)session.getAttribute("authed") == 1)
 	       {
-	    	   if(req.getParameter("action").equals("all"))
+	    	   if(req.getParameter("action") == null)
+	    	   { 
+	    		   RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/anniversary/all.jsp");
+				   dispatcher.forward(req, resp);
+	    	   }
+	    	   else if(req.getParameter("action").equals("all"))
 	    	   {
 	    		   //näytä kaikki merkkipäivät
 	    		   DBHelper helper = new DBHelper();
@@ -53,6 +58,11 @@ public class AnniversaryController extends HttpServlet {
 					RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/anniversary/create.jsp");
 				    dispatcher.forward(req, resp);   		   
 	    	   }
+	    	   else
+	    	   {
+	    		   RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/anniversary/all.jsp");
+				   dispatcher.forward(req, resp);
+	    	   }
 	       }
 	       else
 	       {
@@ -75,15 +85,12 @@ public class AnniversaryController extends HttpServlet {
 				{
 					DBHelper helper = new DBHelper();
 					anniversaryBean anniversary = (anniversaryBean)session.getAttribute("anniversary");
-					if(helper.updateAnniversaryById(anniversary.getId()))
+					if(helper.updateAnniversaryById(anniversary))
 					{
 						session.setAttribute("anniversaryEditMessage", "Anniversary successfully edited");
 					}
-					else
-					{
-						this.doGet(req, resp);
-					}
 				}
+			this.doGet(req, resp);
 			}
 			else if(req.getParameter("action").equals("create"))
 			{
