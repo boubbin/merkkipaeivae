@@ -25,19 +25,22 @@ public class DBQuery {
 	}
 	public boolean createNewUserAccount(String username, String password, String email, String dob) throws SQLException 
 	{
-		Statement s = this.connection.createStatement();
-		String query = "INSERT INTO userbase VALUES (NULL, '" + username + "', UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), '" + email +"', MD5('" + password + "'))";
-		int rs = s.executeUpdate(query);
-		// System.out.println("RS: " + rs);
-		if (rs == 1) { return true; }
+		String query = "INSERT INTO userbase VALUES (NULL, ?, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), ?, MD5(?))";
+		PreparedStatement prepared = this.connection.prepareStatement(query);
+		prepared.setString(1, username);
+		prepared.setString(2, email);
+		prepared.setString(3, password);
+		int result = prepared.executeUpdate();
+		if (result == 1) { return true; }
 		else { return false; }
 	}
 
 	public ResultSet getAnniversaryById(int id) throws SQLException {
-		Statement s = this.connection.createStatement();
-		s.executeQuery("SELECT * FROM anniversaries WHERE id='" + id + "'");
-		ResultSet rs = s.getResultSet();
-		return rs;
+		String query = "SELECT * FROM anniversaries WHERE id = ?";
+		PreparedStatement prepared = this.connection.prepareStatement(query);
+		prepared.setInt(1, id);
+		ResultSet result = prepared.executeQuery();
+		return result;
 	}
 	public ResultSet getUserinfoForUserid(int userid) throws SQLException {
 		String query = "SELECT * FROM userbase WHERE id = ?";
