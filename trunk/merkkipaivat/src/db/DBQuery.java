@@ -67,6 +67,7 @@ public class DBQuery {
 		prepared.setString(1, anniversary.getPvm());
 		prepared.setString(2, anniversary.getName());
 		prepared.setInt(3, anniversary.getUserid());
+		System.out.println("UPDATE QUERY: " + query);
 		int result = prepared.executeUpdate();
 		if (result == 1) { return true; }
 		else { return false; }	
