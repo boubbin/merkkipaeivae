@@ -62,8 +62,13 @@ public class DBQuery {
 	}
 
 	public boolean updateAnniversaryById(anniversaryBean anniversary) throws SQLException {
-		
-		return true;
-		
+		String query = "UPDATE userbase SET date = ?, name = ? WHERE id = ?;";
+		PreparedStatement prepared = this.connection.prepareStatement(query);
+		prepared.setString(1, anniversary.getPvm());
+		prepared.setString(2, anniversary.getName());
+		prepared.setInt(3, anniversary.getUserid());
+		int result = prepared.executeUpdate();
+		if (result == 1) { return true; }
+		else { return false; }	
 	}
 }
