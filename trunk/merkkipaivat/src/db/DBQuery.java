@@ -61,13 +61,12 @@ public class DBQuery {
 		return result;
 	}
 
-	public boolean updateAnniversaryById(anniversaryBean anniversary) throws SQLException {
+	public boolean updateAnniversaryById(anniversaryBean anniversary, long unixtime) throws SQLException {
 		String query = "UPDATE anniversaries SET date = ?, name = ? WHERE id = ?;";
 		PreparedStatement prepared = this.connection.prepareStatement(query);
-		prepared.setString(1, anniversary.getPvm());
+		prepared.setLong(1, unixtime);
 		prepared.setString(2, anniversary.getName());
-		prepared.setInt(3, anniversary.getUserid());
-		System.out.println("UPDATE QUERY: " + query);
+		prepared.setInt(3, anniversary.getId());
 		int result = prepared.executeUpdate();
 		if (result == 1) { return true; }
 		else { return false; }	

@@ -1,8 +1,11 @@
 package db;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
@@ -58,6 +61,7 @@ public class DBHelper {
 		DBQuery query = new DBQuery(conn.getConnection());	
 		anniversaryBean anniversary = new anniversaryBean();
 		ResultSet rs;
+		DateFormat df = new SimpleDateFormat("dd.MM.YYYY");
 		try {
 			rs = query.getAnniversaryById(id);
 		
@@ -65,7 +69,7 @@ public class DBHelper {
 			{
 				Date date = new Date(rs.getLong("date")*1000);
 				anniversary.setName(rs.getString("name"));
-				anniversary.setPvm(date.toLocaleString());
+				anniversary.setPvm(df.format(date));
 				anniversary.setId(rs.getInt("id"));
 				anniversary.setUserid(rs.getInt("userid"));
 			}
@@ -118,16 +122,24 @@ public class DBHelper {
 	public boolean updateAnniversaryById(anniversaryBean anniversary) {
 		DBConnection conn = new DBConnection();
 		DBQuery query = new DBQuery(conn.getConnection());
-		//TODO TÄHÄN TULEE DATE TO UNIXTIME CONVERSIO
+		DateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+		Date date;
+		long unixtime = 0;
 		
-		//
+		try {
+			date = (Date)formatter.parse(anniversary.getPvm());
+			unixtime = date.getTime() / 1000L;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 		try 
 		{
-			if(query.updateAnniversaryById(anniversary))
+			if(query.updateAnniversaryById(anniversary, unixtime))
 			{ return true; }
 			else 
 			{ return false; }
-		} 
+		}
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
