@@ -1,5 +1,7 @@
 <%@include file='../header.jsp'%>
-<div id="success"><c:out value="${anniversaryEditMessage}"/></div>
+<c:if test="${anniversaryEditMessage != ' '}">
+	<div id="success"><c:out value="${anniversaryEditMessage}"/></div>
+</c:if>
 <div id="anniversary">
 	<form method="post">
 	<table>
