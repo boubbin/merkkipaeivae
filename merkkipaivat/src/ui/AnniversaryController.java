@@ -85,6 +85,8 @@ public class AnniversaryController extends HttpServlet {
 				{
 					DBHelper helper = new DBHelper();
 					anniversaryBean anniversary = (anniversaryBean)session.getAttribute("anniversary");
+					anniversary.setName(req.getParameter("name"));
+					anniversary.setPvm(req.getParameter("date"));
 					if(helper.updateAnniversaryById(anniversary))
 					{
 						session.setAttribute("anniversaryEditMessage", "Anniversary successfully edited");

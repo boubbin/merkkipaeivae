@@ -1,8 +1,5 @@
 package model;
 
-import java.sql.Date;
-
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -23,7 +20,7 @@ public class AnniversaryFormValidator {
 	}
 
 	private boolean validateDate(String date) {
-		String[] tokens = date.split("-");
+		String[] tokens = date.split("\\.");
 		try {
 			if (tokens[0] == null || tokens[1] == null || tokens[2] == null) 	{ return false; }
 			if (!this.validateInt(tokens[0])) 									{ return false; }
@@ -38,9 +35,9 @@ public class AnniversaryFormValidator {
 	}
 
 	private boolean validateName(String name) {
-		if(name.length() < 2 || name.length() > 30)
+		if(name.length() < 2 || name.length() > 255)
 		{ 
-			this.session.setAttribute("nameMessage", "Anniversary name length must be between 2 and 30 characters");
+			this.session.setAttribute("nameMessage", "Anniversary name length must be between 2 and 255 characters");
 			return false; 
 		}
 		this.session.setAttribute("nameMessage", " ");
