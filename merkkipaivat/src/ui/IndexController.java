@@ -20,17 +20,12 @@ public class IndexController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//TEST
-		
         HttpSession session = req.getSession(true);
-        if (session.getAttribute("user") == null) { session.setAttribute("authed", 0); }
-        
+		if (session.getAttribute("user") == null) { session.setAttribute("authed", 0); }
 	    ServletContext context = getServletContext();
 	    RequestDispatcher dispatcher = context.getRequestDispatcher("/mainpage.jsp");
 	    dispatcher.forward(req, resp);
 	}
-
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
