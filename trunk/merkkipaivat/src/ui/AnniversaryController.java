@@ -42,6 +42,7 @@ public class AnniversaryController extends HttpServlet {
 	    		   session.setAttribute("anniversaries", anniversaries);
 	    		   RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/anniversary/all.jsp");
 				   dispatcher.forward(req, resp);
+				   session.setAttribute("anniversaryDeleteMessage", " ");
 	    	   }
 	    	   else if(req.getParameter("action").equals("edit"))
 	    	   {
@@ -60,10 +61,29 @@ public class AnniversaryController extends HttpServlet {
 				    dispatcher.forward(req, resp);
 				    session.setAttribute("anniversaryCreateMessage", " ");
 	    	   }
+	    	   else if(req.getParameter("action").equals("delete"))
+	    	   {
+	    		   DBHelper helper = new DBHelper();
+	    		   UserBean user = (UserBean)session.getAttribute("user");
+	    		   anniversaryBean anniversary = new anniversaryBean();
+	    		   anniversary.setUserid(user.getUserid());
+	    		   anniversary.setId((Integer.parseInt(req.getParameter("id"))));
+	    		   
+	    		   if(helper.deleteAnniversaryById(anniversary))
+	    		   {
+	    			   session.setAttribute("anniversaryDeleteMessage", "Anniversary successfully deleted");
+	    		   }
+	    		   else
+	    		   {
+	    			   session.setAttribute("anniversaryDeleteMessage", "Something funny happened");
+	    		   }
+				   session.setAttribute("anniversaryDeleteMessage", " ");
+	    	   }
 	    	   else
 	    	   {
 	    		   RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/anniversary/all.jsp");
 				   dispatcher.forward(req, resp);
+				   session.setAttribute("anniversaryDeleteMessage", " ");
 	    	   }
 	       }
 	       else
@@ -113,8 +133,24 @@ public class AnniversaryController extends HttpServlet {
 				}
 			this.doGet(req, resp);
 			}
+			else if(req.getParameter("action").equals("delete"))
+			{
+				DBHelper helper = new DBHelper();
+				UserBean user = (UserBean)session.getAttribute("user");
+				anniversaryBean anniversary = new anniversaryBean();
+				anniversary.setUserid(user.getUserid());
+				anniversary.setId((Integer.parseInt(req.getParameter("id"))));
+				   
+				if(helper.deleteAnniversaryById(anniversary))
+				{
+					session.setAttribute("anniversaryDeleteMessage", "Anniversary successfully deleted");
+				}
+				else
+				{
+					session.setAttribute("anniversaryDeleteMessage", "Something funny happened");
+				}
+				session.setAttribute("anniversaryDeleteMessage", " ");
+			}
 		}
 	}
-
-	
 }
