@@ -174,4 +174,21 @@ public class DBHelper {
 		}
 		return false;
 	}
+
+	public boolean deleteAnniversaryById(anniversaryBean anniversary) {
+		DBConnection conn = new DBConnection();
+		DBQuery query = new DBQuery(conn.getConnection());	
+		try
+		{
+			if(query.deleteAnniversaryById(anniversary))
+			{ return true; }
+			else 
+			{ return false; }
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

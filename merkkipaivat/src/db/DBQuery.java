@@ -82,4 +82,14 @@ public class DBQuery {
 		if (result == 1) { return true; }
 		else { return false; }	
 	}
+
+	public boolean deleteAnniversaryById(anniversaryBean anniversary) throws SQLException {
+		String query = "DELETE FROM anniversaries WHERE id = ? and userid = ?;";
+		PreparedStatement prepared = this.connection.prepareStatement(query);
+		prepared.setInt(1, anniversary.getId());
+		prepared.setInt(2, anniversary.getUserid());
+		int result = prepared.executeUpdate();
+		if (result == 1) { return true; }
+		else { return false; }	
+	}
 }
