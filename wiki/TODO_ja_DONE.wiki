@@ -6,9 +6,6 @@
             * TODO
               * What?
 
-
-*Anniversary Create
-
 *Account Edit
 
 = DONE =
@@ -17,6 +14,8 @@
 *Anniversary All
 
 *Anniversary Edit
+
+*Anniversary Create
 
 *Account Create
 
