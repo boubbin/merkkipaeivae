@@ -71,4 +71,15 @@ public class DBQuery {
 		if (result == 1) { return true; }
 		else { return false; }	
 	}
+
+	public boolean createAnniversaryById(anniversaryBean anniversary, long unixtime) throws SQLException {
+		String query = "INSERT INTO anniversaries(userid, date, name) values(?, ?, ?);";
+		PreparedStatement prepared = this.connection.prepareStatement(query);
+		prepared.setInt(1, anniversary.getUserid());
+		prepared.setLong(2, unixtime);
+		prepared.setString(3, anniversary.getName());	
+		int result = prepared.executeUpdate();
+		if (result == 1) { return true; }
+		else { return false; }	
+	}
 }

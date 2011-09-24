@@ -51,12 +51,14 @@ public class AnniversaryController extends HttpServlet {
 	    		   session.setAttribute("anniversary", anniversary);
 	    		   RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/anniversary/edit.jsp");
 				   dispatcher.forward(req, resp);
+				   session.setAttribute("anniversaryEditMessage", " ");
 	    	   }
 	    	   else if(req.getParameter("action").equals("create"))
 	    	   {
 	    		   //luo uusi merkkipäivä
 					RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/anniversary/create.jsp");
-				    dispatcher.forward(req, resp);   		   
+				    dispatcher.forward(req, resp);
+				    session.setAttribute("anniversaryCreateMessage", " ");
 	    	   }
 	    	   else
 	    	   {
@@ -79,7 +81,6 @@ public class AnniversaryController extends HttpServlet {
 		{
 			if(req.getParameter("action").equals("edit"))
 			{
-				session.setAttribute("anniversaryEditMessage", " ");
 				AnniversaryFormValidator validator = new AnniversaryFormValidator(req);
 				if(validator.validateAnniversary(req))
 				{
@@ -96,7 +97,21 @@ public class AnniversaryController extends HttpServlet {
 			}
 			else if(req.getParameter("action").equals("create"))
 			{
-				
+				AnniversaryFormValidator validator = new AnniversaryFormValidator(req);
+				if(validator.validateAnniversary(req))
+				{
+					DBHelper helper = new DBHelper();
+					anniversaryBean anniversary = new anniversaryBean();
+					UserBean user = (UserBean)session.getAttribute("user");
+					anniversary.setName(req.getParameter("name"));
+					anniversary.setPvm(req.getParameter("date"));
+					anniversary.setUserid(user.getUserid());
+					if(helper.createAnniversaryByUserId(anniversary))
+					{
+						session.setAttribute("anniversaryCreateMessage", "Anniversary successfully created");
+					}
+				}
+			this.doGet(req, resp);
 			}
 		}
 	}

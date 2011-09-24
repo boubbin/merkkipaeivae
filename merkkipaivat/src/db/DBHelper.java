@@ -133,9 +133,37 @@ public class DBHelper {
 			e.printStackTrace();
 		}
 		
-		try 
+		try
 		{
 			if(query.updateAnniversaryById(anniversary, unixtime))
+			{ return true; }
+			else 
+			{ return false; }
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean createAnniversaryByUserId(anniversaryBean anniversary) {
+		DBConnection conn = new DBConnection();
+		DBQuery query = new DBQuery(conn.getConnection());
+		DateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+		Date date;
+		long unixtime = 0;
+		
+		try {
+			date = (Date)formatter.parse(anniversary.getPvm());
+			unixtime = date.getTime() / 1000L;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		try
+		{
+			if(query.createAnniversaryById(anniversary, unixtime))
 			{ return true; }
 			else 
 			{ return false; }
