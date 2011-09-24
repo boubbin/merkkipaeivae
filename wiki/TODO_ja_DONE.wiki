@@ -8,6 +8,8 @@
 
 *Account Edit
 
+*Anniversary Delete
+
 = DONE =
 *TODO lista
 
