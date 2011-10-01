@@ -23,7 +23,6 @@ public class AnniversaryController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	       HttpSession session = req.getSession(true);
 	       ServletContext context = getServletContext();
-	       System.out.println("sunmutsis");
 	       if (session.getAttribute("user") == null) { session.setAttribute("authed", 0); }
 	       
 	       if((Integer)session.getAttribute("authed") == 1)
@@ -43,6 +42,7 @@ public class AnniversaryController extends HttpServlet {
 	    		   RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/anniversary/all.jsp");
 				   dispatcher.forward(req, resp);
 				   session.setAttribute("anniversaryDeleteMessage", " ");
+				   session.setAttribute("anniversaryEditMessage", " ");
 	    	   }
 	    	   else if(req.getParameter("action").equals("edit"))
 	    	   {
@@ -63,21 +63,7 @@ public class AnniversaryController extends HttpServlet {
 	    	   }
 	    	   else if(req.getParameter("action").equals("delete"))
 	    	   {
-	    		   DBHelper helper = new DBHelper();
-	    		   UserBean user = (UserBean)session.getAttribute("user");
-	    		   anniversaryBean anniversary = new anniversaryBean();
-	    		   anniversary.setUserid(user.getUserid());
-	    		   anniversary.setId((Integer.parseInt(req.getParameter("id"))));
-	    		   
-	    		   if(helper.deleteAnniversaryById(anniversary))
-	    		   {
-	    			   session.setAttribute("anniversaryDeleteMessage", "Anniversary successfully deleted");
-	    		   }
-	    		   else
-	    		   {
-	    			   session.setAttribute("anniversaryDeleteMessage", "Something funny happened");
-	    		   }
-				   session.setAttribute("anniversaryDeleteMessage", " ");
+	    		   this.doPost(req, resp);
 	    	   }
 	    	   else
 	    	   {
@@ -113,7 +99,7 @@ public class AnniversaryController extends HttpServlet {
 						session.setAttribute("anniversaryEditMessage", "Anniversary successfully edited");
 					}
 				}
-			this.doGet(req, resp);
+				resp.sendRedirect("/merkkipaivat/anniversary?action=all");
 			}
 			else if(req.getParameter("action").equals("create"))
 			{
@@ -131,7 +117,7 @@ public class AnniversaryController extends HttpServlet {
 						session.setAttribute("anniversaryCreateMessage", "Anniversary successfully created");
 					}
 				}
-			this.doGet(req, resp);
+			resp.sendRedirect("/merkkipaivat/anniversary?action=create");
 			}
 			else if(req.getParameter("action").equals("delete"))
 			{
@@ -149,7 +135,7 @@ public class AnniversaryController extends HttpServlet {
 				{
 					session.setAttribute("anniversaryDeleteMessage", "Something funny happened");
 				}
-				session.setAttribute("anniversaryDeleteMessage", " ");
+				resp.sendRedirect("/merkkipaivat/anniversary?action=all");
 			}
 		}
 	}

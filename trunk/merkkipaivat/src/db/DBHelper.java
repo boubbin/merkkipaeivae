@@ -19,6 +19,7 @@ public class DBHelper {
 		ArrayList<anniversaryBean> anniversaries = new ArrayList<anniversaryBean>();
 		DBConnection conn = new DBConnection();
 		DBQuery query = new DBQuery(conn.getConnection());
+		DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
 		try {
 			ResultSet rs = query.getAnniversariesByUserId(userid);
 			
@@ -27,7 +28,7 @@ public class DBHelper {
 				anniversaryBean anniversary = new anniversaryBean();
 				Date date = new Date(rs.getLong("date")*1000);
 				anniversary.setName(rs.getString("name"));
-				anniversary.setPvm(date.toLocaleString());
+				anniversary.setPvm(df.format(date));
 				anniversary.setId(rs.getInt("id"));
 				anniversary.setUserid(rs.getInt("userid"));
 				anniversaries.add(anniversary);
@@ -61,7 +62,7 @@ public class DBHelper {
 		DBQuery query = new DBQuery(conn.getConnection());	
 		anniversaryBean anniversary = new anniversaryBean();
 		ResultSet rs;
-		DateFormat df = new SimpleDateFormat("dd.MM.YYYY");
+		DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
 		try {
 			rs = query.getAnniversaryById(id);
 		
