@@ -97,6 +97,7 @@ public class AccountController extends HttpServlet {
 				user = helper.getUserinfoForUserid(userid);
 				session.setAttribute("authed", 1);
 				session.setAttribute("user", user);
+				this.eraseErrorMessages(session);
 			    RequestDispatcher dispatcher = context.getRequestDispatcher("/mainpage.jsp");
 			    dispatcher.forward(req, resp);
 			}
@@ -113,4 +114,10 @@ public class AccountController extends HttpServlet {
 	}
 	
 
+	public void eraseErrorMessages(HttpSession session)
+	{
+		session.setAttribute("anniversaryDeleteMessage", " ");
+		session.setAttribute("anniversaryEditMessage", " ");
+		session.setAttribute("anniversaryCreateMessage", " ");
+	}
 }
