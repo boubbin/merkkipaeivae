@@ -92,4 +92,50 @@ public class DBQuery {
 		if (result == 1) { return true; }
 		else { return false; }	
 	}
+
+	public ResultSet getAllAnniversaries() throws SQLException {
+		String query = "SELECT * FROM anniversaries";
+		PreparedStatement prepared = this.connection.prepareStatement(query);
+		ResultSet result = prepared.executeQuery();
+		return result;
+	}
+
+	public boolean updateAnniversaryToMailedById(int id) throws SQLException {
+		String query = "UPDATE anniversaries SET mailed = 1 WHERE id = ?;";
+		PreparedStatement prepared = this.connection.prepareStatement(query);
+		prepared.setInt(1, id);
+		int result = prepared.executeUpdate();
+		if (result == 1) { return true; }
+		else { return false; }		
+	}
+
+	public String getUserEmailByAnniversaryId(int userid) throws SQLException {
+		String query = "SELECT email FROM userbase WHERE id = ?";	
+		PreparedStatement prepared = this.connection.prepareStatement(query);
+		prepared.setInt(1, userid);
+		ResultSet result = prepared.executeQuery();
+		result.first();
+		return result.getString("email");
+	}
+
+	public boolean updateUserEmailAndDateOfBirthById(String email, long dob, int userid) throws SQLException 
+	{
+		String query = "UPDATE userbase SET email = ?, dob = ? WHERE id = ?;";
+		PreparedStatement prepared = this.connection.prepareStatement(query);
+		prepared.setString(1, email);
+		prepared.setLong(2, dob);
+		prepared.setInt(3, userid);
+		int result = prepared.executeUpdate();
+		if (result == 1) { return true; }
+		else { return false; }	
+	}
+
+	public boolean updateAnniversaryToNotMailedById(int id) throws SQLException {
+		String query = "UPDATE anniversaries SET mailed = 0 WHERE id = ?;";
+		PreparedStatement prepared = this.connection.prepareStatement(query);
+		prepared.setInt(1, id);
+		int result = prepared.executeUpdate();
+		if (result == 1) { return true; }
+		else { return false; }		
+	}
 }

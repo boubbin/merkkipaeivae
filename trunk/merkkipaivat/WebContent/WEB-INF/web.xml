@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>FUCK YOU!</display-name>
+  
   <servlet>
     <servlet-name>IndexController</servlet-name>
     <servlet-class>ui.IndexController</servlet-class>
@@ -9,6 +10,7 @@
     <servlet-name>IndexController</servlet-name>
     <url-pattern>/mainpage</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>AccountController</servlet-name>
     <servlet-class>ui.AccountController</servlet-class>
@@ -17,12 +19,19 @@
     <servlet-name>AccountController</servlet-name>
     <url-pattern>/account</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-      <servlet-name>AnniversaryController</servlet-name>
+    <servlet-name>AnniversaryController</servlet-name>
     <servlet-class>ui.AnniversaryController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AnniversaryController</servlet-name>
     <url-pattern>/anniversary</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>DaemonStarter</servlet-name>
+    <servlet-class>ui.DaemonStarter</servlet-class>
+    <load-on-startup>1</load-on-startup>
+</servlet> 
 </web-app>

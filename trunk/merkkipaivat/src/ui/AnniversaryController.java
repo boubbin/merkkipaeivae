@@ -53,6 +53,7 @@ public class AnniversaryController extends HttpServlet {
 	    		   RequestDispatcher dispatcher = context.getRequestDispatcher("/jsp/anniversary/edit.jsp");
 				   dispatcher.forward(req, resp);
 				   session.setAttribute("anniversaryEditMessage", " ");
+				   this.eraseErrorMessages(session);
 	    	   }
 	    	   else if(req.getParameter("action").equals("create"))
 	    	   {
@@ -99,7 +100,7 @@ public class AnniversaryController extends HttpServlet {
 						session.setAttribute("anniversaryEditMessage", "Anniversary successfully edited");
 					}
 				}
-				resp.sendRedirect("/merkkipaivat/anniversary?action=all");
+				resp.sendRedirect("/merkkipaivat/anniversary?action=edit&id=" + req.getParameter("id"));
 			}
 			else if(req.getParameter("action").equals("create"))
 			{
@@ -138,5 +139,19 @@ public class AnniversaryController extends HttpServlet {
 				resp.sendRedirect("/merkkipaivat/anniversary?action=all");
 			}
 		}
+	}
+	
+	public void eraseErrorMessages(HttpSession session)
+	{
+		session.setAttribute("accountEditMessage", " ");
+		session.setAttribute("anniversaryDeleteMessage", " ");
+		session.setAttribute("anniversaryEditMessage", " ");
+		session.setAttribute("anniversaryCreateMessage", " ");
+		session.setAttribute("usernameMessage", " ");
+		session.setAttribute("passwordMessage", " ");
+		session.setAttribute("emailMessage", " ");
+		session.setAttribute("dobMessage", " ");
+		session.setAttribute("nameMessage", " ");
+		session.setAttribute("dateMessage", " ");
 	}
 }
