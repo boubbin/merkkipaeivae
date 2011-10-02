@@ -1,5 +1,6 @@
 package db;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
+import model.Email;
 import model.UserBean;
 import model.anniversaryBean;
 
@@ -188,6 +190,63 @@ public class DBHelper {
 		}
 		catch (SQLException e) 
 		{
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public void checkAnniversariesForMail() 
+	{
+		DBConnection conn = new DBConnection();
+		DBQuery query = new DBQuery(conn.getConnection());
+		ResultSet rs;
+		Calendar currentCal = Calendar.getInstance();
+		currentCal.add(Calendar.DAY_OF_MONTH, 1);
+		try {
+			rs = query.getAllAnniversaries();
+			while(rs.next())
+			{
+				Calendar anniversaryCal = Calendar.getInstance();
+				anniversaryCal.setTimeInMillis(rs.getInt("date")*1000L);
+				if(rs.getInt("mailed") == 0)
+				{
+					if(currentCal.get(Calendar.MONTH) == anniversaryCal.get(Calendar.MONTH) && currentCal.get(Calendar.DAY_OF_MONTH) == anniversaryCal.get(Calendar.DAY_OF_MONTH))
+					{
+						String userEmail = query.getUserEmailByAnniversaryId(rs.getInt("userid"));
+						String subject = "Reminder from merkkipaeivaet!";
+						String content = rs.getString("name") + " in 1 day!";
+						try {
+							Email email = new Email();
+							email.send(userEmail, "merkkipaeivaet@gmail.com", subject, content);
+							System.out.println("Mail sent!");
+							query.updateAnniversaryToMailedById(rs.getInt("id"));
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				}
+				else if(rs.getInt("mailed") == 1 && currentCal.get(Calendar.MONTH) != anniversaryCal.get(Calendar.MONTH) && currentCal.get(Calendar.DAY_OF_MONTH) != anniversaryCal.get(Calendar.DAY_OF_MONTH))
+				{
+					query.updateAnniversaryToNotMailedById(rs.getInt("id"));
+					System.out.println("Mailed set to 0!");
+				}
+			}			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		conn.disconnect();
+	}
+
+	public boolean updateUserEmailAndDateOfBirthById(String email, long dob, int userid) {
+		DBConnection conn = new DBConnection();
+		DBQuery query = new DBQuery(conn.getConnection());
+		try {
+			if(query.updateUserEmailAndDateOfBirthById(email, dob, userid))
+			{
+				return true;
+			}
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return false;

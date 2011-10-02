@@ -46,6 +46,12 @@ public class CreateAccountFormValidator {
 		return true;
 	}
 	
+	public boolean validateEditRequest(HttpServletRequest request) {
+		if (this.validateEmail(request.getParameter("email")) == false)       { return false; }
+		if (this.validateDOB(request.getParameter("dob")) == false)           { return false; }
+		return true;
+	}
+	
 	private boolean validateInt(String integer) {
 		if (integer == null) { return false; }
 		try {

@@ -11,7 +11,7 @@
 			</tr>
 			<tr>
 				<td>Anniversary date:</td>
-				<td><input type="text" name="date" /> (mm.dd.yyyy)</td>
+				<td><input type="text" name="date" /> (dd.mm.yyyy)</td>
 				<td><div id="form_warning"><c:out value="${dateMessage}"/></div></td>
 			</tr>
 		</table>

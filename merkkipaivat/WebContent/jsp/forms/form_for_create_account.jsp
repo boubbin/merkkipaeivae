@@ -42,7 +42,7 @@
 					</tr>
 					<tr>
 						<td>Date of Birth:</td>
-						<td><input type="date" name="dob" /></td>
+						<td><input type="date" name="dob" /> (yyyy-mm-dd)</td>
 						<td><div id="form_warning"><c:out value="${dobMessage}"/></div></td>
 					</tr>
 				</table>
