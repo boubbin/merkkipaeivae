@@ -16,6 +16,11 @@
 		}
 		session.setAttribute("account_created_ok", null);
 		%>
+		<script>
+			$(function() {
+				$( "#date" ).datepicker();
+			});
+		</script>
 		<div id="info">
 			<form method="POST">
 				<table>
@@ -42,7 +47,7 @@
 					</tr>
 					<tr>
 						<td>Date of Birth:</td>
-						<td><input type="date" name="dob" /> (yyyy-mm-dd)</td>
+						<td><input id=date type="date" name="dob" style="width: 100px;"/> (yyyy-mm-dd)</td>
 						<td><div id="form_warning"><c:out value="${dobMessage}"/></div></td>
 					</tr>
 				</table>
