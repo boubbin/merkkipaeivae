@@ -217,7 +217,8 @@ public class DBHelper {
 						String content = rs.getString("name") + " in 1 day!";
 						try {
 							Email email = new Email();
-							email.send(userEmail, "merkkipaeivaet@gmail.com", subject, content);
+							//email.sendGmail(userEmail, "merkkipaeivaet@gmail.com", subject, content);
+							email.sendMetropolia(userEmail, "merkkipaeivaet@metropolia.fi", subject, content);
 							System.out.println("Mail sent!");
 							query.updateAnniversaryToMailedById(rs.getInt("id"));
 						} catch (Exception e) {

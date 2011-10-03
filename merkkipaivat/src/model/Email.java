@@ -7,7 +7,7 @@ import javax.mail.internet.MimeMessage;
 
 public class Email {
 
-	public void send(String to, String from, String subject, String content) throws Exception
+	public void sendGmail(String to, String from, String subject, String content) throws Exception
 	{
 		Properties properties = new Properties();
 		properties.put("mail.smtp.host", "smtp.gmail.com");
@@ -30,6 +30,33 @@ public class Email {
         
 		Transport transport = session.getTransport("smtp");
 		transport.connect("smtp.gmail.com","merkkipaeivaet@gmail.com", "kolmasjalka");
+		Transport.send(msg);
+		transport.close();
+
+	}
+	
+	public void sendMetropolia(String to, String from, String subject, String content) throws Exception
+	{
+		Properties properties = new Properties();
+		properties.put("mail.smtp.host", "smtp.metropolia.fi");
+		properties.put("mail.smtp.auth", "false");
+		properties.put("mail.smtp.port", "25");
+		properties.put("mail.smtp.socketFactory.fallback", "false");
+		properties.put("mail.smtp.quitwait", "false");
+		properties.put("mail.smtp.starttls.enable", "false");
+		Session session = Session.getDefaultInstance(properties, null);
+		
+        Message msg = new MimeMessage(session);
+        Address fromAddress = new InternetAddress(from);
+        msg.setFrom(fromAddress);
+        Address[] toAddresses = InternetAddress.parse(to);
+        msg.setRecipients(Message.RecipientType.TO, toAddresses);
+        msg.setSubject(subject);
+        msg.setSentDate(new Date());
+        msg.setContent(content, "text/plain");
+        
+		Transport transport = session.getTransport("smtp");
+		//transport.connect("smtp.metropolia.fi","merkkipaeivaet@gmail.com", "kolmasjalka");
 		Transport.send(msg);
 		transport.close();
 
