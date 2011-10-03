@@ -23,7 +23,6 @@ public class AnniversaryController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	       HttpSession session = req.getSession(true);
 	       ServletContext context = getServletContext();
-	       System.out.println("ACTION: " + req.getParameter("action"));
 	       if (session.getAttribute("user") == null) { session.setAttribute("authed", 0); }
 	       
 	       if((Integer)session.getAttribute("authed") == 1)
