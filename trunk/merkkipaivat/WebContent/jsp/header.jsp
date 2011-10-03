@@ -30,7 +30,7 @@
           	  <c:if test="${authed != 0}">
 		          <li><a href="anniversary?action=all">Anniversary</a></li>
 		          <li><a href="account?action=edit">Edit profile</a></li>
-		          <li><a href="account?action=logout"><font color=red>Logout (<c:out value="${user.name})"/>)</font></a></li>
+		          <li><a href="account?action=logout"><font color=red>Logout (<c:out value="${user.name}"/>)</font></a></li>
 		          <li><a href="lol?action=gayness"></a></li>
 			  </c:if>	
 	        </ul>
