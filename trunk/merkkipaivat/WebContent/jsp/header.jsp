@@ -4,10 +4,13 @@
 <html>
 <head>
 	<link href="css/styles.css" rel="stylesheet" type="text/css" />
+	<link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script type="text/javascript" src="js/cufon-yui.js"></script>
 	<script type="text/javascript" src="js/arial.js"></script>
 	<script type="text/javascript" src="js/cuf_run.js"></script>
+	<script type="text/javascript" src="jquery/jquery.js"></script>
+	<script type="text/javascript" src="jquery/jquery-ui.js"></script>
 	<title>Merkkipaeivaet</title>
 </head>
 <body>
@@ -27,7 +30,7 @@
           	  <c:if test="${authed != 0}">
 		          <li><a href="anniversary?action=all">Anniversary</a></li>
 		          <li><a href="account?action=edit">Edit profile</a></li>
-		          <li><a href="account?action=logout"><font color=red>Logout like whore who is belly-dacing, IMMAH CHARGING MAH LAZER!</font></a></li>
+		          <li><a href="account?action=logout"><font color=red>Logout (<c:out value="${user.name})"/>)</font></a></li>
 		          <li><a href="lol?action=gayness"></a></li>
 			  </c:if>	
 	        </ul>
