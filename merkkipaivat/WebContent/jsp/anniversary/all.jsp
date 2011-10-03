@@ -24,7 +24,11 @@ if (choice==true)
 		<tr>
 			<td><b>Name:</b> <c:out value="${anniversary.name}"/></td>
 			<td><b>Date:</b> <c:out value="${anniversary.pvm}"/></td>
-			<td><a href="anniversary?action=edit&id=<c:out value="${anniversary.id}"/>">Edit</a></td>
+			<td><form method=GET action="anniversary">
+					<input type="submit" value="Edit" />
+					<input type="hidden" name="action" value="edit" />
+					<input type="hidden" name="id" value="<c:out value="${anniversary.id}"/>"/>
+				</form></td>
 			<td>
 				<input type="submit" onclick="confirm_delete(<c:out value="${anniversary.id}"/>)" value="Delete"/>
 			</td>
