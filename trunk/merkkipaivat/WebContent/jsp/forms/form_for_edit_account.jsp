@@ -2,6 +2,11 @@
 	<div id="success"><c:out value="${accountEditMessage}"/></div>
 </c:if>
 <div id="info">
+	<script>
+	$(function() {
+		$( "#date" ).datepicker({ dateFormat: 'yy-mm-dd' });
+	});
+	</script>
 	<form method="POST">
 		<table>
 			<tr>
@@ -11,7 +16,7 @@
 			</tr>
 			<tr>
 				<td>Date of Birth:</td>
-				<td><input type="text" name="dob" size="30" value="<c:out value="${dob}"/>"/> (yyyy-mm-dd)</td>
+				<td><input type="text" id=date name="dob" size="30" value="<c:out value="${dob}"/>"/> (yyyy-mm-dd)</td>
 				<td><div id="form_warning"><c:out value="${dobMessage}"/></div></td>
 			</tr>
 		</table>

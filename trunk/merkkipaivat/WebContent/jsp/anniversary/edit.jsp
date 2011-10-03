@@ -2,6 +2,11 @@
 <c:if test="${anniversaryEditMessage != ' '}">
 	<div id="success"><c:out value="${anniversaryEditMessage}"/></div>
 </c:if>
+<script>
+	$(function() {
+		$( "#date" ).datepicker({ dateFormat: 'dd.mm.yy' });
+	});
+</script>
 <div id="anniversary">
 	<form method="post">
 	<table>
@@ -11,7 +16,7 @@
 			<td><div id="form_warning"><c:out value="${nameMessage}"/></div></td>
 		</tr>
 		<tr>
-			<td>date:<input type="text" name="date" value="<c:out value="${anniversary.pvm}"/>"/> (dd.mm.yyyy)</td>
+			<td>date:<input type="text" id=date name="date" value="<c:out value="${anniversary.pvm}"/>"/> (dd.mm.yyyy)</td>
 			<td><div id="form_warning"><c:out value="${dateMessage}"/></div></td>
 		</tr>
 	</table>
