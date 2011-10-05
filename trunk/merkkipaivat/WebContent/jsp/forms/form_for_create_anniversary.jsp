@@ -11,7 +11,7 @@
 		<table>
 			<tr>
 				<td>Name:</td>
-				<td><input type="text" name="name" size="40" /></td>
+				<td><input type="text" name="name" class="required" size="40" /></td>
 				<td><div id="form_warning"><c:out value="${nameMessage}"/></div></td>
 			</tr>
 			<tr>

@@ -31,6 +31,8 @@
 	      <p class="lf">&copy; Copyright boubbin & mocca (2011)</p>
 	      <p class="rf">Sivun lataus kesti 0.021s</p>
 	      <div class="clr"></div>
+	      <div id="donot"><font size=2>do not click here</font></div>
+	      
 	    </div>
 	  </div>
 </body>

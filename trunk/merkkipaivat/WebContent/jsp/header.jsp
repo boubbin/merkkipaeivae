@@ -11,9 +11,27 @@
 	<script type="text/javascript" src="js/cuf_run.js"></script>
 	<script type="text/javascript" src="jquery/jquery.js"></script>
 	<script type="text/javascript" src="jquery/jquery-ui.js"></script>
+	<script type="text/javascript" src="jquery/jquery-validate.js"></script>
+	<script>
+	$(document).ready(function(){
+		    $("#editForm").validate({
+		    	rules: {
+		        dob: {
+		            required: true,
+		            dateISO: true
+		          }
+		        }
+		    });
+		    $('#donot').click(function() {
+		        $('#nsfw').fadeIn('slow', function() {
+		        });
+		    });
+	});
+	</script>
 	<title>Merkkipaeivaet</title>
 </head>
 <body>
+<div id="nsfw"><img src="images/apple.jpg"></div>
 	<div class="main">
 	  <div class="header">
 	    <div class="header_resize">
