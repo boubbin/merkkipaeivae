@@ -1,12 +1,29 @@
 package sprinki.paivat.com.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
 @SuppressWarnings("serial")
+@Table(name = "userbase")
 public class UserBean implements java.io.Serializable {
 
+	@Id
+	@Column(name = "userid")
 	private int userid;
+	
+	@Column(name = "username")
 	private String name;
+	
+	@Column(name = "lastlog")
 	private int lastlog;
+	
+	@Column(name = "dob")
 	private int dateofbirth;
+	
+	@Column(name = "email")
 	private String email;
 	
 	public UserBean() {
