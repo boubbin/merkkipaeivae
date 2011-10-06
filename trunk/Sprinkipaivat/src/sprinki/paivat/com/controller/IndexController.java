@@ -5,14 +5,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class HelloWorldController{
+public class IndexController{
 
 	@RequestMapping("/")
-	public ModelAndView helloWorld()
+	public ModelAndView index()
 	{
-		GreetingBean greets = new GreetingBean();
-		greets.setMessage("apina");
-		return new ModelAndView("hello", "greets", greets);
+		String sunmutsis = "index";
+		return new ModelAndView("hello", "greets", sunmutsis);
 	}
 
 }
