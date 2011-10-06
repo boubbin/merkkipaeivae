@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-${greets.message}
+hello
 </body>
 </html>
