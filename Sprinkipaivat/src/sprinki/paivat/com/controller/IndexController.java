@@ -10,8 +10,7 @@ public class IndexController{
 	@RequestMapping("/")
 	public ModelAndView index()
 	{
-		String sunmutsis = "index";
-		return new ModelAndView("hello", "greets", sunmutsis);
+		return new ModelAndView("mainpage");
 	}
 
 }
