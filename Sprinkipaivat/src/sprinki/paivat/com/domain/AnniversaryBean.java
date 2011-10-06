@@ -11,6 +11,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "anniversary")
 public class AnniversaryBean implements Serializable {
+
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -24,8 +26,11 @@ public class AnniversaryBean implements Serializable {
 	@Column(name = "date")
 	private String date;
 	
-	@Column(name ="userid")
+	@Column(name = "userid")
 	private int userid;
+	
+	@Column(name = "mailed")
+	private int mailed;
 	
 	
 	public AnniversaryBean() 
@@ -34,6 +39,15 @@ public class AnniversaryBean implements Serializable {
 	}
 
 
+	public int getMailed() {
+		return mailed;
+	}
+
+
+	public void setMailed(int mailed) {
+		this.mailed = mailed;
+	}
+	
 	public int getId() {
 		return id;
 	}
