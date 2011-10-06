@@ -1,4 +1,4 @@
-package test.spring.mvc;
+package sprinki.paivat.com.controller;
 
 import java.io.Serializable;
 import java.util.Date;
