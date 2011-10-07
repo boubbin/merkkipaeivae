@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "anniversary")
+@Table(name = "anniversaries")
 public class AnniversaryBean implements Serializable {
 
 
