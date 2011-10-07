@@ -1,27 +1,10 @@
-		<%
-		if (session.getAttribute("account_created_ok") == "1") {
-		%>
-			<div id="success">
-			Account created, please login
-			</div>
-		<%
-		}
-		if (session.getAttribute("account_created_ok") == "0") {
-			%>
-			<div id="error">
-			Error happened while creating your account!<br>
-			Username might be already in use, we are too lazy to check that for you.. fuck<br>
-			</div>	
-			<%		
-		}
-		session.setAttribute("account_created_ok", null);
-		%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 		<script>
 		$(function() {
 			$( "#date" ).datepicker({ dateFormat: 'yy-mm-dd' });
 		});
 		</script>
-		<div id="info">
+<!-- 	<div id="info">
 			<form method="POST" id="editForm">
 				<table>
 					<tr>
@@ -54,9 +37,35 @@
 				<input type="submit" value="Create account" />
 			</form>
 		</div>
-		<% 		
-			session.setAttribute("usernameMessage", " ");
-			session.setAttribute("passwordMessage", " ");
-			session.setAttribute("emailMessage", " ");
-			session.setAttribute("dobMessage", " ");
-		%>
+		 -->
+		<div id="info">
+		<form:form method="post">
+				<table>
+					<tr>
+						<td>Choose an username:</td>
+						<td><form:input path="username" /></td>
+						<td><form:errors path="username" cssClass="form_error"/></td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><form:input path="password" /></td>
+						<td><form:errors path="password" cssClass="form_error"/></td>
+					</tr>
+					<tr>
+						<td>Password again:</td>
+						<td><form:input path="password2" /></td>
+						<td><form:errors path="password2" cssClass="form_error"/></td>
+					</tr>
+					<tr>
+						<td>Email address:</td>
+						<td><form:input path="email" /></td>
+						<td><form:errors path="email" cssClass="form_error"/></td>
+					</tr>
+					<tr>
+						<td>Date of Birth:</td>
+						<td><form:input path="dob" /></td>
+						<td><form:errors path="dob" cssClass="form_error"/></td>
+					</tr>
+				</table>
+		</form:form>
+		</div>
