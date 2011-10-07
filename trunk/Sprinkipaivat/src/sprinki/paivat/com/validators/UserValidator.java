@@ -44,12 +44,12 @@ public class UserValidator implements Validator {
 			}
 		}
 		if (!errors.hasFieldErrors("username")) {
-			if (user.getName().length() < 3) {
+			if (user.getUsername().length() < 3) {
 				errors.rejectValue("username", "not_valid", "If your name is shorter than 3 characters you may aswell die..");
 			}
 		}
 		if (!errors.hasFieldErrors("username")) {
-			if (StringUtils.hasText(user.getName())) {
+			if (StringUtils.hasText(user.getUsername())) {
 				errors.rejectValue("username", "not_valid", "Username without a single alphabet? Even C3P0 has better name than you..");
 			}
 		}

@@ -15,7 +15,7 @@ public class UserBean implements java.io.Serializable {
 	private int userid;
 	
 	@Column(name = "username")
-	private String name;
+	private String username;
 	
 	@Column(name = "lastlog")
 	private int lastlog;
@@ -41,12 +41,12 @@ public class UserBean implements java.io.Serializable {
 		this.userid = userid;
 	}
 
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String name) {
+		this.username = name;
 	}
 
 	public String getEmail() {
