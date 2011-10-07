@@ -4,6 +4,7 @@ GRANT ALL ON *.* TO anniversary@localhost;
 USE anniversary;
 
 DROP TABLE IF EXISTS anniversaries;
+DROP TABLE IF EXISTS authorities;
 DROP TABLE IF EXISTS userbase;
 
 CREATE TABLE userbase (
@@ -25,10 +26,21 @@ mailed TINYINT(1) NOT NULL DEFAULT 0,
 FOREIGN KEY (userid) REFERENCES userbase(id) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
-INSERT INTO userbase VALUES (NULL, 'mocca', 1316575176, 1316575176, 'email@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99',1);
-INSERT INTO userbase VALUES (NULL, 'boubbin', 1316575176, 1316875176, 'email@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99',1);
-INSERT INTO userbase VALUES (NULL, 'marma', 1316575176, 1316575176, 'email@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99',1);
+CREATE TABLE authorities (
+userid INT UNSIGNED NOT NULL UNIQUE,
+username VARCHAR(32) NOT NULL UNIQUE,
+authority VARCHAR(32) NOT NULL DEFAULT 'user',
+FOREIGN KEY (userid) REFERENCES userbase(id) ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+INSERT INTO userbase VALUES (NULL, 'mocca', 1316575176, 1316575176, 'email@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 1);
+INSERT INTO userbase VALUES (NULL, 'boubbin', 1316575176, 1316875176, 'email@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 1);
+INSERT INTO userbase VALUES (NULL, 'marma', 1316575176, 1316575176, 'email@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 1);
 
 INSERT INTO anniversaries VALUES (NULL, '1', 1316575176, 'penis enlargement for mocca', 0);
 INSERT INTO anniversaries VALUES (NULL, '2', 1216375176, 'penis for boubbin..', 0);
 INSERT INTO anniversaries VALUES (NULL, '3', 1216375176, 'marma gets 4th testicle', 0);
+
+INSERT INTO authorities VALUES ('1', 'mocca', 'boss');
+INSERT INTO authorities VALUES ('2', 'boubbin', default);
+INSERT INTO authorities VALUES ('3', 'marma', 'cocksucker');
