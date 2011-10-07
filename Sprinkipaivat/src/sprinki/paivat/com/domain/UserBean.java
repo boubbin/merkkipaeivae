@@ -26,6 +26,9 @@ public class UserBean implements java.io.Serializable {
 	@Column(name = "email")
 	private String email;
 	
+	private String password;
+	private String password2;
+	
 	public UserBean() {
 		
 	}
@@ -67,6 +70,21 @@ public class UserBean implements java.io.Serializable {
 
 	public void setLastlog(int lastlog) {
 		this.lastlog = lastlog;
+	}
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPassword2() {
+		return password2;
+	}
+
+	public void setPassword2(String password2) {
+		this.password2 = password2;
 	}
 	
 }
