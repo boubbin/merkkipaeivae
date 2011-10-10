@@ -12,11 +12,12 @@
 		<intercept-url pattern="/js/**" filters="none" />
 		<intercept-url pattern="/jquery/**" filters="none" />
 		<intercept-url pattern="/images/**" filters="none" />
+		<intercept-url pattern="/account/login*" access="permitAll" />
 	    <intercept-url pattern="/account?action=login" access="permitAll" />
 	    <intercept-url pattern="/mainpage" access="isAuthenticated()" />
 	    <intercept-url pattern="/" access="isAuthenticated()" />
 	    <intercept-url pattern="/**" access="denyAll" />
-	    <form-login />
+	    <form-login login-page="/account/login" authentication-failure-url="/account/login?login_error=1" default-target-url="/mainpage" />
 	    <logout />
 	</http>
 	
