@@ -10,7 +10,7 @@
       </font>
     </c:if>
 		<div id=info>
-			<form method="POST" action="<c:url value='j_spring_security_check'/>">
+			<form name="f" method="POST" action="/Sprinkipaivat/j_spring_security_check">
 				<table>
 					<tr>
 						<td>Username:</td>
