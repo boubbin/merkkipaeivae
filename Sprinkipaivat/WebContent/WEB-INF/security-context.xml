@@ -17,7 +17,7 @@
 	    <intercept-url pattern="/mainpage" access="isAuthenticated()" />
 	    <intercept-url pattern="/" access="isAuthenticated()" />
 	    <intercept-url pattern="/**" access="denyAll" />
-	    <form-login login-page="/account/login" authentication-failure-url="/account/login?login_error=1" default-target-url="/mainpage" />
+	    <form-login login-page="/account/login" authentication-failure-url="/account/login?login_error=1" default-target-url="/mainpage"/>
 	    <logout />
 	</http>
 	
