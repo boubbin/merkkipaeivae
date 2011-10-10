@@ -48,7 +48,7 @@
           	  <c:if test="${authed != 0}">
 		          <li><a href="anniversary?action=all">Anniversary</a></li>
 		          <li><a href="account?action=edit">Edit profile</a></li>
-		          <li><a href="j_spring_security_logout"><font color=red>Logout (<c:out value="${user.username}"/>)</font></a></li>
+		          <li><a href="j_spring_security_logout"><font color=red>Logout (<c:out value="${username}"/>)</font></a></li>
 		          <li><a href="lol?action=gayness"></a></li>
 			  </c:if>	
 	        </ul>
