@@ -3,15 +3,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
-	<link href="css/styles.css" rel="stylesheet" type="text/css" />
-	<link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link href="<%= request.getContextPath() %>/css/styles.css" rel="stylesheet" type="text/css" />
+	<link href="<%= request.getContextPath() %>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<script type="text/javascript" src="js/cufon-yui.js"></script>
-	<script type="text/javascript" src="js/arial.js"></script>
-	<script type="text/javascript" src="js/cuf_run.js"></script>
-	<script type="text/javascript" src="jquery/jquery.js"></script>
-	<script type="text/javascript" src="jquery/jquery-ui.js"></script>
-	<script type="text/javascript" src="jquery/jquery-validate.js"></script>
+	<script type="text/javascript" src="<%= request.getContextPath() %>/js/cufon-yui.js"></script>
+	<script type="text/javascript" src="<%= request.getContextPath() %>/js/arial.js"></script>
+	<script type="text/javascript" src="<%= request.getContextPath() %>/js/cuf_run.js"></script>
+	<script type="text/javascript" src="<%= request.getContextPath() %>/jquery/jquery.js"></script>
+	<script type="text/javascript" src="<%= request.getContextPath() %>/jquery/jquery-ui.js"></script>
+	<script type="text/javascript" src="<%= request.getContextPath() %>/jquery/jquery-validate.js"></script>
 	<script>
 	$(document).ready(function(){
 		    $("#editForm").validate({
