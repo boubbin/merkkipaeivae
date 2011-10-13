@@ -1,9 +1,8 @@
 package sprinki.paivat.com.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+
 
 @Entity
 @SuppressWarnings("serial")
@@ -12,22 +11,42 @@ public class UserBean implements java.io.Serializable {
 
 	@Id
 	@Column(name = "userid")
+	@NotNull
 	private int userid;
 	
-	@Column(name = "username")
+	@Column(name = "username", unique=true)
+	@Size(min=3, max=255)
+	@Basic(optional=false)
+	@NotNull
 	private String username;
 	
 	@Column(name = "lastlog")
 	private int lastlog;
 	
 	@Column(name = "dob")
+	@Basic(optional=false)
+	@Size(min=10, max=12)
+	@NotNull
 	private int dateofbirth;
 	
 	@Column(name = "email")
+	@Pattern(regexp="^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
+	@Size(min=3, max=255)
+	@Basic(optional=false)
+	@NotNull
 	private String email;
 	
+	@Column(name = "password")
+	@Size(min=3, max=255)
+	@Basic(optional=false)
 	private String password;
-	private String password2;
+	
+	@Transient
+	@Basic(optional=false)
+	private String formPassword1;
+	@Transient
+	@Basic(optional=false)
+	private String formPassword2;
 	
 	public UserBean() {
 		
@@ -79,12 +98,20 @@ public class UserBean implements java.io.Serializable {
 		this.password = password;
 	}
 
-	public String getPassword2() {
-		return password2;
+	public String getFormPassword1() {
+		return formPassword1;
 	}
 
-	public void setPassword2(String password2) {
-		this.password2 = password2;
+	public void setFormPassword1(String formPassword1) {
+		this.formPassword1 = formPassword1;
+	}
+
+	public String getFormPassword2() {
+		return formPassword2;
+	}
+
+	public void setFormPassword2(String formPassword2) {
+		this.formPassword2 = formPassword2;
 	}
 	
 }
