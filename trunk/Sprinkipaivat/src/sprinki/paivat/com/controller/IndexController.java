@@ -15,8 +15,8 @@ public class IndexController{
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView index()
 	{
-		UserDetails User = AuthManager.getPrincipal();
-		return new ModelAndView("mainpage", "username", User.getUsername());
+		UserDetails user = AuthManager.getPrincipal();
+		return new ModelAndView("mainpage", "username", user.getUsername());
 	}
 
 }

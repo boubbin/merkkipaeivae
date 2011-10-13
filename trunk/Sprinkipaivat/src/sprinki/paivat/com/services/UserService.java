@@ -37,4 +37,9 @@ public class UserService {
 		UserBean user = (UserBean) session.get(UserBean.class, id);
 		session.delete(user);
 	}
+	public UserBean getByUsername(String username) {
+		Session session = sessionFactory.getCurrentSession();
+		UserBean user = (UserBean) session.get(UserBean.class, username);
+		return user;		
+	}
 }
