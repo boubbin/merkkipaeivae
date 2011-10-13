@@ -17,7 +17,7 @@ password VARCHAR(32),
 enabled int(1) unsigned default 1
 ) ENGINE=InnoDB;
 
-CREATE TABLE anniversariesa (
+CREATE TABLE anniversaries (
 id INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
 userid INT UNSIGNED NOT NULL,
 date INT(11) UNSIGNED,
