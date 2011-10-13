@@ -41,7 +41,7 @@
 	      <div class="clr"></div>
 	      <div class="menu_nav">
 	        <ul>
-	          <c:if test="${authed == 0}">
+	          <c:if test="${authed != 0}">
 	          		<li><a href="account?action=login">Login</a></li>
 	          		<li><a href="account?action=create">Create Account</a></li>
           	  </c:if>
