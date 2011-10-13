@@ -24,9 +24,9 @@ public class UserValidator implements Validator {
 		this.date_pattern  = Pattern.compile(EMAIL_PATTERN);
 	}
 	@Override
-	public boolean supports(Class<?> arg0) {
+	public boolean supports(Class<?> clazz) {
 		// TODO Auto-generated method stub
-		return false;
+		return clazz.equals(UserBean.class);
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class UserValidator implements Validator {
 			}
 		}
 		if (!errors.hasFieldErrors("password2")) {
-			if (user.getPassword() != user.getPassword2()) {
+			if (user.getFormPassword1() != user.getFormPassword2()) {
 				errors.rejectValue("password2", "not_same", "Do you think you can use 2 different passwords? Idiot..");
 			}
 		}
@@ -97,5 +97,4 @@ public class UserValidator implements Validator {
 		}
 		return false;
 	}
-
 }
