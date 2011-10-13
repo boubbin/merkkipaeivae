@@ -38,12 +38,22 @@ public class AnniversaryService {
 		
 		return query.list();
 	}
+
+	public List<AnniversaryBean> getAllByUserid(Integer userid) {
+		
+		//Retrieve session from Hibernate
+		Session session = sessionFactory.getCurrentSession();
+		
+		//Create Hibernate Query
+		Query query = session.createQuery("FROM anniversaries WHERE userid=" + userid);
+		
+		return query.list();
+	}
 	
 	public AnniversaryBean get(Integer id) {
 		
 		//Retrieve session from Hibernate
 		Session session = sessionFactory.getCurrentSession();
-		
 		//Create Hibernate Query
 		AnniversaryBean ann = (AnniversaryBean)session.get(AnniversaryBean.class, id);
 		
