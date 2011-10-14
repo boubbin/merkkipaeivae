@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import sprinki.paivat.com.domain.UserBean;
 
-@Service("UserService")
+@Service("userService")
 @Transactional
 public class UserService {
 	@Resource(name="sessionFactory")

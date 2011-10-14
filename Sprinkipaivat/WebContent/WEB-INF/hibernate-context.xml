@@ -18,8 +18,8 @@
 <!-- See http://docs.jboss.org/hibernate/stable/core/api/index.html?org/hibernate/Session.html -->
 <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
 	p:dataSource-ref="dataSource" 
-	p:configLocation="WEB-INF/hibernate.cfg.xml" 
-	p:packagesToScan="sprinki.paivat.com.domain"/>
+	p:configLocation="/WEB-INF/hibernate.cfg.xml" 
+	p:packagesToScan="sprinki.paivat.com"/>
 <!-- Declare a datasource that has pooling capabilities--> 
 <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
    destroy-method="close"

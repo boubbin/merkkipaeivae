@@ -5,6 +5,7 @@ import javax.validation.constraints.*;
 
 
 @SuppressWarnings("serial")
+@Entity
 @Table(name = "userbase")
 public class UserBean implements java.io.Serializable {
 
