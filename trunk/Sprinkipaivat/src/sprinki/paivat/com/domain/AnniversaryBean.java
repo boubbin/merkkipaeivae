@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
 @Table(name = "anniversaries")
 public class AnniversaryBean implements Serializable {
 

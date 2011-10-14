@@ -4,13 +4,13 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 
-@Entity
 @SuppressWarnings("serial")
 @Table(name = "userbase")
 public class UserBean implements java.io.Serializable {
 
 	@Id
 	@Column(name = "userid")
+	@GeneratedValue()
 	@NotNull
 	private int userid;
 	

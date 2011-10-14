@@ -6,14 +6,15 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
-import org.springframework.validation.Validator;
 
 import sprinki.paivat.com.domain.UserBean;
 
-public class UserValidator implements Validator {
+@Component("userValidator")
+public class UserValidator {
 	private static final String DATE_PATTERN = "(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)";
 	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	private Pattern email_pattern;
@@ -23,13 +24,6 @@ public class UserValidator implements Validator {
 		this.email_pattern = Pattern.compile(DATE_PATTERN);
 		this.date_pattern  = Pattern.compile(EMAIL_PATTERN);
 	}
-	@Override
-	public boolean supports(Class<?> clazz) {
-		// TODO Auto-generated method stub
-		return clazz.equals(UserBean.class);
-	}
-
-	@Override
 	public void validate(Object obj, Errors errors) {
 		// TODO Auto-generated method stub
 		UserBean user = (UserBean) obj;
