@@ -86,7 +86,7 @@ public class AnniversaryService {
 		AnniversaryBean existingAnn = (AnniversaryBean)session.get(AnniversaryBean.class, ann.getId());
 		
 		existingAnn.setDate(ann.getDate());
-		existingAnn.setMailed(ann.getMailed());
+		existingAnn.setMailed(0);
 		existingAnn.setName(ann.getName());
 		
 		session.save(existingAnn);
