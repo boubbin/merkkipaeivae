@@ -2,6 +2,7 @@ package sprinki.paivat.com.services;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;
@@ -38,8 +39,11 @@ public class UserService {
 		session.delete(user);
 	}
 	public UserBean getByUsername(String username) {
+		System.out.println("zero kulli");
 		Session session = sessionFactory.getCurrentSession();
-		UserBean user = (UserBean) session.get(UserBean.class, username);
-		return user;		
+		System.out.println("kulli1");
+		Query query = session.createQuery("FROM usebase WHERE username =" + username);
+		System.out.println("kulli2");
+		return null;		
 	}
 }
