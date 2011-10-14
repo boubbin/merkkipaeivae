@@ -1,5 +1,7 @@
 package sprinki.paivat.com.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,11 +31,13 @@ public class AnniversaryController {
 	private UserService userService;
 	
 	@RequestMapping(method=RequestMethod.GET, value="anniversary/all")
-	public ModelAndView allAnniversaries()
+	public String allAnniversaries(Model model)
 	{
 		UserDetails userdetails = AuthManager.getPrincipal();
 		UserBean user = userService.getByUsername(userdetails.getUsername());
-		return new ModelAndView("anniversary/all","anniversaries", anniversaryService.getAllByUserid(user.getUserid()));
+		List<AnniversaryBean> anniversaries = anniversaryService.getAllByUserid(user.getUserid());
+		model.addAttribute("anniversaries", anniversaries);
+		return "anniversary/all";
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/anniversary/create")
