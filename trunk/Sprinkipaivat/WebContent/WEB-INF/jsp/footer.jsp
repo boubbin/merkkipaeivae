@@ -9,12 +9,12 @@
 	    <div class="fbg_resize">
 	      <div class="col c1">
 	        <h2><span>Image Gallery</span></h2>
-	        <a href="#"><img src="images/gallery_1.png" width="58" height="58" alt="" /></a>
-	         <a href="#"><img src="images/gallery_2.png" width="58" height="58" alt="" /></a> 
-	         <a href="#"><img src="images/gallery_3.png" width="58" height="58" alt="" /></a>
-	          <a href="#"><img src="images/gallery_4.png" width="58" height="58" alt="" /></a>
-	           <a href="#"><img src="images/gallery_5.png" width="58" height="58" alt="" /></a>
-	            <a href="#"><img src="images/gallery_6.png" width="58" height="58" alt="" /></a> </div>
+	        <a href="#"><img src="<%= request.getContextPath() %>/images/gallery_1.png" width="58" height="58" alt="" /></a>
+	         <a href="#"><img src="<%= request.getContextPath() %>/images/gallery_2.png" width="58" height="58" alt="" /></a> 
+	         <a href="#"><img src="<%= request.getContextPath() %>/images/gallery_3.png" width="58" height="58" alt="" /></a>
+	          <a href="#"><img src="<%= request.getContextPath() %>/images/gallery_4.png" width="58" height="58" alt="" /></a>
+	           <a href="#"><img src="<%= request.getContextPath() %>/images/gallery_5.png" width="58" height="58" alt="" /></a>
+	            <a href="#"><img src="<%= request.getContextPath() %>/images/gallery_6.png" width="58" height="58" alt="" /></a> </div>
 	      <div class="col c2">
 	        <h2><span>Lorem Ipsum</span></h2>
 	        <p>Lorem ipsum dolor<br />
