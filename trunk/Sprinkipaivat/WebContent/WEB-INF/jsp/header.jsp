@@ -31,7 +31,7 @@
 	<title>Merkkipaeivaet</title>
 </head>
 <body>
-<div id="nsfw"><img src="images/apple.jpg"></div>
+<div id="nsfw"><img src="<%= request.getContextPath() %>/images/apple.jpg"></div>
 	<div class="main">
 	  <div class="header">
 	    <div class="header_resize">
