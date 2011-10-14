@@ -5,7 +5,8 @@
 		});
 		</script>
 		<div id="info">
-		<form:form method="post" modelattribute="accountFormController">
+		<form:form method="post" commandName="registrationForm">
+		<form:errors path="*"/>
 				<table>
 					<tr>
 						<td>Choose an username:</td>
