@@ -11,6 +11,8 @@
 			http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 			http://www.springframework.org/schema/context
 			http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+			
+<bean id="userService" class="sprinki.paivat.com.services.UserService"/>
 <tx:annotation-driven transaction-manager="transactionManager" />   
    <!-- Declare the Hibernate SessionFactory for retrieving Hibernate sessions -->
    <!-- See http://static.springsource.org/spring/docs/3.0.x/javadoc-api/org/springframework/orm/hibernate3/annotation/AnnotationSessionFactoryBean.html -->       
@@ -20,6 +22,7 @@
 	p:dataSource-ref="dataSource" 
 	p:configLocation="/WEB-INF/hibernate.cfg.xml" 
 	p:packagesToScan="sprinki.paivat.com"/>
+	
 <!-- Declare a datasource that has pooling capabilities--> 
 <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
    destroy-method="close"
@@ -34,6 +37,8 @@
    p:minPoolSize="10" />
 <!-- Declare a transaction manager-->
 <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"
-         p:sessionFactory-ref="sessionFactory" />
+         p:sessionFactory-ref="sessionFactory" >
+         <property name="dataSource" ref="dataSource"/>
+         </bean>
 
 </beans>

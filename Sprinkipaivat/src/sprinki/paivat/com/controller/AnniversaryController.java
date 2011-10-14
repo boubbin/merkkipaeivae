@@ -22,11 +22,11 @@ import sprinki.paivat.com.services.UserService;
 
 
 @Controller
-@Transactional
 public class AnniversaryController {
 
 	@Resource(name="anniversaryService")
 	private AnniversaryService anniversaryService;
+	
 	@Resource(name="userService")
 	private UserService userService;
 	
@@ -34,7 +34,8 @@ public class AnniversaryController {
 	public String allAnniversaries(Model model)
 	{
 		UserDetails userdetails = AuthManager.getPrincipal();
-		UserBean user = userService.getByUsername(userdetails.getUsername());
+		String username = userdetails.getUsername();
+		UserBean user = userService.getByUsername(username);
 		List<AnniversaryBean> anniversaries = anniversaryService.getAllByUserid(user.getUserid());
 		model.addAttribute("anniversaries", anniversaries);
 		return "anniversary/all";

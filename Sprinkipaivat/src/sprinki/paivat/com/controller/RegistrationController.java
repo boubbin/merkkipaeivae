@@ -19,9 +19,9 @@ import sprinki.paivat.com.validators.UserValidator;
 @RequestMapping("/account")
 @SessionAttributes("user")
 public class RegistrationController {
-	@Autowired
+	
 	private UserService userservice;
-	@Autowired
+	
 	private UserValidator userValidator;
 	
 	@RequestMapping(value = "/create", method = RequestMethod.GET)

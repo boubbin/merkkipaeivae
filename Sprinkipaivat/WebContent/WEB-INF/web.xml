@@ -24,6 +24,7 @@
         <param-value>
             /WEB-INF/security-context.xml
             /WEB-INF/hibernate-context.xml
+            /WEB-INF/applicationContext.xml
         </param-value>
     </context-param> 
     <context-param>
