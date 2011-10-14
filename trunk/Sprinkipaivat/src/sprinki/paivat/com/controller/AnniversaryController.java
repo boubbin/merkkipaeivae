@@ -1,7 +1,10 @@
 package sprinki.paivat.com.controller;
 
+import javax.annotation.Resource;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,16 +20,20 @@ import sprinki.paivat.com.services.UserService;
 
 
 @Controller
+@Transactional
 public class AnniversaryController {
 
+	@Resource(name="anniversaryService")
+	private AnniversaryService anniversaryService;
+	@Resource(name="userService")
+	private UserService userService;
+	
 	@RequestMapping(method=RequestMethod.GET, value="anniversary/all")
 	public ModelAndView allAnniversaries()
 	{
-		AnniversaryService annServ = new AnniversaryService();
-		UserService userServ = new UserService();
 		UserDetails userdetails = AuthManager.getPrincipal();
-		UserBean user = userServ.getByUsername(userdetails.getUsername());
-		return new ModelAndView("anniversary/all","anniversaries", annServ.getAllByUserid(user.getUserid()));
+		UserBean user = userService.getByUsername(userdetails.getUsername());
+		return new ModelAndView("anniversary/all","anniversaries", anniversaryService.getAllByUserid(user.getUserid()));
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/anniversary/create")
