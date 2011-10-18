@@ -34,7 +34,7 @@ public class AnniversaryService {
 		Session session = sessionFactory.getCurrentSession();
 		
 		//Create Hibernate Query
-		Query query = session.createQuery("FROM anniversaries");
+		Query query = session.createQuery("FROM AnniversaryBean");
 		
 		return query.list();
 	}
@@ -45,7 +45,7 @@ public class AnniversaryService {
 		Session session = sessionFactory.getCurrentSession();
 		
 		//Create Hibernate Query
-		Query query = session.createQuery("FROM anniversaries WHERE userid=" + userid);
+		Query query = session.createQuery("FROM AnniversaryBean WHERE userid=" + userid);
 		
 		return query.list();
 	}

@@ -23,7 +23,7 @@ if (choice==true)
 		<c:forEach items="${anniversaries}" var="anniversary">
 		<tr>
 			<td><b>Name:</b> <c:out value="${anniversary.name}"/></td>
-			<td><b>Date:</b> <c:out value="${anniversary.pvm}"/></td>
+			<td><b>Date:</b> <c:out value="${anniversary.date}"/></td>
 			<td><form method=GET action="anniversary">
 					<input type="submit" value="Edit" />
 					<input type="hidden" name="action" value="edit" />

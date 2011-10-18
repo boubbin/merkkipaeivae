@@ -10,10 +10,10 @@ import javax.validation.constraints.*;
 public class UserBean implements java.io.Serializable {
 
 	@Id
-	@Column(name = "userid")
+	@Column(name = "id")
 	@GeneratedValue()
 	@NotNull
-	private int userid;
+	private int id;
 	
 	@Column(name = "username", unique=true)
 	@Size(min=3, max=255)
@@ -54,11 +54,11 @@ public class UserBean implements java.io.Serializable {
 	}
 
 	public int getUserid() {
-		return userid;
+		return id;
 	}
 
 	public void setUserid(int userid) {
-		this.userid = userid;
+		this.id = userid;
 	}
 
 	public String getUsername() {

@@ -39,11 +39,9 @@ public class UserService {
 		session.delete(user);
 	}
 	public UserBean getByUsername(String username) {
-		System.out.println("zero kulli");
 		Session session = sessionFactory.getCurrentSession();
-		System.out.println("kulli1");
-		Query query = session.createQuery("FROM usebase WHERE username =" + username);
-		System.out.println("kulli2");
-		return null;		
+		Query query = session.createQuery("FROM UserBean WHERE username = '" + username + "'");
+		UserBean user = (UserBean)query.uniqueResult();
+		return user;	
 	}
 }
