@@ -4,15 +4,16 @@ function confirm_delete(id)
 {
 var choice=confirm("Confirm Delete?");
 if (choice==true)
-  {
-  
-  }
+ 	{
+	var ctx = "${pageContext.request.contextPath}";
+	window.location = ctx + '/anniversary/delete?id=' + id;
+}
 }
 </script>
-<c:if test="${anniversaryEditMessage != ' '}">
+<c:if test="${not empty anniversaryEditMessage}">
 	<div id="success"><c:out value="${anniversaryEditMessage}"/></div>
 </c:if>
-<c:if test="${anniversaryDeleteMessage != ' '}">
+<c:if test="${not empty anniversaryDeleteMessage}">
 	<div id="success"><c:out value="${anniversaryDeleteMessage}"/></div>
 </c:if>
 <div id="anniversary">

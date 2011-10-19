@@ -1,5 +1,5 @@
 <%@include file='../header.jsp'%>
-<c:if test="${anniversaryEditMessage != ' '}">
+<c:if test="${not empty anniversaryEditMessage}">
 	<div id="success"><c:out value="${anniversaryEditMessage}"/></div>
 </c:if>
 <script>
