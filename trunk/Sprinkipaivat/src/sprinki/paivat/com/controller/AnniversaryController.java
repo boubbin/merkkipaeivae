@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import sprinki.paivat.com.domain.AnniversaryBean;
@@ -51,6 +52,33 @@ public class AnniversaryController {
 	public ModelAndView editAnniversary(@RequestParam(value="id",required=true) Integer anniversaryId, Model model)
 	{
 		return new ModelAndView("anniversary/edit", "anniversary", anniversaryService.get(anniversaryId));
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, value="anniversary/delete")
+	public String deleteAnniversary(@RequestParam(value="id",required=true) Integer anniversaryId, Model model)
+	{
+		AnniversaryBean anniversary = anniversaryService.get(anniversaryId);
+		UserDetails userdetails = AuthManager.getPrincipal();
+		UserBean user = userService.getByUsername(userdetails.getUsername());
+		String msg;
+		if(anniversary != null)
+		{
+			if(user.getUserid() == anniversary.getUserid())
+			{
+				anniversaryService.delete(anniversary.getId());
+				msg = "Deletion was successful!";
+			}
+			else
+			{
+				msg = "hurr durr how do I delete";
+			}
+		}
+		else
+		{ 
+			msg = "Did not find such anniversary, tool"; 
+		}
+		model.addAttribute("anniversaryDeleteMessage", msg);
+		return "anniversary/all";
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="anniversary/edit")
