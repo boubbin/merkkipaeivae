@@ -36,7 +36,7 @@
 	  <div class="header">
 	    <div class="header_resize">
 	      <div class="logo">
-	        <h1><a href="mainpage">Merkki<span>paeivaet</span></a><small><i>"Muista mitä vittuu millonki tapahtuu"</i></small></h1>
+	        <h1><a href="<%= request.getContextPath() %>/mainpage">Merkki<span>paeivaet</span></a><small><i>"Muista mitä vittuu millonki tapahtuu"</i></small></h1>
 	      </div>
 	      <div class="clr"></div>
 	      <div class="menu_nav">
