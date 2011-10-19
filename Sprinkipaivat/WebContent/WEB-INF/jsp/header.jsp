@@ -41,14 +41,14 @@
 	      <div class="clr"></div>
 	      <div class="menu_nav">
 	        <ul>
-	          <c:if test="${authed != 0}">
+	          <c:if test="${empty username}">
 	          		<li><a href="<%= request.getContextPath() %>/account/login">Login</a></li>
 	          		<li><a href="<%= request.getContextPath() %>/account/create">Create Account</a></li>
           	  </c:if>
-          	  <c:if test="${authed != 0}">
+          	  <c:if test="${not empty username}">
 		          <li><a href="<%= request.getContextPath() %>/anniversary/all">Anniversary</a></li>
 		          <li><a href="<%= request.getContextPath() %>/account/edit">Edit profile</a></li>
-		          <li><a href="j_spring_security_logout"><font color=red>Logout (<c:out value="${username}"/>)</font></a></li>
+		          <li><a href="<%= request.getContextPath() %>/j_spring_security_logout"><font color=red>Logout (<c:out value="${username}"/>)</font></a></li>
 		          <li><a href="<%= request.getContextPath() %>/lol/gayness"></a></li>
 			  </c:if>	
 	        </ul>
