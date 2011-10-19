@@ -13,6 +13,7 @@
 		<intercept-url pattern="/jquery/**" filters="none" />
 		<intercept-url pattern="/images/**" filters="none" />
 		<intercept-url pattern="/account/login*" access="permitAll" />
+		<intercept-url pattern="/account/create*" access="permitAll" />
 	    <intercept-url pattern="/mainpage" access="isAuthenticated()" />
 	    <intercept-url pattern="/anniversary/**" access="isAuthenticated()" />
 	    <intercept-url pattern="/" access="isAuthenticated()" />
