@@ -11,7 +11,7 @@ import org.springframework.validation.Validator;
 import sprinki.paivat.com.domain.AnniversaryBean;
 
 public class AnniversaryValidator implements Validator {
-	private static final String DATE_PATTERN = "(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)";
+	private static final String DATE_PATTERN = "(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).((19|20)\\d\\d)";
 	private Pattern pattern;
 	private Matcher matcher;
 	public AnniversaryValidator() {
@@ -20,7 +20,7 @@ public class AnniversaryValidator implements Validator {
 	@Override
 	public boolean supports(Class<?> arg0) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class AnniversaryValidator implements Validator {
 			}
 		}
 		if (!errors.hasFieldErrors("name")) {
-			if (StringUtils.hasText(anniversary.getName())) {
+			if (!StringUtils.hasText(anniversary.getName())) {
 				errors.rejectValue("name", "not_valid", "Anniversary without a single alphabet?");
 			}
 		}
