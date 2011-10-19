@@ -24,7 +24,7 @@
 		<input type="submit" value="Create anniversary" />
 	</form>
 	-->
-	<form:form method="post">
+	<form:form method="post" commandName="anniversary">
 		<table>
 			<tr>
 				<td>Name:</td>
@@ -36,6 +36,8 @@
 				<td><form:input path="date" /></td>
 				<td><form:errors path="date" cssClass="form_error"/></td>
 			</tr>
+			<tr>
+				<td><input type="submit" /></td>
 		</table>
 	</form:form>
 </div>
