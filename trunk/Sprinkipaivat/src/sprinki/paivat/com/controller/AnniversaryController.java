@@ -50,8 +50,7 @@ public class AnniversaryController {
 	@RequestMapping(method=RequestMethod.GET, value="anniversary/edit")
 	public ModelAndView editAnniversary(@RequestParam(value="id",required=true) Integer anniversaryId, Model model)
 	{
-		AnniversaryService annServ = new AnniversaryService();
-		return new ModelAndView("anniversary/edit", "anniversary", annServ.get(anniversaryId));
+		return new ModelAndView("anniversary/edit", "anniversary", anniversaryService.get(anniversaryId));
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="anniversary/edit")
@@ -59,8 +58,7 @@ public class AnniversaryController {
 	{
 		//TODO VALIDATION
 		System.out.println(anniversary.toString());
-		AnniversaryService annServ = new AnniversaryService();
-		annServ.edit(anniversary);
+		anniversaryService.edit(anniversary);
 		return "redirect:anniversary/edit?id=" + anniversary.getId();
 	}
 }

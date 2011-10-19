@@ -16,7 +16,7 @@
 			<td><div id="form_warning"><c:out value="${nameMessage}"/></div></td>
 		</tr>
 		<tr>
-			<td>date:<input type="text" id=date name="date" value="<c:out value="${anniversary.pvm}"/>"/> (dd.mm.yyyy)</td>
+			<td>date:<input type="text" id=date name="date" value="<c:out value="${anniversary.date}"/>"/> (dd.mm.yyyy)</td>
 			<td><div id="form_warning"><c:out value="${dateMessage}"/></div></td>
 		</tr>
 	</table>

@@ -5,7 +5,7 @@ function confirm_delete(id)
 var choice=confirm("Confirm Delete?");
 if (choice==true)
   {
-  window.location.search = '?action=delete&id=' + id; 
+  
   }
 }
 </script>
@@ -16,7 +16,7 @@ if (choice==true)
 	<div id="success"><c:out value="${anniversaryDeleteMessage}"/></div>
 </c:if>
 <div id="anniversary">
-	<a href="anniversary?action=create">Create new anniversary</a>
+	<a href="<%= request.getContextPath() %>/anniversary/create">Create new anniversary</a>
 </div>
 <div id="anniversary">
 	<table>
@@ -24,9 +24,8 @@ if (choice==true)
 		<tr>
 			<td><b>Name:</b> <c:out value="${anniversary.name}"/></td>
 			<td><b>Date:</b> <c:out value="${anniversary.date}"/></td>
-			<td><form method=GET action="anniversary">
+			<td><form method=GET action="<%= request.getContextPath() %>/anniversary/edit">
 					<input type="submit" value="Edit" />
-					<input type="hidden" name="action" value="edit" />
 					<input type="hidden" name="id" value="<c:out value="${anniversary.id}"/>"/>
 				</form></td>
 			<td>
