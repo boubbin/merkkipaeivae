@@ -104,7 +104,7 @@ public class AnniversaryBean implements Serializable {
 	public void unixtimeToDate() {
 		Calendar cal = Calendar.getInstance();
 		Long unix = Long.valueOf(this.getDate());
-		cal.setTimeInMillis(unix);
+		cal.setTimeInMillis(unix*1000);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
 		String date = sdf.format(cal.getTime());
 		this.setDate(date);
