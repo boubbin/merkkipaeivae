@@ -40,6 +40,10 @@ public class AnniversaryController {
 		String username = userdetails.getUsername();
 		UserBean user = userService.getByUsername(username);
 		List<AnniversaryBean> anniversaries = anniversaryService.getAllByUserid(user.getUserid());
+		for(AnniversaryBean anniversary: anniversaries)
+		{
+			anniversary.unixtimeToDate();
+		}
 		model.addAttribute("anniversaries", anniversaries);
 		return "anniversary/all";
 	}
