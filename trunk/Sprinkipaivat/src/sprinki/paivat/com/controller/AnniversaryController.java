@@ -1,13 +1,14 @@
 package sprinki.paivat.com.controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +21,7 @@ import sprinki.paivat.com.domain.UserBean;
 import sprinki.paivat.com.services.AnniversaryService;
 import sprinki.paivat.com.services.AuthManager;
 import sprinki.paivat.com.services.UserService;
+import sprinki.paivat.com.validators.AnniversaryValidator;
 
 
 @Controller
@@ -41,13 +43,31 @@ public class AnniversaryController {
 		model.addAttribute("anniversaries", anniversaries);
 		return "anniversary/all";
 	}
-	
-	@RequestMapping(method=RequestMethod.GET, value="/anniversary/create")
-	public ModelAndView createAnniversary()
+
+	@RequestMapping(method=RequestMethod.GET, value="anniversary/create")
+	public String createAnniversaryForm(Model model)
 	{
-		return new ModelAndView("anniversary/create");
+		AnniversaryBean anniversary = new AnniversaryBean();
+		model.addAttribute("anniversary", anniversary);
+		return "anniversary/create";
 	}
-	
+	@RequestMapping(method=RequestMethod.POST, value="anniversary/create")
+	public String createAnniversary(@ModelAttribute("anniversary") AnniversaryBean anniversary, BindingResult result) throws ParseException
+	{
+		AnniversaryValidator validator = new AnniversaryValidator();
+		validator.validate(anniversary, result);
+		if (result.hasErrors()) {
+			return "anniversary/create";
+		} else {
+			UserDetails userdetails = AuthManager.getPrincipal();
+			String username = userdetails.getUsername();
+			anniversary.dateToUnixtime();
+			anniversary.setMailed(0);
+			anniversary.setUserid(userService.getByUsername(username).getUserid());
+			anniversaryService.add(anniversary);
+			return "redirect:/anniversary/all";
+		}
+	}
 	@RequestMapping(method=RequestMethod.GET, value="anniversary/edit")
 	public ModelAndView editAnniversary(@RequestParam(value="id",required=true) Integer anniversaryId, Model model)
 	{
