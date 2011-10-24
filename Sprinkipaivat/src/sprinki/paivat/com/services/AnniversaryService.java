@@ -3,6 +3,7 @@
  */
 package sprinki.paivat.com.services;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -32,6 +33,8 @@ public class AnniversaryService {
 		
 		//Retrieve session from Hibernate
 		Session session = sessionFactory.getCurrentSession();
+		session.flush();
+		session.clear();
 		
 		//Create Hibernate Query
 		Query query = session.createQuery("FROM AnniversaryBean");
@@ -43,6 +46,8 @@ public class AnniversaryService {
 		
 		//Retrieve session from Hibernate
 		Session session = sessionFactory.getCurrentSession();
+		session.flush();
+		session.clear();
 		
 		//Create Hibernate Query
 		Query query = session.createQuery("FROM AnniversaryBean WHERE userid=" + userid);
@@ -54,6 +59,9 @@ public class AnniversaryService {
 		
 		//Retrieve session from Hibernate
 		Session session = sessionFactory.getCurrentSession();
+		session.flush();
+		session.clear();
+		
 		//Create Hibernate Query
 		AnniversaryBean ann = (AnniversaryBean)session.get(AnniversaryBean.class, id);
 		
@@ -64,7 +72,17 @@ public class AnniversaryService {
 		
 		Session session = sessionFactory.getCurrentSession();
 		
+		try {
+			ann.dateToUnixtime();
+		} catch (ParseException e) {
+			System.out.println("Whoops, can't parse date.");
+			e.printStackTrace();
+		}
+		ann.setMailed(0);
+		
 		session.save(ann);
+		session.flush();
+		session.clear();
 	}
 	
 	public void delete(Integer id) {
@@ -76,6 +94,8 @@ public class AnniversaryService {
 		AnniversaryBean ann = (AnniversaryBean)session.get(AnniversaryBean.class, id);
 		
 		session.delete(ann);
+		session.flush();
+		session.clear();
 	}
 	
 	public void edit(AnniversaryBean ann) {
@@ -85,10 +105,18 @@ public class AnniversaryService {
 		//Create Hibernate Query
 		AnniversaryBean existingAnn = (AnniversaryBean)session.get(AnniversaryBean.class, ann.getId());
 		
+		try {
+			ann.dateToUnixtime();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 		existingAnn.setDate(ann.getDate());
-		existingAnn.setMailed(0);
+		existingAnn.setMailed(ann.getMailed());
 		existingAnn.setName(ann.getName());
 		
-		session.save(existingAnn);
+		session.saveOrUpdate(existingAnn);
+		session.flush();
+		session.clear();
 	}
 }
