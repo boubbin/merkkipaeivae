@@ -25,7 +25,7 @@ import sprinki.paivat.com.services.UserService;
 		"classpath:/test-security-context.xml"})
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@TransactionConfiguration(transactionManager = "transactionManager",defaultRollback = true)
+@TransactionConfiguration(defaultRollback = true)
 @Transactional
 public class UserServiceTest {
 	
@@ -40,49 +40,52 @@ public class UserServiceTest {
 	
 	@Before
 	public void setUp() {
-		Session session = sessionFactory.getCurrentSession();
 		
 		u1 = new UserBean();
 		u1.setUsername("lol");
 		u1.setDateofbirth(12121986);
 		u1.setEmail("lol@sprinkipaivat.fi");
 		u1.setPassword("lol");
-		session.save(u1);
+		userService.add(u1);
 		
 		u2 = new UserBean();
 		u2.setUsername("moi");
 		u2.setDateofbirth(11112011);
 		u2.setEmail("kikkamokkeli@sprinkipaivat.fi");
 		u2.setPassword("moi");
-		session.save(u2);
+		userService.add(u2);
 	}
 	
 	@Test
 	public final void testUserService() {
 		
 		UserBean ub = userService.get(u1.getUserid());
-		assertEquals(ub,u1);
+		assertEquals(ub.getEmail(),u1.getEmail());
+		assertEquals(ub.getUsername(),u1.getUsername());
 		
 		ub = userService.getByUsername("moi");
-		assertEquals(ub,u2);
+		assertEquals(ub.getEmail(),u2.getEmail());
+		assertEquals(ub.getUsername(),u2.getUsername());
 	}
 	
 	@Test
 	public final void testPersist() {
-		Session session = sessionFactory.getCurrentSession();
 		
 		UserBean u3 = new UserBean();
 		u3.setUsername("lul");
 		u3.setEmail("lul@sprinkipaivat.fi");
 		u3.setPassword("lul");
-		session.save(u3);
+		userService.add(u3);
 
-		u3.setUsername("not_antti");
+		u3.setUsername("not_lul");
 		assertNotNull(u3.getUserid());
 		UserBean persistedUser = userService.get(u3.getUserid());
 
-		assertEquals(persistedUser, u3);
+		//This test should pass
+		assertEquals(persistedUser.getEmail(),u3.getEmail());
+		//This test should fail
 		assertEquals(persistedUser.getUsername(), u3.getUsername());
+
 		System.out.println(persistedUser.getUsername()+" "+u3.getUsername());
 	}
 	
@@ -94,8 +97,8 @@ public class UserServiceTest {
 		
 		testUser.setEmail("not_antti@sprinkipaivat.fi");
 		userService.edit(testUser);
-		
-		assertEquals(testUser.getEmail(), u1.getEmail());
+
+		assertEquals(testUser.getEmail(), userService.get(u1.getUserid()).getEmail());
 	}
 	
 	@Test

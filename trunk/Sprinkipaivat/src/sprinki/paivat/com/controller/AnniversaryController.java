@@ -64,8 +64,6 @@ public class AnniversaryController {
 		} else {
 			UserDetails userdetails = AuthManager.getPrincipal();
 			String username = userdetails.getUsername();
-			anniversary.dateToUnixtime();
-			anniversary.setMailed(0);
 			anniversary.setUserid(userService.getByUsername(username).getUserid());
 			anniversaryService.add(anniversary);
 			return "redirect:/anniversary/all";
