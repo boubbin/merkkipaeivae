@@ -72,12 +72,7 @@ public class AnniversaryService {
 		
 		Session session = sessionFactory.getCurrentSession();
 		
-		try {
-			ann.dateToUnixtime();
-		} catch (ParseException e) {
-			System.out.println("Whoops, can't parse date.");
-			e.printStackTrace();
-		}
+		ann.dateToUnixtime();
 		ann.setMailed(0);
 		
 		session.save(ann);
@@ -104,15 +99,11 @@ public class AnniversaryService {
 		
 		//Create Hibernate Query
 		AnniversaryBean existingAnn = (AnniversaryBean)session.get(AnniversaryBean.class, ann.getId());
-		
-		try {
-			ann.dateToUnixtime();
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		ann.dateToUnixtime();
+
 		
 		existingAnn.setDate(ann.getDate());
-		existingAnn.setMailed(ann.getMailed());
+		existingAnn.setMailed(0); //Nollaks aina editoinnin jälkee perkele
 		existingAnn.setName(ann.getName());
 		
 		session.saveOrUpdate(existingAnn);
