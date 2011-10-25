@@ -26,9 +26,10 @@ public class UserBean implements java.io.Serializable {
 	
 	@Column(name = "dob")
 	@Basic(optional=false)
-	@Size(min=10, max=12)
+	@Min(10)
+	@Max(12)
 	@NotNull
-	private int dateofbirth;
+	private Integer dateofbirth;
 	
 	@Column(name = "email")
 	@Pattern(regexp="^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
@@ -77,11 +78,11 @@ public class UserBean implements java.io.Serializable {
 		this.email = email;
 	}
 
-	public int getDateofbirth() {
+	public Integer getDateofbirth() {
 		return dateofbirth;
 	}
 
-	public void setDateofbirth(int dateofbirth) {
+	public void setDateofbirth(Integer dateofbirth) {
 		this.dateofbirth = dateofbirth;
 	}
 	public int getLastlog() {
