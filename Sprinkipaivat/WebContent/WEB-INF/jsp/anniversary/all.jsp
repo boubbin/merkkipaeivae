@@ -10,12 +10,6 @@ if (choice==true)
 }
 }
 </script>
-<c:if test="${not empty anniversaryEditMessage}">
-	<div id="success"><c:out value="${anniversaryEditMessage}"/></div>
-</c:if>
-<c:if test="${not empty anniversaryDeleteMessage}">
-	<div id="success"><c:out value="${anniversaryDeleteMessage}"/></div>
-</c:if>
 <div id="anniversary">
 	<a href="<%= request.getContextPath() %>/anniversary/create">Create new anniversary</a>
 </div>

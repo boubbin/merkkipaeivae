@@ -92,12 +92,16 @@ public class AnniversaryBean implements Serializable {
 		this.userid = userid;
 		System.out.println("MOI");
 	}
-	public void dateToUnixtime() throws ParseException {
+	public void dateToUnixtime() {
 		Date datee;
 		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
 		Calendar cal = Calendar.getInstance();
-		datee = sdf.parse(this.getDate());
-		cal.setTime(datee);
+		try {
+			datee = sdf.parse(this.getDate());
+			cal.setTime(datee);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		String unixtime = Long.toString(cal.getTimeInMillis() / 1000L);
 		this.setDate(unixtime);	
 	}

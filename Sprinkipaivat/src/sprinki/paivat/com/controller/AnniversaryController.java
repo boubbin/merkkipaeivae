@@ -70,9 +70,12 @@ public class AnniversaryController {
 		}
 	}
 	@RequestMapping(method=RequestMethod.GET, value="anniversary/edit")
-	public ModelAndView editAnniversary(@RequestParam(value="id",required=true) Integer anniversaryId, Model model)
+	public String editAnniversary(@RequestParam(value="id",required=true) Integer anniversaryId, Model model)
 	{
-		return new ModelAndView("anniversary/edit", "anniversary", anniversaryService.get(anniversaryId));
+		AnniversaryBean anniversary = anniversaryService.get(anniversaryId);
+		anniversary.unixtimeToDate();
+		model.addAttribute("anniversary", anniversary);
+		return "anniversary/edit";
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="anniversary/delete")
@@ -81,33 +84,29 @@ public class AnniversaryController {
 		AnniversaryBean anniversary = anniversaryService.get(anniversaryId);
 		UserDetails userdetails = AuthManager.getPrincipal();
 		UserBean user = userService.getByUsername(userdetails.getUsername());
-		String msg;
 		if(anniversary != null)
 		{
 			if(user.getUserid() == anniversary.getUserid())
 			{
 				anniversaryService.delete(anniversary.getId());
-				msg = "Deletion was successful!";
-			}
-			else
-			{
-				msg = "hurr durr how do I delete";
 			}
 		}
-		else
-		{ 
-			msg = "Did not find such anniversary, tool"; 
-		}
-		model.addAttribute("anniversaryDeleteMessage", msg);
-		return "anniversary/all";
+		return "redirect:/anniversary/all";
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="anniversary/edit")
-	public String updateAnniversary(@ModelAttribute("anniversary") AnniversaryBean anniversary)
+	public String updateAnniversary(@ModelAttribute("anniversary") AnniversaryBean anniversary, BindingResult result)
 	{
-		//TODO VALIDATION
-		System.out.println(anniversary.toString());
-		anniversaryService.edit(anniversary);
-		return "redirect:anniversary/edit?id=" + anniversary.getId();
+		AnniversaryValidator validator = new AnniversaryValidator();
+		validator.validate(anniversary, result);
+		if(result.hasErrors())
+		{
+			return "anniversary/edit";
+		}
+		else
+		{
+			anniversaryService.edit(anniversary);
+			return "redirect:/anniversary/all";
+		}
 	}
 }

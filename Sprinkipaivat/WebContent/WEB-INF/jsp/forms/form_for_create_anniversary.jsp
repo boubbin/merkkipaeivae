@@ -1,8 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<c:if test="${anniversaryCreateMessage != ' '}">
-	<div id="success"><c:out value="${anniversaryCreateMessage}"/></div>
-</c:if>
-<div id="anniversary">
+
 	<script>
 	$(function() {
 		$( "#date" ).datepicker({ dateFormat: 'dd.mm.yy' });
@@ -25,6 +22,7 @@
 	</form>
 	-->
 	<form:form method="post" commandName="anniversary">
+	<h3>New Anniversary</h3>
 		<table>
 			<tr>
 				<td>Name:</td>
@@ -40,4 +38,3 @@
 				<td><input type="submit" /></td>
 		</table>
 	</form:form>
-</div>
