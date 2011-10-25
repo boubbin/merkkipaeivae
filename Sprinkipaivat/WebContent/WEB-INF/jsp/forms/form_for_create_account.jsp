@@ -1,7 +1,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<c:if test="${userCreateMessage != ' '}">
+	<div id="success"><c:out value="${userCreateMessage}"/></div>
+</c:if>
 		<script>
 		$(function() {
-			$( "#date" ).datepicker({ dateFormat: 'yy-mm-dd' });
+			$( "#dateofbirth" ).datepicker({ dateFormat: 'dd.mm.yy' });
 		});
 		</script>
 		<div id="info">
@@ -15,13 +18,13 @@
 					</tr>
 					<tr>
 						<td>Password:</td>
-						<td><form:input path="password" /></td>
-						<td><form:errors path="password" cssClass="form_error"/></td>
+						<td><form:input path="formPassword1" /></td>
+						<td><form:errors path="formPassword1" cssClass="form_error"/></td>
 					</tr>
 					<tr>
 						<td>Password again:</td>
-						<td><form:input path="password2" /></td>
-						<td><form:errors path="password2" cssClass="form_error"/></td>
+						<td><form:input path="formPassword2" /></td>
+						<td><form:errors path="formPassword2" cssClass="form_error"/></td>
 					</tr>
 					<tr>
 						<td>Email address:</td>
@@ -30,8 +33,11 @@
 					</tr>
 					<tr>
 						<td>Date of Birth:</td>
-						<td><form:input path="dob" /></td>
-						<td><form:errors path="dob" cssClass="form_error"/></td>
+						<td><form:input path="dateofbirth" /></td>
+						<td><form:errors path="dateofbirth" cssClass="form_error"/></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="Create" /></td>
 					</tr>
 				</table>
 		</form:form>

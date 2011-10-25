@@ -20,7 +20,7 @@ import sprinki.paivat.com.validators.UserValidator;
 @SessionAttributes("user")
 public class RegistrationController {
 	
-	private UserService userservice;
+	private UserService userService;
 	
 	private UserValidator userValidator;
 	
@@ -28,16 +28,17 @@ public class RegistrationController {
 	public String showForm(Model model) {
 		UserBean user = new UserBean();
 		model.addAttribute("registrationForm", user);
-		return "/create";
+		return "account/create";
 	}
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String add(Model model, @ModelAttribute("registrationForm") @Valid UserBean user, BindingResult result) {
+		userValidator = new UserValidator();
 		userValidator.validate(user, result);
 		if (result.hasErrors()) {
 			System.out.println(result.getAllErrors());
-			return "/create";
+			return "account/create";
 		}
-		userservice.add(user);
-		return "/created";
+		userService.add(user);
+		return "account/created";
 	}
 }
