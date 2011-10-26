@@ -110,4 +110,14 @@ public class AnniversaryService {
 		session.flush();
 		session.clear();
 	}
+	
+	public void editMailed(AnniversaryBean ann) {
+		Session session = sessionFactory.getCurrentSession();
+		AnniversaryBean existingAnn = (AnniversaryBean)session.get(AnniversaryBean.class, ann.getId());
+		existingAnn.setMailed(ann.getMailed());
+		
+		session.saveOrUpdate(existingAnn);
+		session.flush();
+		session.clear();		
+	}
 }
