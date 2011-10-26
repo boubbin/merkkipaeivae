@@ -23,4 +23,24 @@
  <!-- Load Hibernate related configuration -->
  <import resource="hibernate-context.xml" />
  
+ 
+ <!-- TIMERSTUFF -->
+ <bean id="checkEmail" class="sprinki.paivat.com.services.MailDaemon"/>
+
+<bean id="timerTask" class="org.springframework.scheduling.timer.ScheduledTimerTask">
+    <!-- wait 5 seconds before starting repeated execution -->
+    <property name="delay" value="5000" />
+    <!-- run every 30 seconds -->
+    <property name="period" value="30000" />
+    <property name="timerTask" ref="checkEmail" />
+</bean>
+
+<bean class="org.springframework.scheduling.timer.TimerFactoryBean">
+	<property name="scheduledTimerTasks">
+		<list>
+			<ref local="timerTask" />
+		</list>
+	</property>
+</bean>
+ 
  </beans>
