@@ -48,11 +48,14 @@
           	  <c:if test="${not empty username}">
 		          <li><a href="<%= request.getContextPath() %>/anniversary/all">Anniversary</a></li>
 		          <li><a href="<%= request.getContextPath() %>/account/edit">Edit profile</a></li>
-		          <li><a href="<%= request.getContextPath() %>/j_spring_security_logout"><font color=red>Logout (<c:out value="${username}"/>)</font></a></li>
 		          <li><a href="<%= request.getContextPath() %>/lol/gayness"></a></li>
 			  </c:if>	
 	        </ul>
-	      </div>
+	        <div id="logout">
+		        <ul>
+		        	<li><a href="<%= request.getContextPath() %>/j_spring_security_logout"><font color=red>Logout (<c:out value="${username}"/>)</font></a></li>
+		        </ul>
+	        </div>
 	      <div class="clr"></div>
 	    </div>
 	  </div>
