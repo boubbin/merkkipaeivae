@@ -419,4 +419,7 @@ p { clear: both; }
 	top: 220px;
 	left: 10px;
 }
+#logout {
+	float:right;
+}
 
