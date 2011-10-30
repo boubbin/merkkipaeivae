@@ -15,6 +15,7 @@ dob INT(11) UNSIGNED,
 email VARCHAR(50),
 password VARCHAR(32),
 enabled int(1) unsigned default 1
+FOREIGN KEY (authority) REFERENCES authorities(id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE anniversaries (
@@ -27,10 +28,8 @@ FOREIGN KEY (userid) REFERENCES userbase(id) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 CREATE TABLE authorities (
-userid INT UNSIGNED NOT NULL UNIQUE,
-username VARCHAR(32) NOT NULL UNIQUE,
+id INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
 authority VARCHAR(32) NOT NULL DEFAULT 'user',
-FOREIGN KEY (userid) REFERENCES userbase(id) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 INSERT INTO userbase VALUES (NULL, 'mocca', 1316575176, 1316575176, 'email@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 1);
@@ -41,6 +40,5 @@ INSERT INTO anniversaries VALUES (NULL, '1', 1316575176, 'penis enlargement for 
 INSERT INTO anniversaries VALUES (NULL, '2', 1216375176, 'penis for boubbin..', 0);
 INSERT INTO anniversaries VALUES (NULL, '3', 1216375176, 'marma gets 4th testicle', 0);
 
-INSERT INTO authorities VALUES ('1', 'mocca', 'boss');
-INSERT INTO authorities VALUES ('2', 'boubbin', default);
-INSERT INTO authorities VALUES ('3', 'marma', 'cocksucker');
+INSERT INTO authorities VALUES ('1','admin');
+INSERT INTO authorities VALUES ('2', default);

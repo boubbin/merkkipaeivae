@@ -1,10 +1,6 @@
 package sprinki.paivat.com.domain;
 
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -92,26 +88,27 @@ public class AnniversaryBean implements Serializable {
 		this.userid = userid;
 		System.out.println("MOI");
 	}
-	public void dateToUnixtime() {
-		Date datee;
-		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-		Calendar cal = Calendar.getInstance();
-		try {
-			datee = sdf.parse(this.getDate());
-			cal.setTime(datee);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		String unixtime = Long.toString(cal.getTimeInMillis() / 1000L);
-		this.setDate(unixtime);	
-	}
-	public void unixtimeToDate() {
-		Calendar cal = Calendar.getInstance();
-		Long unix = Long.valueOf(this.getDate());
-		cal.setTimeInMillis(unix*1000);
-		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-		String date = sdf.format(cal.getTime());
-		this.setDate(date);
-	}
+	
+//	public void dateToUnixtime() {
+//		Date datee;
+//		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+//		Calendar cal = Calendar.getInstance();
+//		try {
+//			datee = sdf.parse(this.getDate());
+//			cal.setTime(datee);
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+//		String unixtime = Long.toString(cal.getTimeInMillis() / 1000L);
+//		this.setDate(unixtime);	
+//	}
+//	public void unixtimeToDate() {
+//		Calendar cal = Calendar.getInstance();
+//		Long unix = Long.valueOf(this.getDate());
+//		cal.setTimeInMillis(unix*1000);
+//		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+//		String date = sdf.format(cal.getTime());
+//		this.setDate(date);
+//	}
 
 }

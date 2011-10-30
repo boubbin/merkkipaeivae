@@ -39,7 +39,14 @@ public class AnniversaryService {
 		//Create Hibernate Query
 		Query query = session.createQuery("FROM AnniversaryBean");
 		
-		return query.list();
+		List<AnniversaryBean> anniversaries = query.list();
+		
+		for(AnniversaryBean anniversary: anniversaries)
+		{
+			anniversary.setDate(DateService.unixtimeToDate(anniversary.getDate()));
+		}
+		
+		return anniversaries;
 	}
 
 	public List<AnniversaryBean> getAllByUserid(Integer userid) {
@@ -65,6 +72,8 @@ public class AnniversaryService {
 		//Create Hibernate Query
 		AnniversaryBean ann = (AnniversaryBean)session.get(AnniversaryBean.class, id);
 		
+		ann.setDate(DateService.unixtimeToDate(ann.getDate()));
+		
 		return ann;
 	}
 	
@@ -72,7 +81,7 @@ public class AnniversaryService {
 		
 		Session session = sessionFactory.getCurrentSession();
 		
-		ann.dateToUnixtime();
+		ann.setDate(DateService.dateToUnixtime(ann.getDate()));
 		ann.setMailed(0);
 		
 		session.save(ann);
@@ -99,7 +108,7 @@ public class AnniversaryService {
 		
 		//Create Hibernate Query
 		AnniversaryBean existingAnn = (AnniversaryBean)session.get(AnniversaryBean.class, ann.getId());
-		ann.dateToUnixtime();
+		ann.setDate(DateService.dateToUnixtime(ann.getDate()));
 
 		
 		existingAnn.setDate(ann.getDate());
