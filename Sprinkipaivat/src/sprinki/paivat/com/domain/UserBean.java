@@ -1,7 +1,16 @@
 package sprinki.paivat.com.domain;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 
 @SuppressWarnings("serial")
@@ -26,10 +35,9 @@ public class UserBean implements java.io.Serializable {
 	
 	@Column(name = "dob")
 	@Basic(optional=false)
-	@Min(10)
-	@Max(12)
+	@Size(min=10,max=12)
 	@NotNull
-	private Integer dateofbirth;
+	private String dateofbirth;
 	
 	@Column(name = "email")
 	@Pattern(regexp="^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
@@ -78,11 +86,11 @@ public class UserBean implements java.io.Serializable {
 		this.email = email;
 	}
 
-	public Integer getDateofbirth() {
+	public String getDateofbirth() {
 		return dateofbirth;
 	}
 
-	public void setDateofbirth(Integer dateofbirth) {
+	public void setDateofbirth(String dateofbirth) {
 		this.dateofbirth = dateofbirth;
 	}
 	public int getLastlog() {

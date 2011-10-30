@@ -2,11 +2,6 @@
 <c:if test="${userCreateMessage != ' '}">
 	<div id="success"><c:out value="${userCreateMessage}"/></div>
 </c:if>
-		<script>
-		$(function() {
-			$( "#dateofbirth" ).datepicker({ dateFormat: 'dd.mm.yy' });
-		});
-		</script>
 		<div id="info">
 		<form:form method="post" commandName="registrationForm">
 		<form:errors path="*"/>
@@ -34,6 +29,7 @@
 					<tr>
 						<td>Date of Birth:</td>
 						<td><form:input path="dateofbirth" /></td>
+						<td>(format: dd.mm.yyy)</td>
 						<td><form:errors path="dateofbirth" cssClass="form_error"/></td>
 					</tr>
 					<tr>

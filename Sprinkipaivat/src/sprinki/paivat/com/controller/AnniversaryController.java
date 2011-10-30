@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import sprinki.paivat.com.domain.AnniversaryBean;
 import sprinki.paivat.com.domain.UserBean;
@@ -39,10 +38,6 @@ public class AnniversaryController {
 		String username = userdetails.getUsername();
 		UserBean user = userService.getByUsername(username);
 		List<AnniversaryBean> anniversaries = anniversaryService.getAllByUserid(user.getUserid());
-		for(AnniversaryBean anniversary: anniversaries)
-		{
-			anniversary.unixtimeToDate();
-		}
 		model.addAttribute("anniversaries", anniversaries);
 		return "anniversary/all";
 	}
@@ -73,7 +68,6 @@ public class AnniversaryController {
 	public String editAnniversary(@RequestParam(value="id",required=true) Integer anniversaryId, Model model)
 	{
 		AnniversaryBean anniversary = anniversaryService.get(anniversaryId);
-		anniversary.unixtimeToDate();
 		model.addAttribute("anniversary", anniversary);
 		return "anniversary/edit";
 	}

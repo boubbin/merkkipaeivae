@@ -41,14 +41,14 @@ public class AnniversaryTest {
 		
 		u1 = new UserBean();
 		u1.setUsername("lol");
-		u1.setDateofbirth(12121986);
+		u1.setDateofbirth("12.12.1986");
 		u1.setEmail("lol@sprinkipaivat.fi");
 		u1.setPassword("lol");
 		userService.add(u1);
 		
 		u2 = new UserBean();
 		u2.setUsername("moi");
-		u2.setDateofbirth(11112011);
+		u2.setDateofbirth("11.11.2011");
 		u2.setEmail("kikkamokkeli@sprinkipaivat.fi");
 		u2.setPassword("moi");
 		userService.add(u2);

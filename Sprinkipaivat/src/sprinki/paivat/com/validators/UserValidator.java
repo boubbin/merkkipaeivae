@@ -14,14 +14,20 @@ import org.springframework.validation.Validator;
 import sprinki.paivat.com.domain.UserBean;
 
 public class UserValidator implements Validator{
+
+//	@Resource(name="userService")
+//	private UserService userService;
+	
 	private static final String DATE_PATTERN = "(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).((19|20)\\d\\d)";
-	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
 	private Pattern email_pattern;
 	private Pattern date_pattern;
 	private Matcher matcher;
+	
 	public UserValidator() {
-		this.email_pattern = Pattern.compile(DATE_PATTERN);
-		this.date_pattern  = Pattern.compile(EMAIL_PATTERN);
+		this.date_pattern = Pattern.compile(DATE_PATTERN);
+		this.email_pattern  = Pattern.compile(EMAIL_PATTERN);
 	}
 	
 	@Override
@@ -44,22 +50,27 @@ public class UserValidator implements Validator{
 			}
 		}
 		if (!errors.hasFieldErrors("username")) {
-			if (StringUtils.hasText(user.getUsername())) {
+			if (!StringUtils.hasText(user.getUsername())) {
 				errors.rejectValue("username", "not_valid", "Username without a single alphabet? Even C3P0 has better name than you..");
 			}
 		}
+//		if(!errors.hasFieldErrors("username")) {
+//			if(userService.isUsernameFree(user.getUsername())) {
+//				errors.rejectValue("username", "not_valid", "in use");
+//			}
+//		}
 		if (!errors.hasFieldErrors("formPassword1")) {
 			if (user.getFormPassword1().length() < 5) {
 				errors.rejectValue("formPassword1", "too_short", "Password must be longer than your penis..");
 			}
 		}
 		if (!errors.hasFieldErrors("formPassword2")) {
-			if (user.getFormPassword1() != user.getFormPassword2()) {
+			if (!user.getFormPassword1().equals(user.getFormPassword2())) {
 				errors.rejectValue("formPassword2", "not_same", "Do you think you can use 2 different passwords? Idiot..");
 			}
 		}
 		if (!errors.hasFieldErrors("email")) {
-			if (StringUtils.hasText(user.getEmail())) {
+			if (!StringUtils.hasText(user.getEmail())) {
 				errors.rejectValue("email", "not_valid", "Is there even domain without alphabet characters?");
 			}
 		}
@@ -69,6 +80,7 @@ public class UserValidator implements Validator{
 			}
 		}
 	}
+	
 	private boolean isValidEmail(String email) {
 		matcher = email_pattern.matcher(email);
 		if(matcher.matches()) {
@@ -76,23 +88,32 @@ public class UserValidator implements Validator{
 		}
 		return false;
 	}
-	private boolean isValidDate(Integer unixtime) {
+	
+	private boolean isValidDate(int unixtime) {
 		// TODO Auto-generated method stub
 		SimpleDateFormat format = new SimpleDateFormat("dd.mm.yyyy");
 		Date date = new Date(unixtime);
-		Date parsed;
 		try {
-			parsed = format.parse(date.toString());
+			Date parsed = format.parse(date.toString());
 			matcher = date_pattern.matcher(parsed.toString());
 			if(matcher.matches()) {
 				return true;
 			}
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return false;
 	}
-
+	
+	private boolean isValidDate(String date) {
+		// TODO Auto-generated method stub
+		matcher = date_pattern.matcher(date);
+		if(matcher.matches()) {
+			return true;
+		}
+		return false;
+	}
+	
 	@Override
 	public boolean supports(Class<?> arg0) {
 		// TODO Auto-generated method stub

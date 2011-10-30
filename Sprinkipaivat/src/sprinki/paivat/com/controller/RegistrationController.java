@@ -1,8 +1,8 @@
 package sprinki.paivat.com.controller;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,9 +20,8 @@ import sprinki.paivat.com.validators.UserValidator;
 @SessionAttributes("user")
 public class RegistrationController {
 	
+	@Resource(name="userService")
 	private UserService userService;
-	
-	private UserValidator userValidator;
 	
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public String showForm(Model model) {
@@ -32,13 +31,13 @@ public class RegistrationController {
 	}
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String add(Model model, @ModelAttribute("registrationForm") @Valid UserBean user, BindingResult result) {
-		userValidator = new UserValidator();
+		UserValidator userValidator = new UserValidator();
 		userValidator.validate(user, result);
 		if (result.hasErrors()) {
 			System.out.println(result.getAllErrors());
 			return "account/create";
 		}
 		userService.add(user);
-		return "account/created";
+		return "account/added";
 	}
 }
