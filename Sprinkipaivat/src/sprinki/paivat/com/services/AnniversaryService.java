@@ -29,7 +29,7 @@ public class AnniversaryService {
 	private SessionFactory sessionFactory;
 	
 	@SuppressWarnings("unchecked")
-	public List<AnniversaryBean> getAll() {
+	public List<AnniversaryBean> getAllWithDate() {
 		
 		//Retrieve session from Hibernate
 		Session session = sessionFactory.getCurrentSession();
@@ -45,6 +45,22 @@ public class AnniversaryService {
 		{
 			anniversary.setDate(DateService.unixtimeToDate(anniversary.getDate()));
 		}
+		
+		return anniversaries;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<AnniversaryBean> getAllWithUnixtime() {
+		
+		//Retrieve session from Hibernate
+		Session session = sessionFactory.getCurrentSession();
+		session.flush();
+		session.clear();
+		
+		//Create Hibernate Query
+		Query query = session.createQuery("FROM AnniversaryBean");
+		
+		List<AnniversaryBean> anniversaries = query.list();
 		
 		return anniversaries;
 	}

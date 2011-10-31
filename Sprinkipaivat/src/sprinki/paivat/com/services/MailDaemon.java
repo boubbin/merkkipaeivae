@@ -23,7 +23,7 @@ public class MailDaemon extends TimerTask {
 	
 	public void run()
 	{
-			List<AnniversaryBean> anniversaries = anniversaryService.getAll();
+			List<AnniversaryBean> anniversaries = anniversaryService.getAllWithUnixtime();
 			checkAnniversariesForMail(anniversaries);
 			System.out.println("dates checked!");
 	}
