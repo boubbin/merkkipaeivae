@@ -1,22 +1,31 @@
 package sprinki.paivat.com.domain;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "userbase")
-public class UserBean implements java.io.Serializable {
+public class UserBean implements java.io.Serializable, UserDetails {
 
 	@Id
 	@Column(name = "id")
@@ -57,6 +66,13 @@ public class UserBean implements java.io.Serializable {
 	@Transient
 	@Basic(optional=false)
 	private String formPassword2;
+	
+	@Column(name="roleid")
+	@NotNull
+	private int role;
+
+	@Transient
+	private List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 	
 	public UserBean() {
 		
@@ -122,6 +138,43 @@ public class UserBean implements java.io.Serializable {
 
 	public void setFormPassword2(String formPassword2) {
 		this.formPassword2 = formPassword2;
+	}
+	
+	public void setRoles(int role) {
+		this.role = role;
+	}
+
+	public int getRole() {
+		return role;
+	}
+	
+	@Override
+	public Collection<GrantedAuthority> getAuthorities() {
+		return authorities;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 	
 }

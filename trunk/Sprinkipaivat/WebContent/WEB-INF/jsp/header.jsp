@@ -47,7 +47,8 @@
           	  </c:if>
           	  <c:if test="${not empty username}">
 		          <li><a href="<%= request.getContextPath() %>/anniversary/all">Anniversary</a></li>
-		          <li><a href="<%= request.getContextPath() %>/account/edit">Edit profile</a></li>
+		          <li><form method="GET" action="<%= request.getContextPath() %>/account/edit"><input type="submit" value="Edit Account" /><input type="hidden" name="name" value="<c:out value="${username}"/>"/></form></li>
+		          <div id=logout style="float:right"><li><a href="<%= request.getContextPath() %>/j_spring_security_logout"><font color=red>Logout (<c:out value="${username}"/>)</font></a></li></div>
 		          <li><a href="<%= request.getContextPath() %>/lol/gayness"></a></li>
 			  </c:if>	
 	        </ul>

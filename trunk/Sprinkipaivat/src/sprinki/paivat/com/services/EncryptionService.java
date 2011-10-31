@@ -12,7 +12,7 @@ public class EncryptionService {
 		
 		try {
 			
-			MessageDigest algorithm = MessageDigest.getInstance("SHA-512");
+			MessageDigest algorithm = MessageDigest.getInstance("MD5");
 			algorithm.reset();
 			algorithm.update(defaultBytes);
 			byte messageDigest[] = algorithm.digest();
@@ -21,11 +21,11 @@ public class EncryptionService {
 			for (int i=0;i<messageDigest.length;i++) {
 				hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
 			}
-			/*
+			
 			String foo = messageDigest.toString();
 			System.out.println("sessionid "+plain+" md5 version is "+hexString.toString());
 			plain=hexString+"";
-			*/
+			
 			
 			return hexString.toString();
 			

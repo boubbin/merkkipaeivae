@@ -1,25 +1,40 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:if test="${accountEditMessage != ' '}">
 	<div id="success"><c:out value="${accountEditMessage}"/></div>
 </c:if>
-<script>	
-	$(function() {
-		$( "#date" ).datepicker({ dateFormat: 'yy-mm-dd' });
-	});
-</script>
 <div id="info">
-	<form method="POST" class="cmxform" id="editForm">
-		<table>
-			<tr>
-				<td>Email address:</td>
-				<td><input type="text" name="email" size="30" class="required email" value="<c:out value="${user.email}"/>"/></td>
-				<td><div id="form_warning"><c:out value="${emailMessage}"/></div></td>
-			</tr>
-			<tr>
-				<td>Date of Birth:</td>
-				<td><input type="text" id=date name="dob" size="30" value="<c:out value="${dob}"/>"/></td>
-				<td><div id="form_warning"><c:out value="${dobMessage}"/></div></td>
-			</tr>
-		</table>
-		<input type="submit" value="Edit Account" />
-	</form>
+	<form:form method="POST" commandName="user">
+	<form:errors path="*"/>
+				<table>
+					<tr>
+						<td>Old Password:</td>
+						<td><form:input path="formPassword1"/></td>
+						<td><form:errors path="formPassword1" cssClass="form_error"/></td>
+					</tr>
+					<tr>
+						<td>New Password:</td>
+						<td><form:input path="formPassword1"/></td>
+						<td><form:errors path="formPassword1" cssClass="form_error"/></td>
+					</tr>
+					<tr>
+						<td>New Password again:</td>
+						<td><form:input path="formPassword2"/></td>
+						<td><form:errors path="formPassword2" cssClass="form_error"/></td>
+					</tr>
+					<tr>
+						<td>Email address:</td>
+						<td><form:input path="email" /></td>
+						<td><form:errors path="email" cssClass="form_error"/></td>
+					</tr>
+					<tr>
+						<td>Date of Birth:</td>
+						<td><form:input path="dateofbirth" /></td>
+						<td>(format: dd.mm.yyy)</td>
+						<td><form:errors path="dateofbirth" cssClass="form_error"/></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="Edit" /></td>
+					</tr>
+				</table>
+	</form:form>
 </div>
