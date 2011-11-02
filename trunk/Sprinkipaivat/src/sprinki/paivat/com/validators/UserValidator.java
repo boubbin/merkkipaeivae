@@ -6,17 +6,20 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.annotation.Resource;
+
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import sprinki.paivat.com.domain.UserBean;
+import sprinki.paivat.com.services.UserService;
 
 public class UserValidator implements Validator{
 
-//	@Resource(name="userService")
-//	private UserService userService;
+	@Resource(name="userService")
+	private UserService userService;
 	
 	private static final String DATE_PATTERN = "(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).((19|20)\\d\\d)";
 	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
@@ -77,6 +80,34 @@ public class UserValidator implements Validator{
 		if (!errors.hasFieldErrors("email")) {
 			if (isValidEmail(user.getEmail())) {
 				errors.rejectValue("email", "not_valid", "Not valid email address");
+			}
+		}
+	}
+	
+	public void validateEdit(Object obj, Errors errors) {
+		UserBean user = (UserBean) obj;
+		UserBean persisted = userService.getByUsername(user.getUsername());
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "formPassword1", "field.required", "Required field");
+		if(!errors.hasFieldErrors("formPassword1")) {
+			if(!user.getFormPassword1().equals(persisted.getPassword())) {
+				errors.rejectValue("formPassword1", "not_valid", "Wrong password!");
+			}
+		}
+		if (!errors.hasFieldErrors("dateofbirth")) {
+			if(!user.getDateofbirth().equals(null)) {
+				if (!isValidDate(user.getDateofbirth())) {
+					errors.rejectValue("dateofbirth", "not_valid", "Not valid date format!");
+				}
+			}
+		}
+		if (!errors.hasFieldErrors("email")) {
+			if(!user.getEmail().equals(null)) {
+				if (!StringUtils.hasText(user.getEmail())) {
+					errors.rejectValue("email", "not_valid", "Is there even domain without alphabet characters?");
+				}
+				if (isValidEmail(user.getEmail())) {
+					errors.rejectValue("email", "not_valid", "Not valid email address");
+				}
 			}
 		}
 	}
