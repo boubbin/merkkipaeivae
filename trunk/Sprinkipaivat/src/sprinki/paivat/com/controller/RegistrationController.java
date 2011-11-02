@@ -38,6 +38,6 @@ public class RegistrationController {
 			return "create";
 		}
 		userService.add(user);
-		return "added";
+		return "account/added";
 	}
 }

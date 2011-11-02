@@ -6,15 +6,13 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.annotation.Resource;
-
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import sprinki.paivat.com.domain.UserBean;
-import sprinki.paivat.com.services.UserService;
+import sprinki.paivat.com.services.EncryptionService;
 
 public class UserValidator implements Validator{
 	
@@ -84,6 +82,7 @@ public class UserValidator implements Validator{
 	public void validateEdit(Object edited,Object persisted, Errors errors) {
 		UserBean user = (UserBean) edited;
 		UserBean persist = (UserBean) persisted;
+		user.setFormPassword1(EncryptionService.encrypt(user.getFormPassword1()));
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "formPassword1", "field.required", "Required field");
 		if(!errors.hasFieldErrors("formPassword1")) {
 			if(!user.getFormPassword1().equals(persist.getPassword())) {
