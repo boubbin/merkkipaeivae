@@ -49,13 +49,13 @@
 		          <li><a href="<%= request.getContextPath() %>/anniversary/all">Anniversary</a></li>
 		          <li><a href="<%= request.getContextPath() %>/account/edit">Edit Account</a></li>
 		          <li><a href="<%= request.getContextPath() %>/lol/gayness"></a></li>
+		        <div id="logout">
+			        <ul>
+			        	<li><a href="<%= request.getContextPath() %>/j_spring_security_logout"><font color=red>Logout (<c:out value="${username}"/>)</font></a></li>
+			        </ul>
+		        </div>		          
 			  </c:if>	
 	        </ul>
-	        <div id="logout">
-		        <ul>
-		        	<li><a href="<%= request.getContextPath() %>/j_spring_security_logout"><font color=red>Logout (<c:out value="${username}"/>)</font></a></li>
-		        </ul>
-	        </div>
 	      <div class="clr"></div>
 	    </div>
 	  </div>
