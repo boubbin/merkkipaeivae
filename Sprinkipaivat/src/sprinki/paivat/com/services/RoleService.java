@@ -48,8 +48,6 @@ public class RoleService {
 		
 		//Retrieve session from Hibernate
 		Session session = sessionFactory.getCurrentSession();
-		session.flush();
-		session.clear();
 		
 		//Create Hibernate Query
 		Role role = (Role)session.get(Role.class, id);

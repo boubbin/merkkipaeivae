@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import sprinki.paivat.com.domain.UserBean;
 import sprinki.paivat.com.services.AuthManager;
+import sprinki.paivat.com.services.DateService;
 import sprinki.paivat.com.services.EncryptionService;
 import sprinki.paivat.com.services.UserService;
 import sprinki.paivat.com.validators.UserValidator;
@@ -25,6 +26,7 @@ public class AccountController {
 	public String editAccount(Model model)
 	{
 		UserBean user = userService.getByUsername(AuthManager.getPrincipal().getUsername());
+		user.setDateofbirth(DateService.unixtimeToDate(user.getDateofbirth()));
 		model.addAttribute("user", user);
 		return "account/edit";
 	}
@@ -34,7 +36,8 @@ public class AccountController {
 	{
 		user.setFormPassword1(EncryptionService.encrypt(user.getFormPassword1()));
 		UserValidator validator = new UserValidator();
-		validator.validateEdit(user, result);
+		UserBean original = userService.getByUsername(AuthManager.getPrincipal().getUsername());
+		validator.validateEdit(user,original, result);
 		if(result.hasErrors())
 		{
 			return "account/edit";

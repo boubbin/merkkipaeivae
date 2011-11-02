@@ -42,12 +42,11 @@ public class UserService {
 		Session session = sessionFactory.getCurrentSession();		
 		UserBean userB = (UserBean) session.get(UserBean.class, user.getUserid());
 		
-		if(!user.getEmail().equals(null))
-			userB.setDateofbirth(user.getDateofbirth());
-		if(!user.getDateofbirth().equals(null))
-			userB.setEmail(user.getEmail());
+		userB.setDateofbirth(user.getDateofbirth());
+		userB.setEmail(user.getEmail());
 		
 		session.saveOrUpdate(userB);
+		session.flush();
 		session.clear();
 	}
 	
@@ -72,7 +71,7 @@ public class UserService {
 		} catch(NullPointerException npe) {
 			System.out.println(npe.toString());
 		}
-		user.setDateofbirth(DateService.unixtimeToDate(user.getDateofbirth()));
+		
 		return user;	
 	}
 	
