@@ -88,8 +88,6 @@ public class AnniversaryService {
 		//Create Hibernate Query
 		AnniversaryBean ann = (AnniversaryBean)session.get(AnniversaryBean.class, id);
 		
-		ann.setDate(DateService.unixtimeToDate(ann.getDate()));
-		
 		return ann;
 	}
 	
