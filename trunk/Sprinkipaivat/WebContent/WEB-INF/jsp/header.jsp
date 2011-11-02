@@ -42,8 +42,8 @@
 	      <div class="menu_nav">
 	        <ul>
 	          <c:if test="${empty username}">
-	          		<li><a href="<%= request.getContextPath() %>/account/login">Login</a></li>
-	          		<li><a href="<%= request.getContextPath() %>/account/create">Create Account</a></li>
+	          		<li><a href="<%= request.getContextPath() %>/login">Login</a></li>
+	          		<li><a href="<%= request.getContextPath() %>/create">Create Account</a></li>
           	  </c:if>
           	  <c:if test="${not empty username}">
 		          <li><a href="<%= request.getContextPath() %>/anniversary/all">Anniversary</a></li>
