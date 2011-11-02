@@ -140,7 +140,7 @@ public class UserBean implements java.io.Serializable, UserDetails {
 		this.formPassword2 = formPassword2;
 	}
 	
-	public void setRoles(int role) {
+	public void setRole(int role) {
 		this.role = role;
 	}
 

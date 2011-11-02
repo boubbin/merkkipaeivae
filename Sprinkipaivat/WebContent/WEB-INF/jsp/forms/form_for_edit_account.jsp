@@ -4,8 +4,8 @@
 	<form:errors path="*"/>
 				<table>
 					<tr>
-						<td>Old Password:</td>
-						<td><form:input path="formPassword1"/></td>
+						<td>Password:</td>
+						<td><form:password path="formPassword1"/></td>
 						<td><form:errors path="formPassword1" cssClass="form_error"/></td>
 					</tr>
 					<tr>

@@ -23,6 +23,7 @@ public class UserService {
 		
 		user.setDateofbirth(DateService.dateToUnixtime(user.getDateofbirth()));
 		user.setPassword(EncryptionService.encrypt(user.getFormPassword1()));
+		user.setRole(2);
 		
 		session.save(user);
 		session.flush();
@@ -42,6 +43,7 @@ public class UserService {
 		Session session = sessionFactory.getCurrentSession();		
 		UserBean userB = (UserBean) session.get(UserBean.class, user.getUserid());
 		
+		user.setDateofbirth(DateService.dateToUnixtime(user.getDateofbirth()));
 		userB.setDateofbirth(user.getDateofbirth());
 		userB.setEmail(user.getEmail());
 		
