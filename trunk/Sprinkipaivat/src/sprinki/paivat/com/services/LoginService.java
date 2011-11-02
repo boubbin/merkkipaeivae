@@ -8,11 +8,9 @@ import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.transaction.annotation.Transactional;
 
 import sprinki.paivat.com.domain.UserBean;
 
-@Transactional
 public class LoginService implements UserDetailsService, Serializable{
 	
 	/**
@@ -31,11 +29,13 @@ public class LoginService implements UserDetailsService, Serializable{
 		UserBean user;
 		
 		user = userService.getByUsername(username);
+
 		
 		if (user == null) {
 			throw new UsernameNotFoundException("User does NOT exist.");
 		}
 		
+		user.setDateofbirth(DateService.unixtimeToDate(user.getDateofbirth()));
 		user.getAuthorities().add(new GrantedAuthorityImpl(roleService.get(user.getRole()).getRole()));
 
 		return user;

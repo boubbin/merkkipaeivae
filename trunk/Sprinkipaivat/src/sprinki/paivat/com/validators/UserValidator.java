@@ -17,9 +17,6 @@ import sprinki.paivat.com.domain.UserBean;
 import sprinki.paivat.com.services.UserService;
 
 public class UserValidator implements Validator{
-
-	@Resource(name="userService")
-	private UserService userService;
 	
 	private static final String DATE_PATTERN = "(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).((19|20)\\d\\d)";
 	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
@@ -84,12 +81,12 @@ public class UserValidator implements Validator{
 		}
 	}
 	
-	public void validateEdit(Object obj, Errors errors) {
-		UserBean user = (UserBean) obj;
-		UserBean persisted = userService.getByUsername(user.getUsername());
+	public void validateEdit(Object edited,Object persisted, Errors errors) {
+		UserBean user = (UserBean) edited;
+		UserBean persist = (UserBean) persisted;
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "formPassword1", "field.required", "Required field");
 		if(!errors.hasFieldErrors("formPassword1")) {
-			if(!user.getFormPassword1().equals(persisted.getPassword())) {
+			if(!user.getFormPassword1().equals(persist.getPassword())) {
 				errors.rejectValue("formPassword1", "not_valid", "Wrong password!");
 			}
 		}
@@ -110,6 +107,7 @@ public class UserValidator implements Validator{
 				}
 			}
 		}
+		user.setUserid(persist.getUserid());
 	}
 	
 	private boolean isValidEmail(String email) {
